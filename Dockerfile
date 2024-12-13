@@ -10,6 +10,8 @@ COPY package*.json ./
 RUN npm install @rollup/rollup-linux-x64-musl
 # Install dependencies
 RUN npm install
+# Install @swc/core
+RUN npm install @swc/core
 
 # Copy the rest of the application code
 COPY . .
