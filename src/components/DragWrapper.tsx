@@ -1,7 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef, useState, ReactNode } from "react";
 
-export default function DragWrapper({ rootClass = "", children }) {
-  const ourRef = useRef(null);
+export default function DragWrapper({
+  rootClass = "",
+  children,
+}: {
+  rootClass?: string;
+  children: ReactNode;
+}) {
+  const ourRef = useRef<HTMLDivElement>(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const mouseCoords = useRef({
     startX: 0,
@@ -10,20 +16,18 @@ export default function DragWrapper({ rootClass = "", children }) {
     scrollTop: 0,
   });
 
-  const handleDragStart = (e) => {
+  const handleDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!ourRef.current) return;
     const slider = ourRef.current.children[0];
-    const startX = e.pageX - slider.offsetLeft;
-    const startY = e.pageY - slider.offsetTop;
-    const scrollLeft = slider.scrollLeft;
-    const scrollTop = slider.scrollTop;
+    const startX = e.pageX - (slider as HTMLElement).offsetLeft;
+    const startY = e.pageY - (slider as HTMLElement).offsetTop;
+    const scrollLeft = (slider as HTMLElement).scrollLeft;
+    const scrollTop = (slider as HTMLElement).scrollTop;
     mouseCoords.current = { startX, startY, scrollLeft, scrollTop };
     setIsMouseDown(true);
     document.body.style.cursor = "grabbing";
     document.body.style.userSelect = "none";
     document.body.style.webkitUserSelect = "none";
-    document.body.style.mozUserSelect = "none";
-    document.body.style.msUserSelect = "none";
   };
 
   const handleDragEnd = () => {
@@ -32,14 +36,13 @@ export default function DragWrapper({ rootClass = "", children }) {
     document.body.style.cursor = "default";
     document.body.style.userSelect = "auto";
     document.body.style.webkitUserSelect = "auto";
-    document.body.style.mozUserSelect = "auto";
-    document.body.style.msUserSelect = "auto";
   };
-
-  const handleDrag = (e) => {
+  const handleDrag = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ): void => {
     if (!isMouseDown || !ourRef.current) return;
     e.preventDefault();
-    const slider = ourRef.current.children[0];
+    const slider = ourRef.current.children[0] as HTMLElement;
     const x = e.pageX - slider.offsetLeft;
     const y = e.pageY - slider.offsetTop;
     const walkX = (x - mouseCoords.current.startX) * 1.5;

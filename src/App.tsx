@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import WorkCard from "./components/WorkCard";
 import useProjects from "./store/projects";
 import DragWrapper from "./components/DragWrapper";
