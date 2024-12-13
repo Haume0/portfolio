@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef, useState, ReactNode } from "react";
 
 export default function DragWrapper({
@@ -53,14 +54,13 @@ export default function DragWrapper({
   };
 
   return (
-    <div
-      ref={ourRef}
-      onMouseDown={handleDragStart}
-      onMouseUp={handleDragEnd}
-      onMouseMove={handleDrag}
-      onMouseLeave={handleDragEnd}
-      className={rootClass + " !select-none"}>
-      {children}
+    <div ref={ourRef} className={rootClass + " !select-none overflow-hidden"}>
+      {React.cloneElement(children as React.ReactElement, {
+        onMouseDown: handleDragStart,
+        onMouseUp: handleDragEnd,
+        onMouseMove: handleDrag,
+        onMouseLeave: handleDragEnd,
+      })}
     </div>
   );
 }

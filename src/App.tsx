@@ -1,23 +1,42 @@
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import WorkCard from "./components/WorkCard";
 import useProjects from "./store/projects";
 import DragWrapper from "./components/DragWrapper";
+import { useRef } from "react";
 
 function App() {
   const projects = useProjects();
+
+  // Header refs
+  const headerRef1 = useRef(null);
+  const headerInView1 = useInView(headerRef1, { once: true });
+
+  const headerRef2 = useRef(null);
+  const headerInView2 = useInView(headerRef2, { once: true });
+
+  const headerRef3 = useRef(null);
+  const headerInView3 = useInView(headerRef3, { once: true });
+
+  // Section refs
+  const sectionRef1 = useRef(null);
+  const sectionInView1 = useInView(sectionRef1, { once: true });
+
+  const sectionRef2 = useRef(null);
+  const sectionInView2 = useInView(sectionRef2, { once: true });
+
   return (
     <>
       <div className="bg-body h-screen p-8">
         <main className=" bg-main p-8 flex flex-col rounded-3xl size-full">
-          <header className="flex justify-between items-start">
-            <div className=" w-1/3 flex">
+          <header className="flex justify-between items-start" ref={headerRef1}>
+            <div className="w-1/3 flex">
               <motion.span
                 initial={{
                   y: "-100%",
                   opacity: 0,
                   transformOrigin: "center top",
                 }}
-                animate={{ y: "0%", opacity: 1, transformOrigin: "center top" }}
+                animate={headerInView1 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -27,10 +46,10 @@ function App() {
                 <img src="haume.svg" alt="" />
               </motion.span>
             </div>
-            <div className=" relative flex items-center justify-center z-10">
+            <div className="relative flex items-center justify-center z-10">
               <motion.img
                 initial={{ scale: 0, transformOrigin: "center top" }}
-                animate={{ scale: 1, transformOrigin: "center top" }}
+                animate={headerInView2 ? { scale: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 15,
@@ -46,11 +65,7 @@ function App() {
                   filter: "blur(16px)",
                   transformOrigin: "center",
                 }}
-                animate={{
-                  scale: 1,
-                  filter: "blur(0px)",
-                  transformOrigin: "center",
-                }}
+                animate={headerInView2 ? { scale: 1, filter: "blur(0px)" } : {}}
                 transition={{
                   type: "spring",
                   damping: 40,
@@ -61,14 +76,14 @@ function App() {
                 alt=""
               />
             </div>
-            <div className=" w-1/3 flex justify-end gap-2">
+            <div className="w-1/3 flex justify-end gap-2" ref={headerRef3}>
               <motion.span
                 initial={{
                   y: "-100%",
                   opacity: 0,
                   transformOrigin: "center top",
                 }}
-                animate={{ y: "0%", opacity: 1, transformOrigin: "center top" }}
+                animate={headerInView3 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -85,7 +100,7 @@ function App() {
                   opacity: 0,
                   transformOrigin: "center top",
                 }}
-                animate={{ y: "0%", opacity: 1, transformOrigin: "center top" }}
+                animate={headerInView3 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -168,7 +183,9 @@ function App() {
         </main>
       </div>
       <div className="bg-body p-8">
-        <section className=" bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full">
+        <section
+          className=" bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full"
+          ref={sectionRef1}>
           <div className="flex justify-between w-full">
             <span>
               <motion.h1
@@ -176,10 +193,7 @@ function App() {
                   y: "-100%",
                   opacity: 0,
                 }}
-                whileInView={{
-                  y: "0%",
-                  opacity: 1,
-                }}
+                animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -194,10 +208,7 @@ function App() {
                   y: "-100%",
                   opacity: 0,
                 }}
-                whileInView={{
-                  y: "0%",
-                  opacity: 1,
-                }}
+                animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -212,10 +223,7 @@ function App() {
                   y: "-100%",
                   opacity: 0,
                 }}
-                whileInView={{
-                  y: "0%",
-                  opacity: 1,
-                }}
+                animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -230,10 +238,7 @@ function App() {
                   y: "-100%",
                   opacity: 0,
                 }}
-                whileInView={{
-                  y: "0%",
-                  opacity: 1,
-                }}
+                animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -244,16 +249,13 @@ function App() {
                 These designs are forged with modern technologies.
               </motion.p>
             </span>
-            <span className="flex flex-col items-end gap-2">
+            <span className="flex flex-col items-end gap-2" ref={sectionRef2}>
               <motion.span
                 initial={{
                   x: "100%",
                   opacity: 0,
                 }}
-                whileInView={{
-                  x: "0%",
-                  opacity: 1,
-                }}
+                animate={sectionInView2 ? { x: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -268,11 +270,7 @@ function App() {
                   opacity: 0,
                   transformOrigin: "center top",
                 }}
-                whileInView={{
-                  x: "0%",
-                  opacity: 1,
-                  transformOrigin: "center top",
-                }}
+                animate={sectionInView2 ? { x: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -284,19 +282,17 @@ function App() {
             </span>
           </div>
           <DragWrapper>
-            <div className="size-full grid grid-flow-col hidden-scroll grid-rows-1 overflow-y-hidden h-max gap-4 mt-6 overflow-x-auto">
+            <div className="h-max grid grid-flow-col hidden-scroll_ grid-rows-1 gap-4 mt-6 overflow-x-auto overflow-y-hidden">
               {projects.projects.map((project, idx) => (
                 <motion.span
                   initial={{
-                    y: "40%",
+                    transform: "scale(0.4)",
                     opacity: 0,
-                    transformOrigin: "center top",
+                    transformOrigin: "center",
                   }}
-                  whileInView={{
-                    y: "0%",
-                    opacity: 1,
-                    transformOrigin: "center top",
-                  }}
+                  animate={
+                    sectionInView1 ? { transform: "scale(1)", opacity: 1 } : {}
+                  }
                   transition={{
                     type: "spring",
                     damping: 25,
