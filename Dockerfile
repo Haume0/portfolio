@@ -7,11 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install @rollup/rollup-linux-x64-musl
 # Install dependencies
-RUN npm install
-# Install @swc/core
-RUN npm install @swc/core
+RUN npm install @rollup/rollup-linux-x64-musl @swc/core && npm install
 
 # Copy the rest of the application code
 COPY . .
