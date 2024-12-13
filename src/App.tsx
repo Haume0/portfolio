@@ -168,34 +168,150 @@ function App() {
         </main>
       </div>
       <div className="bg-body p-8">
-        <section className=" bg-works p-8 flex flex-col rounded-3xl size-full">
+        <section className=" bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full">
           <div className="flex justify-between w-full">
             <span>
-              <h1 className=" font-extrabold text-8xl">Selected Works</h1>
-              <p className=" font-medium text-xl">
+              <motion.h1
+                initial={{
+                  y: "-100%",
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: "0%",
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1,
+                }}
+                className="font-extrabold text-8xl">
+                Selected Works
+              </motion.h1>
+              <motion.p
+                initial={{
+                  y: "-100%",
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: "0%",
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1.2,
+                }}
+                className=" font-medium text-xl">
                 Take a look at my projects ✦
-              </p>
-              <p className=" font-light text-xl">
-                Each project is designed to be creative and eye-catching. <br />
+              </motion.p>
+              <motion.p
+                initial={{
+                  y: "-100%",
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: "0%",
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1.4,
+                }}
+                className=" font-light text-xl">
+                Each project is designed to be creative and eye-catching.
+              </motion.p>
+              <motion.p
+                initial={{
+                  y: "-100%",
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: "0%",
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1.6,
+                }}
+                className=" font-light text-xl">
                 These designs are forged with modern technologies.
-              </p>
+              </motion.p>
             </span>
             <span className="flex flex-col items-end gap-2">
-              <button className="main-button">Let's Make More</button>
-              <button className="main-button">See More</button>
+              <motion.span
+                initial={{
+                  x: "100%",
+                  opacity: 0,
+                }}
+                whileInView={{
+                  x: "0%",
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1,
+                }}>
+                <button className="main-button">Let's Make More</button>
+              </motion.span>
+              <motion.span
+                initial={{
+                  x: "100%",
+                  opacity: 0,
+                  transformOrigin: "center top",
+                }}
+                whileInView={{
+                  x: "0%",
+                  opacity: 1,
+                  transformOrigin: "center top",
+                }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1.2,
+                }}>
+                <button className="main-button">See More</button>
+              </motion.span>
             </span>
           </div>
           <DragWrapper>
             <div className="size-full grid grid-flow-col hidden-scroll grid-rows-1 overflow-y-hidden h-max gap-4 mt-6 overflow-x-auto">
-              {projects.projects.map((project) => (
-                <WorkCard
-                  key={project.id}
-                  id={project.id}
-                  image={project.image}
-                  title={project.title}
-                  description={project.description}
-                  link={project.link}
-                />
+              {projects.projects.map((project, idx) => (
+                <motion.span
+                  initial={{
+                    y: "40%",
+                    opacity: 0,
+                    transformOrigin: "center top",
+                  }}
+                  whileInView={{
+                    y: "0%",
+                    opacity: 1,
+                    transformOrigin: "center top",
+                  }}
+                  transition={{
+                    type: "spring",
+                    damping: 25,
+                    stiffness: 100,
+                    delay: 1 + idx * 0.2,
+                  }}
+                  key={idx}>
+                  <WorkCard
+                    id={project.id}
+                    image={project.image}
+                    title={project.title}
+                    description={project.description}
+                    link={project.link}
+                  />
+                </motion.span>
               ))}
             </div>
           </DragWrapper>
