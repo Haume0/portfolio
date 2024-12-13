@@ -7,6 +7,7 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+RUN npm install @rollup/rollup-linux-x64-musl
 # Install dependencies
 RUN npm install
 
