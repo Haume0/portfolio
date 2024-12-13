@@ -46,7 +46,9 @@ function App() {
                 <img src="haume.svg" alt="" />
               </motion.span>
             </div>
-            <div className="relative flex items-center justify-center z-10">
+            <div
+              className="relative flex items-center justify-center z-10"
+              ref={headerRef2}>
               <motion.img
                 initial={{ scale: 0, transformOrigin: "center top" }}
                 animate={headerInView2 ? { scale: 1 } : {}}
