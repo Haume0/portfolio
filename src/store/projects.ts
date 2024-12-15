@@ -33,8 +33,8 @@ const useProjects = create<IProjectStore>(() => ({
     {
       id: "mackbear-banner-design",
       image: "/works/mackbear-banner-design.png",
-      title: "Mackbear Coffe Advertisement",
-      description: "A banner for Mackbear Coffe Co.",
+      title: "Mackbear Coffee Advertisement",
+      description: "A banner for Mackbear Coffee Co.",
       link: { name: "Visit", url: "https://www.behance.net/gallery/184409237/Mackbear-Banner-Design" }
     }
   ]
