@@ -188,7 +188,7 @@ function App() {
         </main>
       </div>
       <div className="bg-body p-8 pt-0">
-        <section className=" bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full">
+        <section className="bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full">
           <span ref={sectionRef1}></span>
           <div className="flex justify-between w-full">
             <span>
@@ -202,7 +202,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1,
+                  delay: 0.2,
                 }}
                 className="font-extrabold text-8xl">
                 Selected Works
@@ -217,7 +217,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1.2,
+                  delay: 0.4,
                 }}
                 className=" font-medium text-xl">
                 Take a look at my projects ✦
@@ -232,7 +232,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1.4,
+                  delay: 0.6,
                 }}
                 className=" font-light text-xl">
                 Each project is designed to be creative and eye-catching.
@@ -247,7 +247,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1.6,
+                  delay: 0.8,
                 }}
                 className=" font-light text-xl">
                 These designs are forged with modern technologies.
@@ -264,7 +264,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1,
+                  delay: 0.2,
                 }}>
                 <button className="main-button">Let's Make More</button>
               </motion.span>
@@ -279,7 +279,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1.2,
+                  delay: 0.4,
                 }}>
                 <button className="main-button">See More</button>
               </motion.span>
@@ -301,7 +301,7 @@ function App() {
                     type: "spring",
                     damping: 25,
                     stiffness: 100,
-                    delay: 1 + idx * 0.2,
+                    delay: 0.6 + idx * 0.2,
                   }}
                   key={idx}>
                   <WorkCard
@@ -331,7 +331,7 @@ function App() {
               type: "spring",
               damping: 25,
               stiffness: 100,
-              delay: 1,
+              delay: 0.2,
             }}
             className="font-extrabold text-8xl text-center">
             Tech I ❤️
@@ -351,7 +351,7 @@ function App() {
                   type: "spring",
                   damping: 25,
                   stiffness: 100,
-                  delay: 1 + idx * 0.2,
+                  delay: 0.4 + idx * 0.2,
                 }}
                 key={idx}>
                 <TechCard name={tech.name} image={`/techs/${tech.id}.png`} />
@@ -368,7 +368,7 @@ function App() {
               type: "spring",
               damping: 25,
               stiffness: 100,
-              delay: 1 + techs.techs.length * 0.2,
+              delay: 0.4 + techs.techs.length * 0.2,
             }}
             className="font-light text-center mt-4 text-xl text-white/40">
             And there is more...
