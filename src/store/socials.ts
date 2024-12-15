@@ -9,7 +9,7 @@ interface ISocialsStore {
   getSocial: (name: string) => ISocials | undefined;
 }
 
-const useSocials = create<ISocialsStore>((set, get) => ({
+const useSocials = create<ISocialsStore>((_, get) => ({
   socials: [
     {
       name: "GitHub",
