@@ -14,6 +14,7 @@ function App() {
   const techs = useTechs();
   const socials = useSocials();
   const [contactModal, setContactModal] = useState(false);
+  const [navModal, setNavModal] = useState(false);
 
   // Header refs
   const headerRef1 = useRef(null);
@@ -45,7 +46,14 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as Element).closest(`.navModal`)) {
+        setNavModal(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
     return () => {
+      document.removeEventListener("click", handleClickOutside);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -142,6 +150,7 @@ function App() {
                 </button>
               </motion.span>
               <motion.span
+                className="relative"
                 initial={{
                   y: "-100%",
                   opacity: 0,
@@ -154,18 +163,107 @@ function App() {
                   stiffness: 100,
                   delay: 0.5,
                 }}>
-                <motion.button className="main-button">
-                  <svg
-                    width="25"
-                    height="17"
-                    viewBox="0 0 25 17"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M24.7539 16.8945H0.753906V14.2279H24.7539V16.8945ZM24.7539 10.2279H0.753906V7.5612H24.7539V10.2279ZM24.7539 3.5612H0.753906V0.894531H24.7539V3.5612Z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                <motion.button
+                  onClick={() => {
+                    setNavModal(!navModal);
+                  }}
+                  className={`size-16 navModal shrink-0 gap-2 flex items-center justify-center text-white bg-body rounded-xl font-medium text-xl font-sora ease-smooth duration-1000 ${
+                    navModal &&
+                    "!bg-white !rounded-[2rem] !rotate-90 !text-black"
+                  }`}>
+                  {!navModal ? (
+                    <motion.svg
+                      width="25"
+                      height="17"
+                      viewBox="0 0 25 17"
+                      xmlns="http://www.w3.org/2000/svg"
+                      initial={{ opacity: 0, rotate: -90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: 90 }}
+                      transition={{ duration: 0.3 }}>
+                      <path
+                        d="M24.7539 16.8945H0.753906V14.2279H24.7539V16.8945ZM24.7539 10.2279H0.753906V7.5612H24.7539V10.2279ZM24.7539 3.5612H0.753906V0.894531H24.7539V3.5612Z"
+                        fill="currentColor"
+                      />
+                    </motion.svg>
+                  ) : (
+                    <motion.svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      initial={{ opacity: 0, rotate: 90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: -90 }}
+                      transition={{ duration: 0.3 }}>
+                      <path
+                        fill="currentColor"
+                        d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+                      />
+                    </motion.svg>
+                  )}
                 </motion.button>
+                {/* nav modal */}
+                <AnimatePresence>
+                  {navModal && (
+                    <div className=" absolute navModal right-0 top-full mt-2 flex flex-col items-end justify-start gap-2">
+                      <motion.span
+                        initial={{
+                          x: "60%",
+                          opacity: 0,
+                          transformOrigin: "center top",
+                        }}
+                        animate={{ x: "0%", opacity: 1 }}
+                        exit={{ x: "60%", opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          damping: 25,
+                          stiffness: 180,
+                          delay: 0.2,
+                        }}>
+                        <a href="#" className="main-button">
+                          Home
+                        </a>
+                      </motion.span>
+                      <motion.span
+                        initial={{
+                          x: "60%",
+                          opacity: 0,
+                          transformOrigin: "center top",
+                        }}
+                        animate={{ x: "0%", opacity: 1 }}
+                        exit={{ x: "60%", opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          damping: 25,
+                          stiffness: 180,
+                          delay: 0.4,
+                        }}>
+                        <a href="#works" className="main-button">
+                          Works
+                        </a>
+                      </motion.span>
+                      <motion.span
+                        initial={{
+                          x: "60%",
+                          opacity: 0,
+                          transformOrigin: "center top",
+                        }}
+                        animate={{ x: "0%", opacity: 1 }}
+                        exit={{ x: "60%", opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          damping: 25,
+                          stiffness: 180,
+                          delay: 0.6,
+                        }}>
+                        <a href="#about" className="main-button">
+                          About
+                        </a>
+                      </motion.span>
+                    </div>
+                  )}
+                </AnimatePresence>
               </motion.span>
             </div>
           </header>
@@ -246,6 +344,7 @@ function App() {
                   stiffness: 100,
                   delay: 0.2,
                 }}
+                id="works"
                 className="font-extrabold text-8xl">
                 Selected Works
               </motion.h1>
@@ -557,12 +656,38 @@ function App() {
         <footer
           className=" bg-dark overflow-hidden gap-12 p-8 flex justify-between rounded-3xl size-full"
           ref={footerRef}>
-          <div className="flex flex-col items-start justify-start">
+          <motion.div
+            initial={{
+              transform: "scale(0.4)",
+              opacity: 0,
+              transformOrigin: "center",
+            }}
+            animate={footerInView ? { transform: "scale(1)", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 0.2,
+            }}
+            className="flex flex-col items-start justify-start">
             <img src="/haume.svg" className=" h-14" alt="" />
             <p className="text-xl">Interstellar web developer.</p>
             <p className="font-thin text-white/40">© 2024 ✦ Emin Erçoban</p>
-          </div>
-          <div className="flex flex-col items-start justify-start">
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "scale(0.4)",
+              opacity: 0,
+              transformOrigin: "center",
+            }}
+            animate={footerInView ? { transform: "scale(1)", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 0.4,
+            }}
+            className="flex flex-col items-start justify-start">
             <img src="/star.svg" className=" h-9" alt="" />
             <p className="text-xl font-extrabold">Leave me a story.</p>
             <a
@@ -570,8 +695,21 @@ function App() {
               className="font-extralight text-3xl">
               haume341@outlook.com
             </a>
-          </div>
-          <div className="flex flex-col items-start min-w-48 justify-start">
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "scale(0.4)",
+              opacity: 0,
+              transformOrigin: "center",
+            }}
+            animate={footerInView ? { transform: "scale(1)", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 0.6,
+            }}
+            className="flex flex-col items-start min-w-48 justify-start">
             <p className="text-xl font-extrabold">Navigation</p>
             <a
               href="#"
@@ -586,20 +724,34 @@ function App() {
             <a
               href="#about"
               className="font-extralight text-base hover:underline hover:text-main">
-              Home
+              About
             </a>
-          </div>
-          <div className="flex flex-col items-start min-w-48 justify-start">
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "scale(0.4)",
+              opacity: 0,
+              transformOrigin: "center",
+            }}
+            animate={footerInView ? { transform: "scale(1)", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 0.8,
+            }}
+            className="flex flex-col items-start min-w-48 justify-start">
             <p className="text-xl font-extrabold">Socials</p>
             {socials.socials.map((social, i) => (
               <a
                 key={i}
+                target="_blank"
                 href={social.url}
                 className="font-extralight text-base hover:underline hover:text-main">
                 {social.name}
               </a>
             ))}
-          </div>
+          </motion.div>
         </footer>
       </div>
       <AnimatePresence>
