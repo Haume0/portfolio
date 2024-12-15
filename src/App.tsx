@@ -46,7 +46,7 @@ function App() {
                   stiffness: 100,
                   delay: 0.5,
                 }}>
-                <img src="haume.svg" alt="" />
+                <img src="/haume.svg" alt="" />
               </motion.span>
             </div>
             <div
