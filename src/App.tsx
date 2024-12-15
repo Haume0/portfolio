@@ -1,11 +1,14 @@
-import { motion, useInView } from "motion/react";
+import { motion, useInView } from "framer-motion";
 import WorkCard from "./components/WorkCard";
 import useProjects from "./store/projects";
 import DragWrapper from "./components/DragWrapper";
 import { useRef } from "react";
+import TechCard from "./components/TechCard";
+import useTechs from "./store/techstack";
 
 function App() {
   const projects = useProjects();
+  const techs = useTechs();
 
   // Header refs
   const headerRef1 = useRef(null);
@@ -20,9 +23,9 @@ function App() {
   // Section refs
   const sectionRef1 = useRef(null);
   const sectionInView1 = useInView(sectionRef1, { once: true });
-
-  const sectionRef2 = useRef(null);
-  const sectionInView2 = useInView(sectionRef2, { once: true });
+  // Techs ref
+  const techsRef = useRef(null);
+  const techsInView = useInView(techsRef, { once: true });
 
   return (
     <>
@@ -184,10 +187,9 @@ function App() {
           </div>
         </main>
       </div>
-      <div className="bg-body p-8">
-        <section
-          className=" bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full"
-          ref={sectionRef1}>
+      <div className="bg-body p-8 pt-0">
+        <section className=" bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full">
+          <span ref={sectionRef1}></span>
           <div className="flex justify-between w-full">
             <span>
               <motion.h1
@@ -251,13 +253,13 @@ function App() {
                 These designs are forged with modern technologies.
               </motion.p>
             </span>
-            <span className="flex flex-col items-end gap-2" ref={sectionRef2}>
+            <span className="flex flex-col items-end gap-2">
               <motion.span
                 initial={{
                   x: "100%",
                   opacity: 0,
                 }}
-                animate={sectionInView2 ? { x: "0%", opacity: 1 } : {}}
+                animate={sectionInView1 ? { x: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -272,7 +274,7 @@ function App() {
                   opacity: 0,
                   transformOrigin: "center top",
                 }}
-                animate={sectionInView2 ? { x: "0%", opacity: 1 } : {}}
+                animate={sectionInView1 ? { x: "0%", opacity: 1 } : {}}
                 transition={{
                   type: "spring",
                   damping: 25,
@@ -284,7 +286,7 @@ function App() {
             </span>
           </div>
           <DragWrapper>
-            <div className="h-max grid grid-flow-col hidden-scroll_ grid-rows-1 gap-4 mt-6 overflow-x-auto overflow-y-hidden">
+            <ul className="h-max grid grid-flow-col hidden-scroll grid-rows-1 gap-4 mt-6 overflow-x-auto overflow-y-hidden">
               {projects.projects.map((project, idx) => (
                 <motion.span
                   initial={{
@@ -311,8 +313,66 @@ function App() {
                   />
                 </motion.span>
               ))}
-            </div>
+            </ul>
           </DragWrapper>
+        </section>
+      </div>
+      <div className="bg-body p-8 pt-0">
+        <section
+          className=" bg-grey overflow-hidden p-8 pb-12 flex flex-col rounded-3xl size-full"
+          ref={techsRef}>
+          <motion.h1
+            initial={{
+              y: "-100%",
+              opacity: 0,
+            }}
+            animate={techsInView ? { y: "0%", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 1,
+            }}
+            className="font-extrabold text-8xl text-center">
+            Tech I ❤️
+          </motion.h1>
+          <ul className="flex flex-wrap items-center justify-center gap-4 h-max mt-4 w-full">
+            {techs.techs.map((tech, idx) => (
+              <motion.span
+                initial={{
+                  transform: "scale(0.4)",
+                  opacity: 0,
+                  transformOrigin: "center",
+                }}
+                animate={
+                  techsInView ? { transform: "scale(1)", opacity: 1 } : {}
+                }
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 1 + idx * 0.2,
+                }}
+                key={idx}>
+                <TechCard name={tech.name} image={`/techs/${tech.id}.png`} />
+              </motion.span>
+            ))}
+          </ul>
+          <motion.p
+            initial={{
+              y: "-100%",
+              opacity: 0,
+            }}
+            animate={techsInView ? { y: "0%", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 1 + techs.techs.length * 0.2,
+            }}
+            className="font-light text-center mt-4 text-xl text-white/40">
+            And there is more...
+          </motion.p>
         </section>
       </div>
     </>
