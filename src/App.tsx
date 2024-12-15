@@ -1,14 +1,19 @@
-import { motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import WorkCard from "./components/WorkCard";
 import useProjects from "./store/projects";
 import DragWrapper from "./components/DragWrapper";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import TechCard from "./components/TechCard";
 import useTechs from "./store/techstack";
+import Slider from "./components/Slider";
+import useSocials from "./store/socials";
+import Contact from "./components/Contact";
 
 function App() {
   const projects = useProjects();
   const techs = useTechs();
+  const socials = useSocials();
+  const [contactModal, setContactModal] = useState(false);
 
   // Header refs
   const headerRef1 = useRef(null);
@@ -26,7 +31,40 @@ function App() {
   // Techs ref
   const techsRef = useRef(null);
   const techsInView = useInView(techsRef, { once: true });
+  // About ref
+  const aboutRef = useRef(null);
+  const aboutInView = useInView(aboutRef, { once: true });
+  // Footer ref
+  const footerRef = useRef(null);
+  const footerInView = useInView(footerRef, { once: true });
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  if (isMobile) {
+    return (
+      <div className="bg-body h-screen p-8">
+        <section className=" bg-main p-8 flex flex-col gap-4 text-center rounded-3xl size-full">
+          <h1 className="font-extrabold text-4xl">
+            Sorry, but this website is not supported on mobile.
+          </h1>
+          <p>
+            This website is not optimized for mobile devices. Please use a
+            computer to view the website.
+          </p>
+          <p>Mobile view will supported soon...</p>
+        </section>
+      </div>
+    );
+  }
   return (
     <>
       <div className="bg-body h-screen p-8">
@@ -95,9 +133,13 @@ function App() {
                   stiffness: 100,
                   delay: 0.6,
                 }}>
-                <a href="#about" className="main-button">
+                <button
+                  onClick={() => {
+                    setContactModal(true);
+                  }}
+                  className="main-button">
                   Contact Me
-                </a>
+                </button>
               </motion.span>
               <motion.span
                 initial={{
@@ -194,7 +236,7 @@ function App() {
             <span>
               <motion.h1
                 initial={{
-                  y: "-100%",
+                  y: "-40%",
                   opacity: 0,
                 }}
                 animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
@@ -209,7 +251,7 @@ function App() {
               </motion.h1>
               <motion.p
                 initial={{
-                  y: "-100%",
+                  y: "-40%",
                   opacity: 0,
                 }}
                 animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
@@ -224,7 +266,7 @@ function App() {
               </motion.p>
               <motion.p
                 initial={{
-                  y: "-100%",
+                  y: "-40%",
                   opacity: 0,
                 }}
                 animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
@@ -239,7 +281,7 @@ function App() {
               </motion.p>
               <motion.p
                 initial={{
-                  y: "-100%",
+                  y: "-40%",
                   opacity: 0,
                 }}
                 animate={sectionInView1 ? { y: "0%", opacity: 1 } : {}}
@@ -266,7 +308,13 @@ function App() {
                   stiffness: 100,
                   delay: 0.2,
                 }}>
-                <button className="main-button">Let's Make More</button>
+                <button
+                  onClick={() => {
+                    setContactModal(true);
+                  }}
+                  className="main-button">
+                  Let's Make More
+                </button>
               </motion.span>
               <motion.span
                 initial={{
@@ -281,7 +329,14 @@ function App() {
                   stiffness: 100,
                   delay: 0.4,
                 }}>
-                <button className="main-button">See More</button>
+                <button
+                  onClick={() => {
+                    window.open(socials.getSocial("GitHub")?.url, "_blank");
+                    window.open(socials.getSocial("Behance")?.url, "_blank");
+                  }}
+                  className="main-button">
+                  See More
+                </button>
               </motion.span>
             </span>
           </div>
@@ -375,6 +430,236 @@ function App() {
           </motion.p>
         </section>
       </div>
+      <div className="bg-body p-8 pt-0">
+        <section
+          className=" bg-about overflow-hidden gap-12 p-8 grid grid-cols-7 rounded-3xl size-full"
+          ref={aboutRef}>
+          <div className="flex col-span-4 flex-col gap-4">
+            <motion.h1
+              initial={{
+                y: "-40%",
+                opacity: 0,
+              }}
+              animate={aboutInView ? { y: "0%", opacity: 1 } : {}}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.2,
+              }}
+              id="about"
+              className="font-extrabold text-8xl">
+              About Me
+            </motion.h1>
+            <motion.p
+              initial={{
+                y: "-40%",
+                opacity: 0,
+              }}
+              animate={aboutInView ? { y: "0%", opacity: 1 } : {}}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.4,
+              }}
+              className="font-light text-xl">
+              Hello, I'm a full stack web developer & designer in Turkey. My
+              goal is to enhance projects and applications with creative design
+              and modern technologies.
+            </motion.p>
+            <motion.p
+              initial={{
+                y: "-40%",
+                opacity: 0,
+              }}
+              animate={aboutInView ? { y: "0%", opacity: 1 } : {}}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.6,
+              }}
+              className="font-light text-xl">
+              I currently work with my best friend on Fiverr and Bionluk as a
+              freelancer selling websites, desktop applications and Minecraft
+              launcher. We plan to develop our own projects and launch a
+              start-up in addition to these jobs.
+            </motion.p>
+            <motion.p
+              initial={{
+                y: "-40%",
+                opacity: 0,
+              }}
+              animate={aboutInView ? { y: "0%", opacity: 1 } : {}}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.8,
+              }}
+              className="font-light text-xl">
+              It has been about 3 years since I started design and software, I
+              am a self-taught software developer, but in 2023 I started
+              studying in an associate degree program to learn something,
+              although I stayed a little ahead, I met very nice people, my
+              current goal is to switch to a bachelor program and get my
+              license.
+            </motion.p>
+          </div>
+          <motion.div
+            initial={{
+              transform: "scale(0.4)",
+              opacity: 0,
+              transformOrigin: "center",
+            }}
+            animate={aboutInView ? { transform: "scale(1)", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 1,
+            }}
+            className="flex rounded-2xl col-span-3 items-center justify-center flex-col bg-dark p-8 gap-3">
+            <img
+              src="/profile.png"
+              className="w-64 aspect-square rounded-3xl"
+              alt=""
+            />
+            <h1 className="font-extrabold text-6xl">Emin Erçoban</h1>
+            <p className="font-light text-3xl">
+              Full-Stack Developer & Designer
+            </p>
+            <ul className="flex flex-wrap items-center justify-center gap-2">
+              {socials.socials.map((social, i) => (
+                <a key={i} href={social.url} className="main-button">
+                  {social.name}
+                </a>
+              ))}
+            </ul>
+          </motion.div>
+        </section>
+      </div>
+      <div className="bg-body p-8 pt-0">
+        <section className=" bg-about overflow-hidden p-6 py-4 flex justify-between rounded-3xl size-full">
+          <Slider text="Let’s work together">
+            <button
+              onClick={() => {
+                setContactModal(true);
+              }}
+              className="main-button">
+              Let's Talk
+            </button>
+          </Slider>
+        </section>
+      </div>
+      <div className="bg-body p-8 pt-0">
+        <footer
+          className=" bg-dark overflow-hidden gap-12 p-8 flex justify-between rounded-3xl size-full"
+          ref={footerRef}>
+          <div className="flex flex-col items-start justify-start">
+            <img src="/haume.svg" className=" h-14" alt="" />
+            <p className="text-xl">Interstellar web developer.</p>
+            <p className="font-thin text-white/40">© 2024 ✦ Emin Erçoban</p>
+          </div>
+          <div className="flex flex-col items-start justify-start">
+            <img src="/star.svg" className=" h-9" alt="" />
+            <p className="text-xl font-extrabold">Leave me a story.</p>
+            <a
+              href="mailto:haume341@outlook.com?subject=There%20is%20your%20story.&body=Write%20your%20story%20here..."
+              className="font-extralight text-3xl">
+              haume341@outlook.com
+            </a>
+          </div>
+          <div className="flex flex-col items-start min-w-48 justify-start">
+            <p className="text-xl font-extrabold">Navigation</p>
+            <a
+              href="#"
+              className="font-extralight text-base hover:underline hover:text-main">
+              Home
+            </a>
+            <a
+              href="#works"
+              className="font-extralight text-base hover:underline hover:text-main">
+              Works
+            </a>
+            <a
+              href="#about"
+              className="font-extralight text-base hover:underline hover:text-main">
+              Home
+            </a>
+          </div>
+          <div className="flex flex-col items-start min-w-48 justify-start">
+            <p className="text-xl font-extrabold">Socials</p>
+            {socials.socials.map((social, i) => (
+              <a
+                key={i}
+                href={social.url}
+                className="font-extralight text-base hover:underline hover:text-main">
+                {social.name}
+              </a>
+            ))}
+          </div>
+        </footer>
+      </div>
+      <AnimatePresence>
+        {contactModal && (
+          <motion.div
+            onMouseLeave={() => setContactModal(false)}
+            onClick={() => setContactModal(false)}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            style={{
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+            }}
+            className="fixed inset-0 flex flex-col gap-4 items-center justify-center bg-black/40 size-full z-50">
+            <motion.h1
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              initial={{
+                y: "-40%",
+                opacity: 0,
+              }}
+              whileInView={{ y: "0%", opacity: 1 }}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.2,
+              }}
+              id="about"
+              className="font-extrabold text-6xl">
+              Contact Me
+            </motion.h1>
+            <motion.span
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              initial={{
+                scale: 0.8,
+                opacity: 0,
+              }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.5,
+              }}>
+              <Contact />
+            </motion.span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

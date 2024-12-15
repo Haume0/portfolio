@@ -1,0 +1,9 @@
+.scroller_inner {
+  animation: scroll var(--t) linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
