@@ -479,7 +479,7 @@ function App() {
       </div>
       <div className="bg-body p-8 pt-0">
         <section
-          className=" bg-grey overflow-hidden p-8 pb-12 flex flex-col rounded-3xl size-full"
+          className=" bg-grey overflow-hidden p-4 sm:p-6 md:p-8 pb-12 flex flex-col rounded-3xl size-full"
           ref={techsRef}>
           <motion.h1
             initial={{
@@ -493,7 +493,7 @@ function App() {
               stiffness: 100,
               delay: 0.2,
             }}
-            className="font-extrabold text-8xl text-center">
+            className="font-extrabold text-6xl sm:text-7xl md:text-8xl text-center">
             Tech I ❤️
           </motion.h1>
           <ul className="flex flex-wrap items-center justify-center gap-4 h-max mt-4 w-full">
@@ -513,7 +513,8 @@ function App() {
                   stiffness: 100,
                   delay: 0.4 + idx * 0.2,
                 }}
-                key={idx}>
+                key={idx}
+                style={{ zIndex: techs.techs.length - idx }}>
                 <TechCard name={tech.name} image={`/techs/${tech.id}.png`} />
               </motion.span>
             ))}
@@ -537,9 +538,9 @@ function App() {
       </div>
       <div className="bg-body p-8 pt-0">
         <section
-          className=" bg-about overflow-hidden gap-12 p-8 grid grid-cols-7 rounded-3xl size-full"
+          className="bg-about overflow-hidden gap-12 p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-7 rounded-3xl size-full"
           ref={aboutRef}>
-          <div className="flex col-span-4 flex-col gap-4">
+          <div className="flex col-span-1 lg:col-span-4 flex-col gap-4">
             <motion.h1
               initial={{
                 y: "-40%",
@@ -553,7 +554,7 @@ function App() {
                 delay: 0.2,
               }}
               id="about"
-              className="font-extrabold text-8xl">
+              className="font-extrabold text-5xl sm:text-7xl lg:text-8xl">
               About Me
             </motion.h1>
             <motion.p
@@ -568,7 +569,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.4,
               }}
-              className="font-light text-xl">
+              className="font-light text-lg md:text-xl">
               Hello, I'm a full stack web developer & designer in Turkey. My
               goal is to enhance projects and applications with creative design
               and modern technologies.
@@ -585,7 +586,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.6,
               }}
-              className="font-light text-xl">
+              className="font-light text-lg md:text-xl">
               I currently work with my best friend on Fiverr and Bionluk as a
               freelancer selling websites, desktop applications and Minecraft
               launcher. We plan to develop our own projects and launch a
@@ -603,7 +604,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.8,
               }}
-              className="font-light text-xl">
+              className="font-light text-lg md:text-xl">
               It has been about 3 years since I started design and software, I
               am a self-taught software developer, but in 2023 I started
               studying in an associate degree program to learn something,
@@ -625,19 +626,24 @@ function App() {
               stiffness: 100,
               delay: 1,
             }}
-            className="flex rounded-2xl col-span-3 items-center justify-center flex-col bg-dark p-8 gap-3">
+            className="flex rounded-2xl col-span-1 lg:col-span-3 items-center justify-center flex-col bg-dark p-8 gap-3">
             <img
               src="/profile.png"
-              className="w-64 aspect-square rounded-3xl"
+              className="w-32 md:w-48 lg:w-64 aspect-square rounded-3xl"
               alt=""
             />
-            <h1 className="font-extrabold text-6xl">Emin Erçoban</h1>
-            <p className="font-light text-3xl">
+            <h1 className="font-extrabold text-center text-4xl md:text-5xl lg:text-6xl">
+              Emin Erçoban
+            </h1>
+            <p className="font-light text-center text-xl md:text-2xl lg:text-3xl">
               Full-Stack Developer & Designer
             </p>
-            <ul className="flex flex-wrap items-center justify-center gap-2">
+            <ul className="grid grid-cols-2 grid-rows-2 sm:flex sm:flex-wrap items-center justify-center gap-2">
               {socials.socials.map((social, i) => (
-                <a key={i} href={social.url} className="main-button">
+                <a
+                  key={i}
+                  href={social.url}
+                  className="main-button !w-full sm:!w-max">
                   {social.name}
                 </a>
               ))}
@@ -660,7 +666,7 @@ function App() {
       </div>
       <div className="bg-body p-8 pt-0">
         <footer
-          className=" bg-dark overflow-hidden gap-12 p-8 flex justify-between rounded-3xl size-full"
+          className=" bg-dark overflow-hidden gap-12 p-8 grid grid-cols-1 sm:grid-cols-2 grid-flow-row md:flex md:justify-between rounded-3xl size-full"
           ref={footerRef}>
           <motion.div
             initial={{
@@ -695,10 +701,12 @@ function App() {
             }}
             className="flex flex-col items-start justify-start">
             <img src="/star.svg" className=" h-9" alt="" />
-            <p className="text-xl font-extrabold">Leave me a story.</p>
+            <p className="text-lg sm:text-xl font-extrabold">
+              Leave me a story.
+            </p>
             <a
               href="mailto:haume341@outlook.com?subject=There%20is%20your%20story.&body=Write%20your%20story%20here..."
-              className="font-extralight text-3xl">
+              className="font-extralight text-xl sm:text-3xl">
               haume341@outlook.com
             </a>
           </motion.div>
@@ -716,7 +724,7 @@ function App() {
               delay: 0.6,
             }}
             className="flex flex-col items-start min-w-48 justify-start">
-            <p className="text-xl font-extrabold">Navigation</p>
+            <p className="text-lg sm:text-xl">Navigation</p>
             <a
               href="#"
               className="font-extralight text-base hover:underline hover:text-main">
@@ -747,7 +755,7 @@ function App() {
               delay: 0.8,
             }}
             className="flex flex-col items-start min-w-48 justify-start">
-            <p className="text-xl font-extrabold">Socials</p>
+            <p className="text-lg sm:text-xl">Socials</p>
             {socials.socials.map((social, i) => (
               <a
                 key={i}
