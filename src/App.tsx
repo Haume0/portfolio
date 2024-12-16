@@ -39,13 +39,7 @@ function App() {
   const footerRef = useRef(null);
   const footerInView = useInView(footerRef, { once: true });
 
-  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
-  // const handleResize = () => {
-  //   setIsMobile(window.innerWidth <= 1024);
-  // };
-
   useEffect(() => {
-    // window.addEventListener("resize", handleResize);
     const handleClickOutside = (e: MouseEvent) => {
       if (!(e.target as Element).closest(`.navModal`)) {
         setNavModal(false);
@@ -54,25 +48,8 @@ function App() {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      // window.removeEventListener("resize", handleResize);
     };
   }, []);
-  // if (isMobile) {
-  //   return (
-  //     <div className="bg-body h-screen p-8">
-  //       <section className=" bg-main p-8 flex flex-col gap-4 text-center rounded-3xl size-full">
-  //         <h1 className="font-extrabold text-4xl">
-  //           Sorry, but this website is not supported on mobile.
-  //         </h1>
-  //         <p>
-  //           This website is not optimized for mobile devices. Please use a
-  //           computer to view the website.
-  //         </p>
-  //         <p>Mobile view will supported soon...</p>
-  //       </section>
-  //     </div>
-  //   );
-  // }
   return (
     <>
       <div className="bg-body p-8 min-h-dvh flex">
@@ -628,7 +605,7 @@ function App() {
             }}
             className="flex rounded-2xl col-span-1 lg:col-span-3 items-center justify-center flex-col bg-dark p-8 gap-3">
             <img
-              src="/profile.png"
+              src="/profile.jpeg"
               className="w-32 md:w-48 lg:w-64 aspect-square rounded-3xl"
               alt=""
             />
