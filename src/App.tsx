@@ -334,9 +334,9 @@ function App() {
         </main>
       </div>
       <div className="bg-body p-8 pt-0">
-        <section className="bg-works overflow-hidden p-8 flex flex-col rounded-3xl size-full">
+        <section className="bg-works overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full">
           <span ref={sectionRef1}></span>
-          <div className="flex justify-between w-full">
+          <div className="flex flex-col sm:flex-row gap-2 sm:justify-between w-full">
             <span>
               <motion.h1
                 initial={{
@@ -351,7 +351,7 @@ function App() {
                   delay: 0.2,
                 }}
                 id="works"
-                className="font-extrabold text-8xl">
+                className="font-extrabold md:text-8xl">
                 Selected Works
               </motion.h1>
               <motion.p
@@ -366,7 +366,7 @@ function App() {
                   stiffness: 100,
                   delay: 0.4,
                 }}
-                className=" font-medium text-xl">
+                className=" font-medium text-lg sm:text-xl">
                 Take a look at my projects ✦
               </motion.p>
               <motion.p
@@ -400,7 +400,7 @@ function App() {
                 These designs are forged with modern technologies.
               </motion.p>
             </span>
-            <span className="flex flex-col items-end gap-2">
+            <span className="flex sm:flex-col items-end gap-2">
               <motion.span
                 initial={{
                   x: "100%",

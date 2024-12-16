@@ -11,7 +11,7 @@ export default function WorkCard(props: {
 }) {
   return (
     <span
-      className={`size-[32rem] group hover:p-3 flex flex-col ease-smooth duration-500 bg-dark relative rounded-3xl z-10 overflow-hidden p-0 gap-3 ${props.className}`}>
+      className={` size-80 sm:size-[32rem] group hover:p-3 flex flex-col ease-smooth duration-500 bg-dark relative rounded-3xl z-10 overflow-hidden p-0 gap-3 ${props.className}`}>
       <div className="w-full group-hover:h-2/3 group-hover:shrink ease-smooth duration-500 size-full shrink-0 rounded-2xl overflow-hidden p-3 relative">
         <img
           src={props.image}
@@ -47,8 +47,8 @@ export default function WorkCard(props: {
         </div>
       </div>
       <div className="flex flex-col p-3">
-        <h1 className=" font-bold text-[2rem]">{props.title}</h1>
-        <p className="text-xl">{props.description}</p>
+        <h1 className=" font-bold text-3xl sm:text-[2rem]">{props.title}</h1>
+        <p className="text-base sm:text-xl">{props.description}</p>
       </div>
     </span>
   );
