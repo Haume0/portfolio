@@ -29,7 +29,7 @@ h1 {
 }
 
 .main-button {
-  @apply px-5 h-16 gap-2 flex w-max items-center justify-center text-white bg-body hover:bg-white hover:text-black focus:bg-white focus:text-black rounded-xl font-medium text-xl font-sora ease-in-out duration-200;
+  @apply px-5 h-14 sm:h-16 gap-2 flex w-max items-center justify-center text-white bg-body hover:bg-white hover:text-black focus:bg-white focus:text-black rounded-xl font-medium text-base sm:text-xl font-sora ease-in-out duration-200;
 }
 
 @layer utilities {
@@ -51,4 +51,11 @@ h1 {
 .hidden-scroll::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
+}
+
+/*make everything bigger on larger screens than 1920 */
+@media (max-width: 768px) {
+  html {
+    font-size: 80%;
+  }
 }

@@ -39,13 +39,13 @@ function App() {
   const footerRef = useRef(null);
   const footerInView = useInView(footerRef, { once: true });
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 1024);
-  };
+  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  // const handleResize = () => {
+  //   setIsMobile(window.innerWidth <= 1024);
+  // };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    // window.addEventListener("resize", handleResize);
     const handleClickOutside = (e: MouseEvent) => {
       if (!(e.target as Element).closest(`.navModal`)) {
         setNavModal(false);
@@ -54,29 +54,29 @@ function App() {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("resize", handleResize);
+      // window.removeEventListener("resize", handleResize);
     };
   }, []);
-  if (isMobile) {
-    return (
-      <div className="bg-body h-screen p-8">
-        <section className=" bg-main p-8 flex flex-col gap-4 text-center rounded-3xl size-full">
-          <h1 className="font-extrabold text-4xl">
-            Sorry, but this website is not supported on mobile.
-          </h1>
-          <p>
-            This website is not optimized for mobile devices. Please use a
-            computer to view the website.
-          </p>
-          <p>Mobile view will supported soon...</p>
-        </section>
-      </div>
-    );
-  }
+  // if (isMobile) {
+  //   return (
+  //     <div className="bg-body h-screen p-8">
+  //       <section className=" bg-main p-8 flex flex-col gap-4 text-center rounded-3xl size-full">
+  //         <h1 className="font-extrabold text-4xl">
+  //           Sorry, but this website is not supported on mobile.
+  //         </h1>
+  //         <p>
+  //           This website is not optimized for mobile devices. Please use a
+  //           computer to view the website.
+  //         </p>
+  //         <p>Mobile view will supported soon...</p>
+  //       </section>
+  //     </div>
+  //   );
+  // }
   return (
     <>
-      <div className="bg-body h-screen p-8">
-        <main className=" bg-main p-8 flex flex-col rounded-3xl size-full">
+      <div className="bg-body p-8 min-h-dvh flex">
+        <main className="bg-main p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl w-full">
           <header className="flex justify-between items-start" ref={headerRef1}>
             <div className="w-1/3 flex">
               <motion.span
@@ -96,7 +96,7 @@ function App() {
               </motion.span>
             </div>
             <div
-              className="relative flex items-center justify-center z-10"
+              className="relative flex pointer-events-none items-center justify-center z-10"
               ref={headerRef2}>
               <motion.img
                 initial={{ scale: 0, transformOrigin: "center top" }}
@@ -107,7 +107,7 @@ function App() {
                   stiffness: 50,
                 }}
                 src="/glowing-star.svg"
-                className="absolute min-w-[40rem] min-h-[40rem] -top-[14rem] -z-10 blur-lg"
+                className="absolute min-w-[36rem] lg:min-w-[40rem] min-h-[36rem] lg:min-h-[40rem] -top-[14rem] -z-10 blur-lg"
                 alt=""
               />
               <motion.img
@@ -123,7 +123,7 @@ function App() {
                   stiffness: 140,
                 }}
                 src="/star.svg"
-                className=" mix-blend-difference"
+                className=" mix-blend-difference size-24 lg:size-32"
                 alt=""
               />
             </div>
@@ -145,7 +145,7 @@ function App() {
                   onClick={() => {
                     setContactModal(true);
                   }}
-                  className="main-button">
+                  className="main-button !hidden sm:!block">
                   Contact Me
                 </button>
               </motion.span>
@@ -206,7 +206,7 @@ function App() {
                 {/* nav modal */}
                 <AnimatePresence>
                   {navModal && (
-                    <div className=" absolute navModal right-0 top-full mt-2 flex flex-col items-end justify-start gap-2">
+                    <div className=" absolute navModal z-50 right-0 top-full mt-2 flex flex-col items-end justify-start gap-2">
                       <motion.span
                         initial={{
                           x: "60%",
@@ -279,10 +279,10 @@ function App() {
               }}
               src="/star.svg"
               alt=""
-              className="h-32"
+              className="h-20 sm:h-28 2xl:h-32"
             />
             <motion.h1
-              className="font-lato font-black leading-[88%] text-[11.25rem] text-milk"
+              className="font-lato font-black text-nowrap leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-milk"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -294,7 +294,7 @@ function App() {
               I MAKE
             </motion.h1>
             <motion.h1
-              className="font-lato font-black leading-[88%] text-[11.25rem] text-milk"
+              className="font-lato font-black leading-[88%] text-7xl sm:text-[9rem] xl:text-[11.25rem] text-milk"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -306,7 +306,7 @@ function App() {
               DREAMS COME
             </motion.h1>
             <motion.h1
-              className="font-lato font-black flex w-full items-center gap-2 leading-[88%] text-[11.25rem] text-milk"
+              className="font-lato font-black flex flex-col items-start sm:items-center sm:flex-row w-full gap-2 leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-milk"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -317,13 +317,19 @@ function App() {
               }}>
               TRUE
               <div className="px-6 py-2 h-max bg-white mt-2 text-main font-sora rounded-[1.25rem] flex flex-col">
-                <h1 className="font-bold text-[4.5rem]">Emin Erçoban</h1>
-                <p className="font-extralight text-[2.5rem]">
+                <h1 className="font-bold text-4xl sm:text-[2.8rem] sm:leading-[1.2] md:leading-[1] md:text-[4.5rem]">
+                  Emin Erçoban
+                </h1>
+                <p className="font-extralight text-lg sm:text-[1.8rem] sm:leading-[1.2] md:leading-[1] md:text-[2.5rem]">
                   Full-Stack Web Developer
                 </p>
               </div>
-              <img src="/signs.svg" className=" ml-auto mt-auto" alt="" />
             </motion.h1>
+            <img
+              src="/signs.svg"
+              className=" sm:absolute right-0 bottom-0 ml-auto mt-2 h-5 sm:h-7 2xl:h-9"
+              alt=""
+            />
           </div>
         </main>
       </div>
