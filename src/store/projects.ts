@@ -17,11 +17,60 @@ interface IProjectStore {
 const useProjects = create<IProjectStore>(() => ({
   projects: [
     {
-      id: "pal",
-      image: "/works/pal.png",
-      title: "The Pal App",
-      description: "A social media app for adventurers.",
-      link: { name: "Project", url: "https://www.behance.net/gallery/197091485/The-Pal-App" }
+      id: "quellstudio",
+      image: "/works/quellstudio.png",
+      title: "Quell Studio",
+      description: "The website I built for CharmQuell's game studio.",
+      link: { name: "Visit", url: "https://quellstudios.com/en/" }
+    },
+    {
+      id: "oyunlayici",
+      image: "/works/oyunlayici.png",
+      title: "Oyunlayıcı Website",
+      description: "Game server provider website template",
+      link: { name: "Visit", url: "https://oyunlayici.com/" }
+    },
+    {
+      id: "basolauncher",
+      image: "/works/basolauncher.png",
+      title: "Baso Launcher",
+      description: "Premium Minecraft Launcher for Baso Network.",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/194630849/Baso-Minecraft-Launcher" }
+    },
+    {
+      id: "lofodo",
+      image: "/works/lofodo.png",
+      title: "LOFODO",
+      description: "Customizable Pomodoro Timer",
+      link: { name: "Visit", url: "https://lofodo.netlify.app" }
+    },
+    {
+      id: "kadimlauncher",
+      image: "/works/kadimlauncher.png",
+      title: "Kadim Launcher Theme",
+      description: "Premium Minecraft Launcher Theme",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/194633591/Kadim-Minecraft-Launcher" }
+    },
+    {
+      id: "paperlauncher",
+      image: "/works/paperlauncher.png",
+      title: "Papyrus Launcher Theme",
+      description: "Premium Minecraft Launcher Theme",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/195096833/Papyrus-Launcher-Theme" }
+    },
+    {
+      id: "elesyalauncher",
+      image: "/works/elesyalauncher.png",
+      title: "Papyrus Launcher Theme",
+      description: "Premium Minecraft Launcher Theme",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/194632301/Elsya-Minecraft-Launcher" }
+    },
+    {
+      id: "obglobal",
+      image: "/works/obglobal.png",
+      title: "Obglobal Website",
+      description: "A rent a car website.",
+      link: { name: "Visit", url: "https://obcarservice.com/" }
     },
     {
       id: "bilentropy",
@@ -29,6 +78,20 @@ const useProjects = create<IProjectStore>(() => ({
       title: "Bilentropy Magazine",
       description: "A magaazine about popular science.",
       link: { name: "Visit", url: "https://www.behance.net/gallery/213763703/Bilentropy-Popueler-Bilim-Dergisi" }
+    },
+    {
+      id: "haumebranding",
+      image: "/works/haumebranding.png",
+      title: "Haume Brand Identity",
+      description: "A brand identity for myself.",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/194982797/Haume-Branding" }
+    },
+    {
+      id: "pal",
+      image: "/works/pal.png",
+      title: "The Pal App",
+      description: "A social media app for adventurers.",
+      link: { name: "Project", url: "https://www.behance.net/gallery/197091485/The-Pal-App" }
     },
     {
       id: "mackbear-banner-design",

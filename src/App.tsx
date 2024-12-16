@@ -238,6 +238,28 @@ function App() {
                           About
                         </a>
                       </motion.span>
+                      <motion.span
+                        initial={{
+                          x: "60%",
+                          opacity: 0,
+                          transformOrigin: "center top",
+                        }}
+                        animate={{ x: "0%", opacity: 1 }}
+                        exit={{ x: "60%", opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          damping: 25,
+                          stiffness: 180,
+                          delay: 0.8,
+                        }}>
+                        <button
+                          onClick={() => {
+                            setContactModal(true);
+                          }}
+                          className="main-button sm:hidden">
+                          Contact Me
+                        </button>
+                      </motion.span>
                     </div>
                   )}
                 </AnimatePresence>
@@ -662,6 +684,15 @@ function App() {
             <img src="/haume.svg" className=" h-14" alt="" />
             <p className="text-xl">Interstellar web developer.</p>
             <p className="font-thin text-white/40">© 2024 ✦ Emin Erçoban</p>
+            <p className="font-thin text-white/40 mt-1">
+              Team member of{" "}
+              <a
+                href="https://cubidron.com"
+                target="_blank"
+                className="hover:underline font-normal hover:text-main">
+                Cubidron
+              </a>
+            </p>
           </motion.div>
           <motion.div
             initial={{
@@ -748,7 +779,6 @@ function App() {
       <AnimatePresence>
         {contactModal && (
           <motion.div
-            onMouseLeave={() => setContactModal(false)}
             onClick={() => setContactModal(false)}
             initial={{
               opacity: 0,
@@ -763,7 +793,7 @@ function App() {
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
             }}
-            className="fixed inset-0 flex flex-col gap-4 items-center justify-center bg-black/40 size-full z-50">
+            className="fixed inset-0 flex cursor-zoom-out flex-col gap-4 items-center justify-center bg-black/40 size-full z-50">
             <motion.h1
               onClick={(e) => {
                 e.stopPropagation();
@@ -780,7 +810,7 @@ function App() {
                 delay: 0.2,
               }}
               id="about"
-              className="font-extrabold text-6xl">
+              className="font-extrabold cursor-default text-6xl">
               Contact Me
             </motion.h1>
             <motion.span
@@ -798,7 +828,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.5,
               }}>
-              <Contact />
+              <Contact className="cursor-default" />
             </motion.span>
           </motion.div>
         )}

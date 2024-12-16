@@ -1,4 +1,4 @@
-export default function Contact() {
+export default function Contact(props: { className?: string }) {
   return (
     <>
       <form
@@ -16,7 +16,7 @@ export default function Contact() {
           )}&body=${encodeURIComponent(`🪐 ${name},\n\n${message}`)}`;
           window.open(mailto);
         }}
-        className="grid grid-cols-2 bg-dark p-4 gap-4 w-full sm:w-[44rem] rounded-2xl">
+        className={`grid grid-cols-2 bg-dark p-4 gap-4 w-full sm:w-[44rem] rounded-2xl ${props.className}`}>
         <input
           type="text"
           name="name"

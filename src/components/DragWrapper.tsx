@@ -46,15 +46,20 @@ export default function DragWrapper({
     const slider = ourRef.current.children[0] as HTMLElement;
     const x = e.pageX - slider.offsetLeft;
     const y = e.pageY - slider.offsetTop;
-    const walkX = (x - mouseCoords.current.startX) * 1.5;
-    const walkY = (y - mouseCoords.current.startY) * 1.5;
+    const walkY = (y - mouseCoords.current.startY) * 1.1;
+    const walkX = (x - mouseCoords.current.startX) * 1.1;
     slider.scrollLeft = mouseCoords.current.scrollLeft - walkX;
     slider.scrollTop = mouseCoords.current.scrollTop - walkY;
     console.log(walkX, walkY);
   };
 
   return (
-    <div ref={ourRef} className={rootClass + " !select-none overflow-hidden"}>
+    <div
+      ref={ourRef}
+      className={
+        rootClass +
+        " !select-none overflow-hidden cursor-grab active:cursor-grabbing"
+      }>
       {React.cloneElement(children as React.ReactElement, {
         onMouseDown: handleDragStart,
         onMouseUp: handleDragEnd,
