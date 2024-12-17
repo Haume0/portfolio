@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color: rgba(255, 255, 255, 0.87);
+  color: #e8e4f5;
   background-color: #242424;
   scroll-behavior: smooth;
 

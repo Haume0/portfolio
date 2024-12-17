@@ -340,7 +340,7 @@ function App() {
               }}>
               TRUE
               <div
-                className={`px-6 py-2 h-max bg-white mt-2 font-sora rounded-[1.25rem] flex flex-col ${
+                className={`px-6 py-2 h-max bg-milk mt-2 font-sora rounded-[1.25rem] flex flex-col ${
                   background ? "text-black" : "text-main"
                 }`}>
                 <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-[1] md:text-[4.5rem]">
