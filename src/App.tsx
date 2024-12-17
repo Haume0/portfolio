@@ -72,9 +72,7 @@ function App() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               src="/main.webp"
               alt="background image"
-              className={`absolute size-full object-cover object-center inset-0 ${
-                background ? "block" : "hidden"
-              }`}
+              className={`absolute size-full object-cover object-center inset-0`}
             />
           </AnimatePresence>
           <header
