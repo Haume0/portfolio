@@ -16,20 +16,17 @@ export default function WorkCard(props: {
         <img
           src={props.image}
           className=" absolute inset-0 object-cover size-full -z-10"
-          alt=""
+          alt={props.title}
         />
         <div className="flex justify-end gap-2">
-          <span
-            // target="_blank"
-            // rel="noreferrer"
-            // href={props.link.url}
-            className="h-12 px-5 mr-8 opacity-0 group-hover:opacity-100 group-hover:mr-0 ease-smooth duration-500 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center">
+          <span className="h-12 px-5 mr-8 opacity-0 group-hover:opacity-100 group-hover:mr-0 ease-smooth duration-500 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center">
             {props.link.name}
           </span>
           <a
             target="_blank"
             rel="noreferrer"
             href={props.link.url}
+            aria-label={props.link.name}
             className="size-12 rounded-full bg-white/20 backdrop-blur-xl flex group/ext items-center justify-center">
             <svg
               width="17"

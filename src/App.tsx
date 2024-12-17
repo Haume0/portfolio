@@ -15,6 +15,7 @@ function App() {
   const socials = useSocials();
   const [contactModal, setContactModal] = useState(false);
   const [navModal, setNavModal] = useState(false);
+  const [background, setBackground] = useState(false);
 
   // Header refs
   const headerRef1 = useRef(null);
@@ -53,8 +54,32 @@ function App() {
   return (
     <>
       <div className="bg-body p-8 min-h-dvh flex">
-        <main className="bg-main p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl w-full">
-          <header className="flex justify-between items-start" ref={headerRef1}>
+        <main className="bg-main p-4 sm:p-6 md:p-8 overflow-clip flex flex-col rounded-3xl w-full relative">
+          <AnimatePresence>
+            <motion.img
+              initial={{
+                filter: "blur(48px)",
+                scale: 0.6,
+                opacity: 0,
+                borderRadius: "50%",
+              }}
+              animate={{
+                filter: background ? "blur(0px)" : "blur(48px)",
+                scale: background ? 1 : 0.6,
+                opacity: background ? 1 : 0,
+                borderRadius: background ? "0%" : "50%",
+              }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              src="/main.webp"
+              alt="background image"
+              className={`absolute size-full object-cover object-center inset-0 ${
+                background ? "block" : "hidden"
+              }`}
+            />
+          </AnimatePresence>
+          <header
+            className="flex relative justify-between items-start"
+            ref={headerRef1}>
             <div className="w-1/3 flex">
               <motion.span
                 initial={{
@@ -85,7 +110,7 @@ function App() {
                 }}
                 src="/glowing-star.svg"
                 className="absolute min-w-[36rem] lg:min-w-[40rem] min-h-[36rem] lg:min-h-[40rem] -top-[14rem] -z-10 blur-lg"
-                alt=""
+                alt="glowing star image"
               />
               <motion.img
                 initial={{
@@ -101,7 +126,7 @@ function App() {
                 }}
                 src="/star.svg"
                 className=" mix-blend-difference size-24 lg:size-32"
-                alt=""
+                alt="star image"
               />
             </div>
             <div className="w-1/3 flex justify-end gap-2" ref={headerRef3}>
@@ -141,6 +166,7 @@ function App() {
                   delay: 0.5,
                 }}>
                 <motion.button
+                  aria-label="Menu Button"
                   onClick={() => {
                     setNavModal(!navModal);
                   }}
@@ -277,7 +303,7 @@ function App() {
                 delay: 0.6,
               }}
               src="/star.svg"
-              alt=""
+              alt="star image"
               className="h-20 sm:h-28 2xl:h-32"
             />
             <motion.h1
@@ -315,8 +341,11 @@ function App() {
                 delay: 0.9,
               }}>
               TRUE
-              <div className="px-6 py-2 h-max bg-white mt-2 text-main font-sora rounded-[1.25rem] flex flex-col">
-                <h1 className="font-bold text-4xl sm:text-[2.8rem] sm:leading-[1.2] md:leading-[1] md:text-[4.5rem]">
+              <div
+                className={`px-6 py-2 h-max bg-white mt-2 font-sora rounded-[1.25rem] flex flex-col ${
+                  background ? "text-black" : "text-main"
+                }`}>
+                <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-[1] md:text-[4.5rem]">
                   Emin Erçoban
                 </h1>
                 <p className="font-extralight text-lg sm:text-[1.8rem] sm:leading-[1.2] md:leading-[1] md:text-[2.5rem]">
@@ -325,9 +354,12 @@ function App() {
               </div>
             </motion.h1>
             <img
+              onClick={() => {
+                setBackground(!background);
+              }}
               src="/signs.svg"
               className=" sm:absolute right-0 bottom-0 ml-auto mt-2 h-5 sm:h-7 2xl:h-9"
-              alt=""
+              alt="signs"
             />
           </div>
         </main>
@@ -434,9 +466,9 @@ function App() {
                   delay: 0.4,
                 }}>
                 <button
-                  onClick={() => {
-                    window.open(socials.getSocial("GitHub")?.url, "_blank");
+                  onClick={async () => {
                     window.open(socials.getSocial("Behance")?.url, "_blank");
+                    window.open(socials.getSocial("GitHub")?.url, "_blank");
                   }}
                   className="main-button">
                   See More

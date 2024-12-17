@@ -18,49 +18,49 @@ const useProjects = create<IProjectStore>(() => ({
   projects: [
     {
       id: "quellstudio",
-      image: "/works/quellstudio.png",
+      image: "/works/quellstudio.webp",
       title: "Quell Studio",
       description: "The website I built for CharmQuell's game studio.",
       link: { name: "Visit", url: "https://quellstudios.com/en/" }
     },
     {
       id: "oyunlayici",
-      image: "/works/oyunlayici.png",
+      image: "/works/oyunlayici.webp",
       title: "Oyunlayıcı Website",
       description: "Game server provider website template",
       link: { name: "Visit", url: "https://oyunlayici.com/" }
     },
     {
       id: "basolauncher",
-      image: "/works/basolauncher.png",
+      image: "/works/basolauncher.webp",
       title: "Baso Launcher",
       description: "Premium Minecraft Launcher for Baso Network.",
       link: { name: "Visit", url: "https://www.behance.net/gallery/194630849/Baso-Minecraft-Launcher" }
     },
     {
       id: "lofodo",
-      image: "/works/lofodo.png",
+      image: "/works/lofodo.webp",
       title: "LOFODO",
       description: "Customizable Pomodoro Timer",
       link: { name: "Visit", url: "https://lofodo.netlify.app" }
     },
     {
       id: "kadimlauncher",
-      image: "/works/kadimlauncher.png",
+      image: "/works/kadimlauncher.webp",
       title: "Kadim Launcher Theme",
       description: "Premium Minecraft Launcher Theme",
       link: { name: "Visit", url: "https://www.behance.net/gallery/194633591/Kadim-Minecraft-Launcher" }
     },
     {
       id: "paperlauncher",
-      image: "/works/paperlauncher.png",
+      image: "/works/paperlauncher.webp",
       title: "Papyrus Launcher Theme",
       description: "Premium Minecraft Launcher Theme",
       link: { name: "Visit", url: "https://www.behance.net/gallery/195096833/Papyrus-Launcher-Theme" }
     },
     {
       id: "elesyalauncher",
-      image: "/works/elesyalauncher.png",
+      image: "/works/elesyalauncher.webp",
       title: "Papyrus Launcher Theme",
       description: "Premium Minecraft Launcher Theme",
       link: { name: "Visit", url: "https://www.behance.net/gallery/194632301/Elsya-Minecraft-Launcher" }
@@ -88,14 +88,14 @@ const useProjects = create<IProjectStore>(() => ({
     },
     {
       id: "pal",
-      image: "/works/pal.png",
+      image: "/works/pal.webp",
       title: "The Pal App",
       description: "A social media app for adventurers.",
       link: { name: "Project", url: "https://www.behance.net/gallery/197091485/The-Pal-App" }
     },
     {
       id: "mackbear-banner-design",
-      image: "/works/mackbear-banner-design.png",
+      image: "/works/mackbear-banner-design.webp",
       title: "Mackbear Coffee Advertisement",
       description: "A banner for Mackbear Coffee Co.",
       link: { name: "Visit", url: "https://www.behance.net/gallery/184409237/Mackbear-Banner-Design" }
