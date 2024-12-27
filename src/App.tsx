@@ -53,7 +53,7 @@ function App() {
   }, []);
   return (
     <>
-      <div className="bg-body p-8 min-h-dvh flex">
+      <div className="bg-body p-4 sm:p-6 md:p-8 min-h-dvh flex">
         <main className="bg-main p-4 sm:p-6 md:p-8 overflow-clip flex flex-col rounded-3xl w-full relative">
           <AnimatePresence>
             <motion.img
@@ -362,7 +362,7 @@ function App() {
           </div>
         </main>
       </div>
-      <div className="bg-body p-8 pt-0">
+      <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <section className="bg-works overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full">
           <span ref={sectionRef1}></span>
           <div className="flex flex-col sm:flex-row gap-2 sm:justify-between w-full">
@@ -506,7 +506,7 @@ function App() {
           </DragWrapper>
         </section>
       </div>
-      <div className="bg-body p-8 pt-0">
+      <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <section
           className=" bg-grey overflow-hidden p-4 sm:p-6 md:p-8 pb-12 flex flex-col rounded-3xl size-full"
           ref={techsRef}>
@@ -565,7 +565,7 @@ function App() {
           </motion.p>
         </section>
       </div>
-      <div className="bg-body p-8 pt-0">
+      <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <section
           className="bg-about overflow-hidden gap-12 p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-7 rounded-3xl size-full"
           ref={aboutRef}>
@@ -680,7 +680,7 @@ function App() {
           </motion.div>
         </section>
       </div>
-      <div className="bg-body p-8 pt-0">
+      <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <section className=" bg-about overflow-hidden p-6 py-4 flex justify-between rounded-3xl size-full">
           <Slider text="Let’s work together">
             <button
@@ -693,7 +693,7 @@ function App() {
           </Slider>
         </section>
       </div>
-      <div className="bg-body p-8 pt-0">
+      <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <footer
           className=" bg-dark overflow-hidden gap-12 p-8 grid grid-cols-1 sm:grid-cols-2 grid-flow-row md:flex md:justify-between rounded-3xl size-full"
           ref={footerRef}>
