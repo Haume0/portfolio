@@ -1,11 +1,12 @@
 .snow,
 .snow:before,
 .snow:after {
-  position: fixed;
+  position: absolute;
   top: -444px;
   left: 0;
   bottom: 0;
   right: 0;
+  pointer-events: none;
   background-image: radial-gradient(
       4px 4px at 314px 450px,
       rgba(255, 255, 255, 0.9) 50%,
