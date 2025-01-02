@@ -38,6 +38,13 @@ const useProjects = create<IProjectStore>(() => ({
       link: { name: "Visit", url: "https://www.behance.net/gallery/194630849/Baso-Minecraft-Launcher" }
     },
     {
+      id: "rentacart",
+      image: "/works/rentacart.webp",
+      title: "Rent A Cart Web Design",
+      description: "A humorous car (grocery cart) rental site.",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/215917075/Rent-A-Cart" }
+    },
+    {
       id: "lofodo",
       image: "/works/lofodo.webp",
       title: "LOFODO",
