@@ -31,13 +31,6 @@ const useProjects = create<IProjectStore>(() => ({
       link: { name: "Visit", url: "https://oyunlayici.com/" }
     },
     {
-      id: "basolauncher",
-      image: "/works/basolauncher.webp",
-      title: "Baso Launcher",
-      description: "Premium Minecraft Launcher for Baso Network.",
-      link: { name: "Visit", url: "https://www.behance.net/gallery/194630849/Baso-Minecraft-Launcher" }
-    },
-    {
       id: "rentacart",
       image: "/works/rentacart.webp",
       title: "Rent A Cart Web Design",
@@ -45,11 +38,25 @@ const useProjects = create<IProjectStore>(() => ({
       link: { name: "Visit", url: "https://www.behance.net/gallery/215917075/Rent-A-Cart" }
     },
     {
+      id: "limelauncher",
+      image: "/works/limelauncher.webp",
+      title: "CraftLime Launcher",
+      description: "Premium Minecraft Launcher for CraftLime Minecraft Server.",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/215921483/CraftLime-Launcher" }
+    },
+    {
       id: "lofodo",
       image: "/works/lofodo.webp",
       title: "LOFODO",
       description: "Customizable Pomodoro Timer",
       link: { name: "Visit", url: "https://lofodo.netlify.app" }
+    },
+    {
+      id: "basolauncher",
+      image: "/works/basolauncher.webp",
+      title: "Baso Launcher",
+      description: "Premium Minecraft Launcher for Baso Network.",
+      link: { name: "Visit", url: "https://www.behance.net/gallery/194630849/Baso-Minecraft-Launcher" }
     },
     {
       id: "kadimlauncher",
