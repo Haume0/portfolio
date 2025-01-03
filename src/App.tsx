@@ -515,7 +515,7 @@ function App() {
                           type: "spring",
                           damping: 30,
                           stiffness: 300,
-                          delay: 0.2,
+                          delay: 0.3,
                         }}>
                         <a
                           href={socials.getSocial("GitHub")?.url}
@@ -548,7 +548,7 @@ function App() {
                           type: "spring",
                           damping: 30,
                           stiffness: 300,
-                          delay: 0.1,
+                          delay: 0.2,
                         }}>
                         <a
                           href={socials.getSocial("Behance")?.url}
@@ -582,7 +582,8 @@ function App() {
                       transition={{
                         type: "spring",
                         damping: 30,
-                        stiffness: 400,
+                        stiffness: 300,
+                        delay: 0,
                       }}
                       className="flex gap-2">
                       <button
