@@ -45,7 +45,7 @@ const useProjects = create<IProjectStore>(() => ({
       image: "/works/lofodo.webp",
       title: "LOFODO",
       description: "Customizable Pomodoro Timer",
-      link: { name: "Visit", url: "https://lofodo.netlify.app" },
+      link: { name: "Visit", url: "https://lofodo.haume.me" },
     },
     {
       id: "limelauncher",
