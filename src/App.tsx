@@ -8,6 +8,7 @@ import useTechs from "./store/techstack";
 import Slider from "./components/Slider";
 import useSocials from "./store/socials";
 import Contact from "./components/Contact";
+import FanList from "./components/FanList";
 
 function App() {
   const projects = useProjects();
@@ -185,148 +186,148 @@ function App() {
                   delay: 0.5,
                 }}
               >
-                <motion.button
-                  aria-label="Menu Button"
-                  onClick={() => {
-                    setNavModal(!navModal);
-                  }}
-                  className={`size-16 navModal shrink-0 gap-2 flex items-center justify-center text-white bg-body rounded-xl font-medium text-xl font-sora ease-smooth duration-1000 ${
-                    navModal &&
-                    "!bg-white !rounded-[2rem] !rotate-90 !text-black"
-                  }`}
-                >
-                  {!navModal ? (
-                    <motion.svg
-                      width="25"
-                      height="17"
-                      viewBox="0 0 25 17"
-                      xmlns="http://www.w3.org/2000/svg"
-                      initial={{ opacity: 0, rotate: -90 }}
-                      animate={{ opacity: 1, rotate: 0 }}
-                      exit={{ opacity: 0, rotate: 90 }}
-                      transition={{ duration: 0.3 }}
+                <FanList
+                  show={navModal}
+                  button={
+                    <motion.button
+                      aria-label="Menu Button"
+                      onClick={() => {
+                        setNavModal(!navModal);
+                      }}
+                      className={`size-16 navModal shrink-0 gap-2 flex items-center justify-center text-white bg-body rounded-xl font-medium text-xl font-sora ease-smooth duration-1000 ${
+                        navModal &&
+                        "!bg-white !rounded-[2rem] !rotate-90 !text-black"
+                      }`}
                     >
-                      <path
-                        d="M24.7539 16.8945H0.753906V14.2279H24.7539V16.8945ZM24.7539 10.2279H0.753906V7.5612H24.7539V10.2279ZM24.7539 3.5612H0.753906V0.894531H24.7539V3.5612Z"
-                        fill="currentColor"
-                      />
-                    </motion.svg>
-                  ) : (
-                    <motion.svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 24 24"
-                      initial={{ opacity: 0, rotate: 90 }}
-                      animate={{ opacity: 1, rotate: 0 }}
-                      exit={{ opacity: 0, rotate: -90 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-                      />
-                    </motion.svg>
-                  )}
-                </motion.button>
-                {/* nav modal */}
-                <AnimatePresence>
-                  {navModal && (
-                    <div className=" absolute navModal z-50 right-0 top-full mt-2 flex flex-col items-end justify-start gap-2">
-                      <motion.span
-                        initial={{
-                          x: "60%",
-                          opacity: 0,
-                          transformOrigin: "center top",
-                        }}
-                        animate={{ x: "0%", opacity: 1 }}
-                        exit={{ x: "60%", opacity: 0 }}
-                        transition={{
-                          type: "spring",
-                          damping: 25,
-                          stiffness: 180,
-                          delay: 0.2,
-                        }}
-                      >
-                        <a href="#" className="main-button">
-                          Home
-                        </a>
-                      </motion.span>
-                      <motion.span
-                        initial={{
-                          x: "60%",
-                          opacity: 0,
-                          transformOrigin: "center top",
-                        }}
-                        animate={{ x: "0%", opacity: 1 }}
-                        exit={{ x: "60%", opacity: 0 }}
-                        transition={{
-                          type: "spring",
-                          damping: 25,
-                          stiffness: 180,
-                          delay: 0.4,
-                        }}
-                      >
-                        <a href="#works" className="main-button">
-                          Works
-                        </a>
-                      </motion.span>
-                      <motion.span
-                        initial={{
-                          x: "60%",
-                          opacity: 0,
-                          transformOrigin: "center top",
-                        }}
-                        animate={{ x: "0%", opacity: 1 }}
-                        exit={{ x: "60%", opacity: 0 }}
-                        transition={{
-                          type: "spring",
-                          damping: 25,
-                          stiffness: 180,
-                          delay: 0.6,
-                        }}
-                      >
-                        <a href="#about" className="main-button">
-                          About
-                        </a>
-                      </motion.span>
-                      <motion.span
-                        initial={{
-                          x: "60%",
-                          opacity: 0,
-                          transformOrigin: "center top",
-                        }}
-                        animate={{ x: "0%", opacity: 1 }}
-                        exit={{ x: "60%", opacity: 0 }}
-                        transition={{
-                          type: "spring",
-                          damping: 25,
-                          stiffness: 180,
-                          delay: 0.8,
-                        }}
-                      >
-                        <button
-                          onClick={() => {
-                            setContactModal(true);
-                          }}
-                          className="main-button sm:hidden"
+                      {!navModal ? (
+                        <motion.svg
+                          width="25"
+                          height="17"
+                          viewBox="0 0 25 17"
+                          xmlns="http://www.w3.org/2000/svg"
+                          initial={{ opacity: 0, rotate: -90 }}
+                          animate={{ opacity: 1, rotate: 0 }}
+                          exit={{ opacity: 0, rotate: 90 }}
+                          transition={{ duration: 0.3 }}
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"
-                            />
-                          </svg>
-                          Contact Me
-                        </button>
-                      </motion.span>
-                    </div>
-                  )}
-                </AnimatePresence>
+                          <path
+                            d="M24.7539 16.8945H0.753906V14.2279H24.7539V16.8945ZM24.7539 10.2279H0.753906V7.5612H24.7539V10.2279ZM24.7539 3.5612H0.753906V0.894531H24.7539V3.5612Z"
+                            fill="currentColor"
+                          />
+                        </motion.svg>
+                      ) : (
+                        <motion.svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          initial={{ opacity: 0, rotate: 90 }}
+                          animate={{ opacity: 1, rotate: 0 }}
+                          exit={{ opacity: 0, rotate: -90 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+                          />
+                        </motion.svg>
+                      )}
+                    </motion.button>
+                  }
+                >
+                  {/* nav modal */}
+                  <motion.span
+                    initial={{
+                      x: "60%",
+                      opacity: 0,
+                      transformOrigin: "center top",
+                    }}
+                    animate={{ x: "0%", opacity: 1 }}
+                    exit={{ x: "60%", opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      damping: 25,
+                      stiffness: 180,
+                      delay: 0.2,
+                    }}
+                  >
+                    <a href="#" className="main-button">
+                      Home
+                    </a>
+                  </motion.span>
+                  <motion.span
+                    initial={{
+                      x: "60%",
+                      opacity: 0,
+                      transformOrigin: "center top",
+                    }}
+                    animate={{ x: "0%", opacity: 1 }}
+                    exit={{ x: "60%", opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      damping: 25,
+                      stiffness: 180,
+                      delay: 0.4,
+                    }}
+                  >
+                    <a href="#works" className="main-button">
+                      Works
+                    </a>
+                  </motion.span>
+                  <motion.span
+                    initial={{
+                      x: "60%",
+                      opacity: 0,
+                      transformOrigin: "center top",
+                    }}
+                    animate={{ x: "0%", opacity: 1 }}
+                    exit={{ x: "60%", opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      damping: 25,
+                      stiffness: 180,
+                      delay: 0.6,
+                    }}
+                  >
+                    <a href="#about" className="main-button">
+                      About
+                    </a>
+                  </motion.span>
+                  <motion.span
+                    initial={{
+                      x: "60%",
+                      opacity: 0,
+                      transformOrigin: "center top",
+                    }}
+                    animate={{ x: "0%", opacity: 1 }}
+                    exit={{ x: "60%", opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      damping: 25,
+                      stiffness: 180,
+                      delay: 0.8,
+                    }}
+                  >
+                    <button
+                      onClick={() => {
+                        setContactModal(true);
+                      }}
+                      className="main-button sm:hidden"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"
+                        />
+                      </svg>
+                      Contact Me
+                    </button>
+                  </motion.span>
+                </FanList>
               </motion.span>
             </div>
           </header>
