@@ -83,8 +83,7 @@ function App() {
           </AnimatePresence>
           <header
             className="flex relative justify-between items-start"
-            ref={headerRef1}
-          >
+            ref={headerRef1}>
             <div className="w-1/3 flex">
               <motion.span
                 initial={{
@@ -98,15 +97,13 @@ function App() {
                   damping: 25,
                   stiffness: 100,
                   delay: 0.5,
-                }}
-              >
+                }}>
                 <img src="/haume.svg" alt="Emin Haume Erçoban logo" />
               </motion.span>
             </div>
             <div
               className="relative flex pointer-events-none items-center justify-center z-10"
-              ref={headerRef2}
-            >
+              ref={headerRef2}>
               <motion.img
                 initial={{ scale: 0, transformOrigin: "center top" }}
                 animate={headerInView2 ? { scale: 1 } : {}}
@@ -149,20 +146,17 @@ function App() {
                   damping: 25,
                   stiffness: 100,
                   delay: 0.6,
-                }}
-              >
+                }}>
                 <button
                   title="Emin Erçoban"
                   onClick={() => {
                     setContactModal(true);
                   }}
-                  className="main-button !hidden sm:!flex"
-                >
+                  className="main-button !hidden sm:!flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5"
-                    viewBox="0 0 24 24"
-                  >
+                    viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
                       d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"
@@ -184,8 +178,7 @@ function App() {
                   damping: 25,
                   stiffness: 100,
                   delay: 0.5,
-                }}
-              >
+                }}>
                 <FanList
                   show={navModal}
                   button={
@@ -197,8 +190,7 @@ function App() {
                       className={`size-16 navModal shrink-0 gap-2 flex items-center justify-center text-white bg-body rounded-xl font-medium text-xl font-sora ease-smooth duration-1000 ${
                         navModal &&
                         "!bg-white !rounded-[2rem] !rotate-90 !text-black"
-                      }`}
-                    >
+                      }`}>
                       {!navModal ? (
                         <motion.svg
                           width="25"
@@ -208,8 +200,7 @@ function App() {
                           initial={{ opacity: 0, rotate: -90 }}
                           animate={{ opacity: 1, rotate: 0 }}
                           exit={{ opacity: 0, rotate: 90 }}
-                          transition={{ duration: 0.3 }}
-                        >
+                          transition={{ duration: 0.3 }}>
                           <path
                             d="M24.7539 16.8945H0.753906V14.2279H24.7539V16.8945ZM24.7539 10.2279H0.753906V7.5612H24.7539V10.2279ZM24.7539 3.5612H0.753906V0.894531H24.7539V3.5612Z"
                             fill="currentColor"
@@ -224,8 +215,7 @@ function App() {
                           initial={{ opacity: 0, rotate: 90 }}
                           animate={{ opacity: 1, rotate: 0 }}
                           exit={{ opacity: 0, rotate: -90 }}
-                          transition={{ duration: 0.3 }}
-                        >
+                          transition={{ duration: 0.3 }}>
                           <path
                             fill="currentColor"
                             d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
@@ -233,100 +223,32 @@ function App() {
                         </motion.svg>
                       )}
                     </motion.button>
-                  }
-                >
-                  {/* nav modal */}
-                  <motion.span
-                    initial={{
-                      x: "60%",
-                      opacity: 0,
-                      transformOrigin: "center top",
+                  }>
+                  <a href="#" className="main-button">
+                    Home
+                  </a>
+                  <a href="#works" className="main-button">
+                    Works
+                  </a>
+                  <a href="#about" className="main-button">
+                    About
+                  </a>
+                  <button
+                    onClick={() => {
+                      setContactModal(true);
                     }}
-                    animate={{ x: "0%", opacity: 1 }}
-                    exit={{ x: "60%", opacity: 0 }}
-                    transition={{
-                      type: "spring",
-                      damping: 25,
-                      stiffness: 180,
-                      delay: 0.2,
-                    }}
-                  >
-                    <a href="#" className="main-button">
-                      Home
-                    </a>
-                  </motion.span>
-                  <motion.span
-                    initial={{
-                      x: "60%",
-                      opacity: 0,
-                      transformOrigin: "center top",
-                    }}
-                    animate={{ x: "0%", opacity: 1 }}
-                    exit={{ x: "60%", opacity: 0 }}
-                    transition={{
-                      type: "spring",
-                      damping: 25,
-                      stiffness: 180,
-                      delay: 0.4,
-                    }}
-                  >
-                    <a href="#works" className="main-button">
-                      Works
-                    </a>
-                  </motion.span>
-                  <motion.span
-                    initial={{
-                      x: "60%",
-                      opacity: 0,
-                      transformOrigin: "center top",
-                    }}
-                    animate={{ x: "0%", opacity: 1 }}
-                    exit={{ x: "60%", opacity: 0 }}
-                    transition={{
-                      type: "spring",
-                      damping: 25,
-                      stiffness: 180,
-                      delay: 0.6,
-                    }}
-                  >
-                    <a href="#about" className="main-button">
-                      About
-                    </a>
-                  </motion.span>
-                  <motion.span
-                    initial={{
-                      x: "60%",
-                      opacity: 0,
-                      transformOrigin: "center top",
-                    }}
-                    animate={{ x: "0%", opacity: 1 }}
-                    exit={{ x: "60%", opacity: 0 }}
-                    transition={{
-                      type: "spring",
-                      damping: 25,
-                      stiffness: 180,
-                      delay: 0.8,
-                    }}
-                  >
-                    <button
-                      onClick={() => {
-                        setContactModal(true);
-                      }}
-                      className="main-button sm:hidden"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"
-                        />
-                      </svg>
-                      Contact Me
-                    </button>
-                  </motion.span>
+                    className="main-button sm:hidden">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5"
+                      viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"
+                      />
+                    </svg>
+                    Contact Me
+                  </button>
                 </FanList>
               </motion.span>
             </div>
@@ -354,8 +276,7 @@ function App() {
                 damping: 25,
                 stiffness: 100,
                 delay: 0.7,
-              }}
-            >
+              }}>
               I MAKE
             </motion.h1>
             <motion.h1
@@ -367,8 +288,7 @@ function App() {
                 damping: 25,
                 stiffness: 100,
                 delay: 0.8,
-              }}
-            >
+              }}>
               DREAMS COME
             </motion.h1>
             <motion.h1
@@ -380,14 +300,12 @@ function App() {
                 damping: 25,
                 stiffness: 100,
                 delay: 0.9,
-              }}
-            >
+              }}>
               TRUE
               <div
                 className={`px-6 py-2 h-max bg-milk mt-2 font-sora rounded-[1.25rem] flex flex-col ${
                   background ? "text-black" : "text-main"
-                }`}
-              >
+                }`}>
                 <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-[1] md:text-[4.5rem]">
                   Emin Erçoban
                 </h1>
@@ -425,8 +343,7 @@ function App() {
                   delay: 0.2,
                 }}
                 id="works"
-                className="font-extrabold md:text-8xl"
-              >
+                className="font-extrabold md:text-8xl">
                 Selected Works
               </motion.h1>
               <motion.p
@@ -441,8 +358,7 @@ function App() {
                   stiffness: 100,
                   delay: 0.4,
                 }}
-                className=" font-medium text-lg sm:text-xl"
-              >
+                className=" font-medium text-lg sm:text-xl">
                 Take a look at my projects ✦
               </motion.p>
               <motion.p
@@ -457,8 +373,7 @@ function App() {
                   stiffness: 100,
                   delay: 0.6,
                 }}
-                className=" font-light text-xl"
-              >
+                className=" font-light text-xl">
                 Each project is designed to be creative and eye-catching.
               </motion.p>
               <motion.p
@@ -473,8 +388,7 @@ function App() {
                   stiffness: 100,
                   delay: 0.8,
                 }}
-                className=" font-light text-xl"
-              >
+                className=" font-light text-xl">
                 These designs are forged with modern technologies.
               </motion.p>
             </span>
@@ -490,19 +404,16 @@ function App() {
                   damping: 25,
                   stiffness: 100,
                   delay: 0.2,
-                }}
-              >
+                }}>
                 <button
                   onClick={() => {
                     setContactModal(true);
                   }}
-                  className="main-button"
-                >
+                  className="main-button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5"
-                    viewBox="0 0 24 24"
-                  >
+                    viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
                       d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8"
@@ -524,8 +435,7 @@ function App() {
                   damping: 25,
                   stiffness: 100,
                   delay: 0.4,
-                }}
-              >
+                }}>
                 {/* ELEMTN */}
                 <AnimatePresence mode="wait">
                   {seeMore ? (
@@ -546,18 +456,15 @@ function App() {
                           damping: 30,
                           stiffness: 300,
                           delay: 0.3,
-                        }}
-                      >
+                        }}>
                         <a
                           href={socials.getSocial("GitHub")?.url}
                           target="_blank"
-                          className="main-button"
-                        >
+                          className="main-button">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-8"
-                            viewBox="0 0 24 24"
-                          >
+                            viewBox="0 0 24 24">
                             <path
                               fill="currentColor"
                               d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
@@ -582,18 +489,15 @@ function App() {
                           damping: 30,
                           stiffness: 300,
                           delay: 0.2,
-                        }}
-                      >
+                        }}>
                         <a
                           href={socials.getSocial("Behance")?.url}
                           target="_blank"
-                          className="main-button"
-                        >
+                          className="main-button">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-8"
-                            viewBox="0 0 24 24"
-                          >
+                            viewBox="0 0 24 24">
                             <path
                               d="M19.58 12.27c-.04-.62-.25-1.09-.62-1.41c-.37-.32-.83-.48-1.38-.48c-.58 0-1.08.17-1.39.51c-.33.34-.54.8-.62 1.38m6.35-.23c.08.41.08 1 .08 1.77h-6.5c.05.9.35 1.52.94 1.88c.35.23.78.34 1.29.34c.53 0 .96-.14 1.27-.41c.2-.15.36-.35.5-.62h2.38c-.06.54-.35 1.07-.88 1.62c-.78.88-1.9 1.3-3.34 1.3c-1.19 0-2.23-.37-3.16-1.1c-.88-.73-1.34-1.92-1.34-3.57c0-1.55.41-2.75 1.23-3.55c.82-.83 1.88-1.24 3.19-1.24c.77 0 1.47.14 2.09.42c.62.28 1.14.71 1.54 1.32c.37.53.6 1.14.71 1.84M9.58 14.07c0-.65-.27-1.1-.79-1.34c-.29-.13-.71-.2-1.25-.23H4.87v3.34H7.5c.54 0 .96-.07 1.26-.22c.55-.27.82-.79.82-1.55m-4.71-3.61H7.5c.54 0 1-.1 1.32-.31c.34-.2.5-.57.5-1.09c0-.56-.22-.96-.66-1.15c-.39-.13-.88-.19-1.47-.19H4.87m6.85 4.7c.32.5.48 1.11.48 1.82c0 .76-.2 1.4-.55 1.99a3.6 3.6 0 0 1-.88.98c-.4.29-.87.51-1.41.62c-.54.11-1.12.17-1.75.17H2V5.55h6c1.53.03 2.6.45 3.23 1.33c.38.53.57 1.16.57 1.9c0 .76-.19 1.37-.57 1.83c-.23.26-.53.5-.95.71c.63.23 1.11.6 1.44 1.1m8.34-5.1h-5.01V6.07h5.01v1.25z"
                               fill="currentColor"
@@ -621,14 +525,12 @@ function App() {
                         stiffness: 300,
                         delay: 0,
                       }}
-                      className="flex gap-2"
-                    >
+                      className="flex gap-2">
                       <button
                         onClick={() => {
                           setSeeMore(true);
                         }}
-                        className="main-button"
-                      >
+                        className="main-button">
                         ✦ See More
                       </button>
                     </motion.span>
@@ -656,8 +558,7 @@ function App() {
                     stiffness: 100,
                     delay: 0.6 + idx * 0.2,
                   }}
-                  key={idx}
-                >
+                  key={idx}>
                   <WorkCard
                     id={project.id}
                     image={project.image}
@@ -674,8 +575,7 @@ function App() {
       <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <section
           className=" bg-grey overflow-hidden p-4 sm:p-6 md:p-8 pb-12 flex flex-col rounded-3xl size-full"
-          ref={techsRef}
-        >
+          ref={techsRef}>
           <motion.h1
             initial={{
               y: "-100%",
@@ -688,8 +588,7 @@ function App() {
               stiffness: 100,
               delay: 0.2,
             }}
-            className="font-extrabold text-6xl sm:text-7xl md:text-8xl text-center"
-          >
+            className="font-extrabold text-6xl sm:text-7xl md:text-8xl text-center">
             Tech I ❤️
           </motion.h1>
           <ul className="flex flex-wrap items-center justify-center gap-4 h-max mt-4 w-full">
@@ -710,8 +609,7 @@ function App() {
                   delay: 0.4 + idx * 0.2,
                 }}
                 key={idx}
-                style={{ zIndex: techs.techs.length - idx }}
-              >
+                style={{ zIndex: techs.techs.length - idx }}>
                 <TechCard name={tech.name} image={`/techs/${tech.id}.png`} />
               </motion.span>
             ))}
@@ -728,8 +626,7 @@ function App() {
               stiffness: 100,
               delay: 0.4 + techs.techs.length * 0.2,
             }}
-            className="font-light text-center mt-4 text-xl text-white/40"
-          >
+            className="font-light text-center mt-4 text-xl text-white/40">
             And there is more...
           </motion.p>
         </section>
@@ -737,8 +634,7 @@ function App() {
       <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <section
           className="bg-about overflow-hidden gap-12 p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-7 rounded-3xl size-full"
-          ref={aboutRef}
-        >
+          ref={aboutRef}>
           <div className="flex col-span-1 lg:col-span-4 flex-col gap-4">
             <motion.h1
               initial={{
@@ -753,8 +649,7 @@ function App() {
                 delay: 0.2,
               }}
               id="about"
-              className="font-extrabold text-5xl sm:text-7xl lg:text-8xl"
-            >
+              className="font-extrabold text-5xl sm:text-7xl lg:text-8xl">
               About Me
             </motion.h1>
             <motion.p
@@ -769,8 +664,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.4,
               }}
-              className="font-light text-lg md:text-xl"
-            >
+              className="font-light text-lg md:text-xl">
               Hello, I'm Emin Erçoban a full stack web developer & designer in
               Turkey. My goal is to enhance projects and applications with
               creative design and modern technologies.
@@ -787,8 +681,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.6,
               }}
-              className="font-light text-lg md:text-xl"
-            >
+              className="font-light text-lg md:text-xl">
               I currently work with my best friend on Fiverr and Bionluk as a
               freelancer selling websites, desktop applications and Minecraft
               launcher. We plan to develop our own projects and launch a
@@ -806,8 +699,7 @@ function App() {
                 stiffness: 100,
                 delay: 0.8,
               }}
-              className="font-light text-lg md:text-xl"
-            >
+              className="font-light text-lg md:text-xl">
               It has been about 3 years since I started design and software, I
               am a self-taught software developer, but in 2023 I started
               studying in an associate degree program to learn something,
@@ -829,8 +721,7 @@ function App() {
               stiffness: 100,
               delay: 1,
             }}
-            className="flex rounded-2xl col-span-1 lg:col-span-3 items-center justify-center flex-col bg-dark p-8 gap-3"
-          >
+            className="flex rounded-2xl col-span-1 lg:col-span-3 items-center justify-center flex-col bg-dark p-8 gap-3">
             <img
               src="/profile.jpeg"
               className="w-32 md:w-48 lg:w-64 aspect-square rounded-3xl"
@@ -847,8 +738,7 @@ function App() {
                 <a
                   key={i}
                   href={social.url}
-                  className="main-button !w-full sm:!w-max"
-                >
+                  className="main-button !w-full sm:!w-max">
                   {social.name}
                 </a>
               ))}
@@ -863,8 +753,7 @@ function App() {
               onClick={() => {
                 setContactModal(true);
               }}
-              className="main-button"
-            >
+              className="main-button">
               Let's Talk
             </button>
           </Slider>
@@ -873,8 +762,7 @@ function App() {
       <div className="bg-body p-4 sm:p-6 md:p-8 pt-0">
         <footer
           className=" bg-dark overflow-hidden gap-12 p-8 grid grid-cols-1 sm:grid-cols-2 grid-flow-row md:flex md:justify-between rounded-3xl size-full"
-          ref={footerRef}
-        >
+          ref={footerRef}>
           <motion.div
             initial={{
               transform: "scale(0.4)",
@@ -888,8 +776,7 @@ function App() {
               stiffness: 100,
               delay: 0.2,
             }}
-            className="flex flex-col items-start justify-start"
-          >
+            className="flex flex-col items-start justify-start">
             <img src="/haume.svg" className=" h-14" alt="" />
             <p className="text-xl">Interstellar web developer.</p>
             <p className="font-thin text-white/40">© 2024 ✦ Emin Erçoban</p>
@@ -898,8 +785,7 @@ function App() {
               <a
                 href="https://cubidron.com"
                 target="_blank"
-                className="hover:underline font-normal hover:text-main"
-              >
+                className="hover:underline font-normal hover:text-main">
                 Cubidron
               </a>
             </p>
@@ -917,16 +803,14 @@ function App() {
               stiffness: 100,
               delay: 0.4,
             }}
-            className="flex flex-col items-start justify-start"
-          >
+            className="flex flex-col items-start justify-start">
             <img src="/star.svg" className=" h-9" alt="" />
             <p className="text-lg sm:text-xl font-extrabold">
               Leave me a story.
             </p>
             <a
               href="mailto:haume341@outlook.com?subject=There%20is%20your%20story.&body=Write%20your%20story%20here..."
-              className="font-extralight text-xl sm:text-3xl"
-            >
+              className="font-extralight text-xl sm:text-3xl">
               haume341@outlook.com
             </a>
           </motion.div>
@@ -943,25 +827,21 @@ function App() {
               stiffness: 100,
               delay: 0.6,
             }}
-            className="flex flex-col items-start min-w-48 justify-start"
-          >
+            className="flex flex-col items-start min-w-48 justify-start">
             <p className="text-lg sm:text-xl">Navigation</p>
             <a
               href="#"
-              className="font-extralight text-base hover:underline hover:text-main"
-            >
+              className="font-extralight text-base hover:underline hover:text-main">
               Home
             </a>
             <a
               href="#works"
-              className="font-extralight text-base hover:underline hover:text-main"
-            >
+              className="font-extralight text-base hover:underline hover:text-main">
               Works
             </a>
             <a
               href="#about"
-              className="font-extralight text-base hover:underline hover:text-main"
-            >
+              className="font-extralight text-base hover:underline hover:text-main">
               About
             </a>
           </motion.div>
@@ -978,16 +858,14 @@ function App() {
               stiffness: 100,
               delay: 0.8,
             }}
-            className="flex flex-col items-start min-w-48 justify-start"
-          >
+            className="flex flex-col items-start min-w-48 justify-start">
             <p className="text-lg sm:text-xl">Socials</p>
             {socials.socials.map((social, i) => (
               <a
                 key={i}
                 target="_blank"
                 href={social.url}
-                className="font-extralight text-base hover:underline hover:text-main"
-              >
+                className="font-extralight text-base hover:underline hover:text-main">
                 {social.name}
               </a>
             ))}
@@ -1011,8 +889,7 @@ function App() {
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
             }}
-            className="fixed inset-0 flex cursor-zoom-out flex-col gap-4 items-center justify-center bg-black/40 size-full z-50"
-          >
+            className="fixed inset-0 flex cursor-zoom-out flex-col gap-4 items-center justify-center bg-black/40 size-full z-50">
             <motion.h1
               onClick={(e) => {
                 e.stopPropagation();
@@ -1029,8 +906,7 @@ function App() {
                 delay: 0.2,
               }}
               id="about"
-              className="font-extrabold cursor-default text-6xl"
-            >
+              className="font-extrabold cursor-default text-6xl">
               Contact Me
             </motion.h1>
             <motion.span
@@ -1047,8 +923,7 @@ function App() {
                 damping: 25,
                 stiffness: 100,
                 delay: 0.5,
-              }}
-            >
+              }}>
               <Contact className="cursor-default" />
               <ul className="grid grid-cols-2 mt-2 p-2 gap-2  bg-dark rounded-2xl grid-rows-2 sm:flex sm:flex-row items-center justify-center">
                 {socials.socials.map((social, i) => (
