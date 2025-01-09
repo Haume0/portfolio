@@ -15,7 +15,7 @@ export default function FanList(props: {
       {props.button}
       <AnimatePresence mode="wait">
         {props.show && (
-          <div className="flex flex-col items-end gap-3 absolute right-0 top-full mt-2">
+          <div className="flex z-50 flex-col items-end gap-3 absolute right-0 top-full mt-2">
             {props.children.map((child, index) => (
               <motion.div
                 key={index}
@@ -38,7 +38,8 @@ export default function FanList(props: {
                 }}
                 style={{
                   transformOrigin: "right top",
-                }}>
+                }}
+              >
                 {child}
               </motion.div>
             ))}
