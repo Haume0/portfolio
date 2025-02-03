@@ -152,7 +152,7 @@ function App() {
                   onClick={() => {
                     setContactModal(true);
                   }}
-                  className="main-button !hidden sm:!flex">
+                  className="main-button hidden! sm:flex!">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5"
@@ -189,7 +189,7 @@ function App() {
                       }}
                       className={`size-16 navModal shrink-0 gap-2 flex items-center justify-center text-white bg-body rounded-xl font-medium text-xl font-sora ease-smooth duration-1000 ${
                         navModal &&
-                        "!bg-white !rounded-[2rem] !rotate-90 !text-black"
+                        "bg-white! rounded-[2rem]! rotate-90! text-black!"
                       }`}>
                       {!navModal ? (
                         <motion.svg
@@ -306,10 +306,10 @@ function App() {
                 className={`px-6 py-2 h-max bg-milk mt-2 font-sora rounded-[1.25rem] flex flex-col ${
                   background ? "text-black" : "text-main"
                 }`}>
-                <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-[1] md:text-[4.5rem]">
+                <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-none md:text-[4.5rem]">
                   Emin Erçoban
                 </h1>
-                <p className="font-extralight text-lg sm:text-[1.8rem] sm:leading-[1.2] md:leading-[1] md:text-[2.5rem]">
+                <p className="font-extralight text-lg sm:text-[1.8rem] sm:leading-[1.2] md:leading-none md:text-[2.5rem]">
                   Full-Stack Web Developer
                 </p>
               </div>
@@ -738,7 +738,7 @@ function App() {
                 <a
                   key={i}
                   href={social.url}
-                  className="main-button !w-full sm:!w-max">
+                  className="main-button w-full! sm:w-max!">
                   {social.name}
                 </a>
               ))}
@@ -927,7 +927,7 @@ function App() {
               <Contact className="cursor-default" />
               <ul className="grid grid-cols-2 mt-2 p-2 gap-2  bg-dark rounded-2xl grid-rows-2 sm:flex sm:flex-row items-center justify-center">
                 {socials.socials.map((social, i) => (
-                  <a key={i} href={social.url} className="main-button !w-full">
+                  <a key={i} href={social.url} className="main-button w-full!">
                     {social.name}
                   </a>
                 ))}

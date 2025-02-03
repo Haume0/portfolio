@@ -58,7 +58,7 @@ export default function DragWrapper({
       ref={ourRef}
       className={
         rootClass +
-        " !select-none overflow-hidden cursor-grab active:cursor-grabbing"
+        " select-none! overflow-hidden cursor-grab active:cursor-grabbing"
       }>
       {React.cloneElement(children as React.ReactElement, {
         onMouseDown: handleDragStart,

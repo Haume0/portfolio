@@ -22,21 +22,21 @@ export default function Contact(props: { className?: string }) {
           name="name"
           required
           placeholder="Name & Surname"
-          className="px-5 h-16 gap-2 flex w-full outline-none items-center justify-center text-white bg-body focus:bg-milk focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
+          className="px-5 h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-milk focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
         />
         <input
           type="text"
           name="title"
           required
           placeholder="Title"
-          className="px-5 h-16 gap-2 flex w-full outline-none items-center justify-center text-white bg-body focus:bg-milk focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
+          className="px-5 h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-milk focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
         />
         <textarea
           required
           name="message"
           placeholder="Message"
-          className="p-5 h-16 col-span-2 min-h-32 gap-2 flex w-full outline-none items-center justify-center text-white bg-body focus:bg-milk focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"></textarea>
-        <button className="main-button !w-full col-span-2">Submit</button>
+          className="p-5 h-16 col-span-2 min-h-32 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-milk focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"></textarea>
+        <button className="main-button w-full! col-span-2">Submit</button>
       </form>
     </>
   );
