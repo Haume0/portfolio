@@ -23,6 +23,10 @@ const useTechs = create<ITechStore>(() => ({
       name: "React"
     },
     {
+      id: "next",
+      name: "Next"
+    },
+    {
       id: "tailwind",
       name: "Tailwind"
     },

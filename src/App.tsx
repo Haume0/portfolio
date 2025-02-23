@@ -268,7 +268,7 @@ function App() {
               className="h-20 sm:h-28 2xl:h-32"
             />
             <motion.h1
-              className="font-lato font-black text-nowrap leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-milk"
+              className="font-lato font-black text-nowrap leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-white"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -280,7 +280,7 @@ function App() {
               I MAKE
             </motion.h1>
             <motion.h1
-              className="font-lato font-black leading-[88%] text-7xl sm:text-[9rem] xl:text-[11.25rem] text-milk"
+              className="font-lato font-black leading-[88%] text-7xl sm:text-[9rem] xl:text-[11.25rem] text-white"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -292,7 +292,7 @@ function App() {
               DREAMS COME
             </motion.h1>
             <motion.h1
-              className="font-lato font-black flex flex-col items-start sm:items-center sm:flex-row w-full gap-2 leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-milk"
+              className="font-lato font-black flex flex-col items-start sm:items-center sm:flex-row w-full gap-2 leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-white"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -303,7 +303,7 @@ function App() {
               }}>
               TRUE
               <div
-                className={`px-6 py-2 h-max bg-milk mt-2 font-sora rounded-[1.25rem] flex flex-col ${
+                className={`px-6 py-2 h-max bg-white mt-2 font-sora rounded-[1.25rem] flex flex-col ${
                   background ? "text-black" : "text-main"
                 }`}>
                 <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-none md:text-[4.5rem]">
