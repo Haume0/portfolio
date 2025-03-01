@@ -18,6 +18,7 @@ function App() {
   const [navModal, setNavModal] = useState(false);
   const [background, setBackground] = useState(false);
   const [seeMore, setSeeMore] = useState(false);
+  const [easter, setEaster] = useState(0);
 
   // Header refs
   const headerRef1 = useRef(null);
@@ -60,7 +61,7 @@ function App() {
     <>
       <div className="bg-body p-4 sm:p-6 md:p-8 min-h-dvh flex">
         <main className="bg-main p-4 sm:p-6 md:p-8 overflow-clip flex flex-col rounded-3xl w-full relative">
-          <div className="snow"></div>
+          {easter >= 4 && <div className="snow"></div>}
           <AnimatePresence>
             <motion.img
               initial={{
@@ -317,6 +318,7 @@ function App() {
             <img
               onClick={() => {
                 setBackground(!background);
+                setEaster(easter + 1);
               }}
               src="/signs.svg"
               className=" sm:absolute right-0 bottom-0 ml-auto mt-2 h-5 sm:h-7 2xl:h-9"
