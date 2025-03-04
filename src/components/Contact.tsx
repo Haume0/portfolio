@@ -32,6 +32,11 @@ export default function Contact(props: { className?: string }) {
           className="px-5 h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-white focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
         />
         <textarea
+          onChange={(e) => {
+            if (e.target.value.toLowerCase() == "malemin") {
+              e.target.value = "Özür dilerim, yanaklarını yerim 💖";
+            }
+          }}
           required
           name="message"
           placeholder="Message"
