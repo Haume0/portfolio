@@ -17,6 +17,13 @@ interface IProjectStore {
 const useProjects = create<IProjectStore>(() => ({
   projects: [
     {
+      id: "axo",
+      image: "/works/axo-banner.webp",
+      title: "Axo API",
+      description: "Axo is a Restful API for Go, built on top of stdlib. It is designed to be simple, fast, and easy to use.",
+      link: { name: "Visit", url: "/axo" },
+    },
+    {
       id: "quellstudio",
       image: "/works/quellstudio.webp",
       title: "Quell Studio",
