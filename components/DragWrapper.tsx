@@ -59,13 +59,12 @@ export default function DragWrapper({
       className={
         rootClass +
         " select-none! overflow-hidden cursor-grab active:cursor-grabbing"
-      }>
-      {React.cloneElement(children as React.ReactElement, {
-        onMouseDown: handleDragStart,
-        onMouseUp: handleDragEnd,
-        onMouseMove: handleDrag,
-        onMouseLeave: handleDragEnd,
-      })}
+      }
+      onMouseDown={handleDragStart}
+      onMouseUp={handleDragEnd}
+      onMouseMove={handleDrag}
+      onMouseLeave={handleDragEnd}>
+      {children}
     </div>
   );
 }
