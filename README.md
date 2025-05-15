@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 haume.me – Emin Erçoban’ın Kişisel Portföyü
 
-## Getting Started
+Merhaba! Ben **Emin Erçoban**, Türkiye'de yaşayan bir **Full-Stack Web Geliştirici** ve **Tasarımcıyım**. Bu depo, kişisel portföy sitem [haume.me](https://haume.me/)’nin kaynak kodlarını içermektedir. Modern teknolojilerle oluşturduğum bu site, hem teknik becerilerimi hem de yaratıcı projelerimi sergilemektedir.
 
-First, run the development server:
+## 🚀 Proje Hakkında
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Portföy sitem, kullanıcı dostu bir arayüzle projelerimi, deneyimlerimi ve iletişim bilgilerimi sunmaktadır. Amacım, ziyaretçilere çalışmalarımı etkili bir şekilde tanıtmak ve potansiyel iş birlikleri için bir platform sağlamaktır.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Kullanılan Teknolojiler
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: React tabanlı, sunucu tarafı render destekli web uygulamaları için framework.
+- **TypeScript**: JavaScript'in statik tipli süper seti.
+- **Tailwind CSS**: Hızlı ve özelleştirilebilir bir CSS framework'ü.
+- **Bun**: Hızlı bir JavaScript çalışma zamanı ve paket yöneticisi.
+- **Figma**: UI/UX tasarımları için kullanılan bir tasarım aracı.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📬 İletişim
 
-## Learn More
+Benimle iletişime geçmek veya projelerim hakkında daha fazla bilgi almak isterseniz:
 
-To learn more about Next.js, take a look at the following resources:
+- 🌐 Web: [haume.me](https://haume.me/)
+- 📧 E-posta: [email protected]
+- 💼 LinkedIn: [linkedin.com/in/eminercoban](https://www.linkedin.com/in/eminercoban)
+- 📷 Instagram: [instagram.com/haume0](https://www.instagram.com/haume0)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Lisans
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Bu proje [CC BY-NC 4.0 Lisansı](LICENSE) ile lisanslanmıştır.
