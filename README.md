@@ -11,6 +11,7 @@ Portföy sitem, kullanıcı dostu bir arayüzle projelerimi, deneyimlerimi ve il
 - **Next.js**: React tabanlı, sunucu tarafı render destekli web uygulamaları için framework.
 - **TypeScript**: JavaScript'in statik tipli süper seti.
 - **Tailwind CSS**: Hızlı ve özelleştirilebilir bir CSS framework'ü.
+- **Motion.dev**: React ile kullandığım favori animasyon kütüphanem.
 - **Bun**: Hızlı bir JavaScript çalışma zamanı ve paket yöneticisi.
 - **Figma**: UI/UX tasarımları için kullanılan bir tasarım aracı.
 
@@ -19,9 +20,10 @@ Portföy sitem, kullanıcı dostu bir arayüzle projelerimi, deneyimlerimi ve il
 Benimle iletişime geçmek veya projelerim hakkında daha fazla bilgi almak isterseniz:
 
 - 🌐 Web: [haume.me](https://haume.me/)
-- 📧 E-posta: [email protected]
-- 💼 LinkedIn: [linkedin.com/in/eminercoban](https://www.linkedin.com/in/eminercoban)
-- 📷 Instagram: [instagram.com/haume0](https://www.instagram.com/haume0)
+- 📧 E-posta: [haume341@outlook.com](mailto:haume341@outlook.com)
+- 💼 LinkedIn: [İncele](https://www.linkedin.com/in/eminercoban/)
+- 💼 Behance: [İncele](https://www.behance.net/haume)
+- 📷 Instagram: [İncele](https://www.instagram.com/eminercbn/)
 
 ## 📝 Lisans
 
