@@ -19,11 +19,11 @@ Portföy sitem, kullanıcı dostu bir arayüzle projelerimi, deneyimlerimi ve il
 
 Benimle iletişime geçmek veya projelerim hakkında daha fazla bilgi almak isterseniz:
 
-- 🌐 Web: [haume.me](https://haume.me/)
-- 📧 E-posta: [haume341@outlook.com](mailto:haume341@outlook.com)
-- 💼 LinkedIn: [İncele](https://www.linkedin.com/in/eminercoban/)
-- 💼 Behance: [İncele](https://www.behance.net/haume)
-- 📷 Instagram: [İncele](https://www.instagram.com/eminercbn/)
+- 🪐 Web: [haume.me](https://haume.me/)
+- ✉️ E-posta: [haume341@outlook.com](mailto:haume341@outlook.com)
+- 👔 LinkedIn: [İncele](https://www.linkedin.com/in/eminercoban/)
+- 🎨 Behance: [İncele](https://www.behance.net/haume)
+- 📸 Instagram: [İncele](https://www.instagram.com/eminercbn/)
 
 ## 📝 Lisans
 
