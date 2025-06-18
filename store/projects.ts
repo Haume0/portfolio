@@ -38,6 +38,13 @@ const useProjects = create<IProjectStore>(() => ({
       link: { name: "Visit", url: "https://oyunlayici.com/" },
     },
     {
+      id: "seaviptravel",
+      image: "/works/seaviptravel.png",
+      title: "Sea VIP Travel",
+      description: "A website offering VIP transfer and tourism services.",
+      link: { name: "Visit", url: "https://seaviptravel.com" },
+    },
+    {
       id: "rentacart",
       image: "/works/rentacart.webp",
       title: "Rent A Cart Web Design",
