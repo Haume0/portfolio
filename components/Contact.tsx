@@ -96,14 +96,14 @@ export default function Contact(props: { className?: string }) {
                                 )}&body=${encodeURIComponent(`💬 ${name},\n\n${message}`)}`;
                                 window.open(mailto);
                             }}
-                            className={`grid grid-cols-2 bg-dark p-2 gap-2 w-full sm:w-[44rem] rounded-2xl ${props.className}`}
+                            className={`grid grid-cols-2 bg-dark p-2 gap-2 w-full sm:w-[44rem] rounded-[1.25rem] ${props.className}`}
                         >
                             <input
                                 type="text"
                                 name="name"
                                 required
                                 placeholder="Name & Surname"
-                                className="px-5 h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-white focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
+                                className="text-field"
                             />
                             <input
                                 type="text"
@@ -111,7 +111,7 @@ export default function Contact(props: { className?: string }) {
                                 defaultValue={contact.predefine?.title}
                                 required
                                 placeholder="Subject"
-                                className="px-5 h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-white focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200"
+                                className="text-field"
                             />
                             <textarea
                                 onChange={(e) => {
@@ -133,7 +133,7 @@ export default function Contact(props: { className?: string }) {
                                 Send Mail
                             </button>
                         </form>
-                        <ul className="grid grid-cols-2 mt-2 p-2 gap-2  bg-dark rounded-2xl grid-rows-2 sm:flex sm:flex-row items-center justify-center">
+                        <ul className="grid grid-cols-2 mt-2 p-2 gap-2  bg-dark rounded-[1.25rem] grid-rows-2 sm:flex sm:flex-row items-center justify-center">
                             {socials.socials.map((social, i) => (
                                 <a
                                     key={i}

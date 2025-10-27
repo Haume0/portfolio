@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
     --color-body: #292929;
@@ -8,6 +9,7 @@
     --color-works: #7c71db;
     --color-about: #3f1ff1;
     --color-milk: #e8e4f5;
+    --color-blog: #0046ff;
 
     --font-sora: Sora, sans-serif;
     --font-lato: Lato, sans-serif;
@@ -19,6 +21,9 @@
 }
 @custom-variant hover (&:hover);
 
+.ehe {
+    color: #ff6f91;
+}
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -66,6 +71,9 @@
 
     .main-button {
         @apply px-5 h-14 sm:h-16 gap-2 flex w-max items-center justify-center text-white bg-body hover:bg-white hover:text-black focus:bg-white focus:text-black rounded-xl font-medium text-base sm:text-xl font-sora ease-in-out duration-200;
+    }
+    .text-field {
+        @apply px-5 h-14 sm:h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-white focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200;
     }
 }
 
