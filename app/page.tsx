@@ -11,6 +11,7 @@ import TechCard from "@/components/TechCard";
 import WorkCard from "@/components/WorkCard";
 import Header from "@/layouts/header";
 import Footer from "@/layouts/footer";
+import BlogSection from "./blog/blog";
 
 export default function Home() {
   const contact = useContact();
@@ -233,7 +234,7 @@ export default function Home() {
                 <button
                   onClick={() => {
                     contact.open({
-                      title: "💡 I have an idea!",
+                      title: "💡 I have and project!",
                     });
                   }}
                   className="main-button"
@@ -478,6 +479,9 @@ export default function Home() {
             And there is more...
           </motion.p>
         </section>
+      </div>
+      <div className="p-4 sm:p-6 md:p-8 pt-0">
+        <BlogSection />
       </div>
       <div className="p-4 sm:p-6 md:p-8 pt-0">
         <section
