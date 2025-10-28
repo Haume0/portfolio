@@ -4,6 +4,7 @@
     "": {
       "name": "portfolio",
       "dependencies": {
+        "@netlify/plugin-nextjs": "^5.14.4",
         "motion": "^12.9.4",
         "next": "15.3.1",
         "pocketbase": "^0.26.3",
@@ -78,6 +79,8 @@
     "@img/sharp-win32-ia32": ["@img/sharp-win32-ia32@0.34.1", "", { "os": "win32", "cpu": "ia32" }, "sha512-WKf/NAZITnonBf3U1LfdjoMgNO5JYRSlhovhRhMxXVdvWYveM4kM3L8m35onYIdh75cOMCo1BexgVQcCDzyoWw=="],
 
     "@img/sharp-win32-x64": ["@img/sharp-win32-x64@0.34.1", "", { "os": "win32", "cpu": "x64" }, "sha512-hw1iIAHpNE8q3uMIRCgGOeDoz9KtFNarFLQclLxr/LK1VBkj8nby18RjFvr6aP7USRYAjTZW6yisnBWMX571Tw=="],
+
+    "@netlify/plugin-nextjs": ["@netlify/plugin-nextjs@5.14.4", "", {}, "sha512-HnMHG0tksVoS2E6ImcX9o/EcVH1dckb8ZL1FyghKRsEPYCo+20hQ6zncd5EEOW7K22UN+n1EprCROWUmsbhYMg=="],
 
     "@next/env": ["@next/env@15.3.1", "", {}, "sha512-cwK27QdzrMblHSn9DZRV+DQscHXRuJv6MydlJRpFSqJWZrTYMLzKDeyueJNN9MGd8NNiUKzDQADAf+dMLXX7YQ=="],
 
