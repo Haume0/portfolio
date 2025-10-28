@@ -1,4 +1,4 @@
-import { Sora, Lato } from "next/font/google";
+import { Sora, Lato, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Contact from "@/components/Contact";
 
@@ -12,6 +12,11 @@ const lato = Lato({
   variable: "--font-lato",
   display: "swap",
   weight: ["100", "300", "400", "700", "900"],
+});
+const jbmono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -122,7 +127,9 @@ export default function RootLayout({
           True
         </title>
       </head>
-      <body className={`${sora.variable} ${lato.variable} bg-body antialiased`}>
+      <body
+        className={`${sora.variable} ${lato.variable} ${jbmono.variable} bg-body font-sora antialiased`}
+      >
         <div
           className="fixed left-0 top-0 z-999 w-screen h-screen pointer-events-none mix-blend-overlay"
           style={{
