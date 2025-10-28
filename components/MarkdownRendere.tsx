@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import React, { ReactNode } from "react";
+import { Icon } from "@iconify/react";
 
 interface MarkdownRendererProps {
   content: string;
@@ -31,10 +32,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         rehypeHighlight,
       ]}
       components={{
-        // Headings with site-matching typography
+        // Headings - Notion benzeri
         h1: ({ children, ...props }) => (
           <h1
-            className="text-6xl sm:text-7xl *:font-extrabold text-milk mb-6 mt-16 first:mt-0 font-lato leading-[90%]"
+            className="text-[2.5rem] font-bold text-white mb-2 mt-8 first:mt-0 leading-[1.2]"
             {...props}
           >
             {children}
@@ -42,7 +43,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         ),
         h2: ({ children, ...props }) => (
           <h2
-            className="text-4xl sm:text-5xl *:font-bold text-milk mb-4 mt-12 font-sora leading-[90%]"
+            className="text-[1.875rem] font-semibold text-white mb-1 mt-6 leading-[1.3]"
             {...props}
           >
             {children}
@@ -50,7 +51,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         ),
         h3: ({ children, ...props }) => (
           <h3
-            className="text-2xl sm:text-3xl *:font-bold text-milk mb-3 mt-8 font-sora leading-tight"
+            className="text-[1.5rem] font-semibold text-white mb-1 mt-4 leading-[1.3]"
             {...props}
           >
             {children}
@@ -58,7 +59,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         ),
         h4: ({ children, ...props }) => (
           <h4
-            className="text-xl sm:text-2xl *:font-semibold text-milk mb-2 mt-6 font-sora leading-tight"
+            className="text-[1.25rem] font-semibold text-white mb-1 mt-3 leading-[1.4]"
             {...props}
           >
             {children}
@@ -66,7 +67,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         ),
         h5: ({ children, ...props }) => (
           <h5
-            className="text-lg sm:text-xl *:font-medium text-milk mb-2 mt-5 font-sora leading-normal"
+            className="text-[1.125rem] font-medium text-white mb-1 mt-2 leading-[1.4]"
             {...props}
           >
             {children}
@@ -74,43 +75,43 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         ),
         h6: ({ children, ...props }) => (
           <h6
-            className="text-base sm:text-lg *:font-normal text-milk/90 mb-2 mt-4 font-sora leading-normal"
+            className="text-base font-medium text-white/90 mb-1 mt-2 leading-[1.5]"
             {...props}
           >
             {children}
           </h6>
         ),
 
-        // Paragraphs with proper spacing
+        // Paragraflar - Notion stilleri
         p: ({ children, ...props }) => (
           <p
-            className="text-milk/80 font-sora text-base sm:text-lg leading-relaxed mb-4 font-normal"
+            className="text-white/80 text-base leading-[1.65] mb-1 mt-0"
             {...props}
           >
             {children}
           </p>
         ),
 
-        // Links with hover effect
+        // Linkler - underline ile
         a: ({ children, href, ...props }) => (
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-works no-underline hover:text-about transition-colors duration-200"
+            className="text-white underline decoration-white/40 underline-offset-2 hover:decoration-white/80 transition-colors"
             {...props}
           >
             {children}
           </a>
         ),
 
-        // Inline code
+        // Inline code - Notion benzeri
         code: ({ className, children, ...props }: any) => {
           const isInline = !className;
           if (isInline) {
             return (
               <code
-                className="bg-about/24 text-works px-2 py-1 rounded-lg font-mono text-sm font-semibold"
+                className="bg-white/10 text-[#eb5757] px-1.5 py-0.5 rounded text-[0.85em] font-mono tracking-wider leading-relaxed"
                 {...props}
               >
                 {children}
@@ -124,35 +125,35 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           );
         },
 
-        // Code blocks with syntax highlighting
+        // Code blocks - syntax highlight ile
         pre: ({ children, ...props }) => (
           <pre
-            className="bg-dark border border-body/50 rounded-xl p-5 overflow-x-auto my-6 shadow-lg"
+            className="bg-[#2f3437] *:leading-snug *:-tracking-tight font-mono rounded-md overflow-x-auto my-4 text-sm"
             {...props}
           >
             {children}
           </pre>
         ),
 
-        // Blockquotes with left border
+        // Blockquotes - Notion'daki gibi sol border
         blockquote: ({ children, ...props }) => (
           <blockquote
-            className="border-l-4 border-works bg-grey/40 text-milk/90 pl-6 pr-4 py-5 my-6 rounded-r-xl font-lato backdrop-blur-sm"
+            className="border-l-[3px] border-white/30 pl-4 my-2 text-white/80"
             {...props}
           >
             {children}
           </blockquote>
         ),
 
-        // Unordered lists
+        // Unordered lists - Notion'daki gibi bullet
         ul: ({ children, ...props }: any) => {
           const isTaskList = props.className?.includes("contains-task-list");
           return (
             <ul
-              className={`text-milk/80 font-lato space-y-2.5 my-5 ${
+              className={`text-white/80 my-1 ${
                 isTaskList
                   ? "list-none pl-0"
-                  : "list-disc pl-7 marker:text-works marker:text-lg"
+                  : "list-disc pl-7 marker:text-white/50"
               }`}
               {...props}
             >
@@ -164,34 +165,63 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         // Ordered lists
         ol: ({ children, ...props }) => (
           <ol
-            className="text-milk/80 font-lato space-y-2.5 my-5 list-decimal pl-7 marker:text-works marker:font-bold"
+            className="text-white/80 my-1 list-decimal pl-7 marker:text-white/50"
             {...props}
           >
             {children}
           </ol>
         ),
 
-        // List items
+        // List items - Notion toggle özelliği
         li: ({ children, ...props }: any) => {
           const isTaskItem = props.className?.includes("task-list-item");
+
           if (isTaskItem) {
             return (
-              <li
-                className="flex items-start gap-2 text-milk/90 my-1"
-                {...props}
-              >
+              <li className="flex items-start gap-2" {...props}>
                 {children}
               </li>
             );
           }
+
+          const realChildren = React.Children.toArray(children).filter(
+            (child) => !(typeof child === "string" && !child.trim()),
+          );
+
+          // Nested content varsa toggle yap
+          if (realChildren.length > 1) {
+            let summaryContent = realChildren[0];
+            const detailsContent = realChildren.slice(1);
+
+            if (
+              React.isValidElement(summaryContent) &&
+              (summaryContent.type as any) === "p"
+            ) {
+              summaryContent = summaryContent.props.children;
+            }
+
+            return (
+              <details className="list-none -ml-7 group my-0.5" {...props}>
+                <summary className="flex items-start gap-1 cursor-pointer hover:bg-white/5 px-1 py-0.5 rounded transition-colors [&>*]:m-0">
+                  <Icon
+                    icon="material-symbols:play-arrow"
+                    className="text-lg mt-[0.15rem] group-open:rotate-90 transition-transform duration-150 text-white/40 shrink-0"
+                  />
+                  <span className="flex-1 select-none">{summaryContent}</span>
+                </summary>
+                <div className="pl-6 mt-0.5">{detailsContent}</div>
+              </details>
+            );
+          }
+
           return (
-            <li className="text-milk/90 leading-relaxed" {...props}>
+            <li className="my-0.5" {...props}>
               {children}
             </li>
           );
         },
 
-        // Checkboxes for task lists
+        // Checkboxes - Notion toggle list gibi
         input: ({ type, checked, ...props }: any) => {
           if (type === "checkbox") {
             return (
@@ -199,7 +229,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 type="checkbox"
                 checked={checked}
                 disabled
-                className="mt-1 w-4 h-4 rounded border-2 border-works accent-works cursor-not-allowed"
+                className="mt-[0.3rem] w-4 h-4 rounded border-2 border-white/30 checked:bg-blue-500 checked:border-blue-500 cursor-not-allowed shrink-0"
                 {...props}
               />
             );
@@ -207,35 +237,28 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           return <input type={type} {...props} />;
         },
 
-        // Tables
+        // Tables - Notion benzeri basit stil
         table: ({ children, ...props }) => (
-          <div className="overflow-x-auto my-8 rounded-2xl border border-body/40 bg-grey/20">
-            <table className="w-full border-collapse" {...props}>
+          <div className="overflow-x-auto my-4 border border-white/10 rounded">
+            <table className="w-full border-collapse text-left" {...props}>
               {children}
             </table>
           </div>
         ),
         thead: ({ children, ...props }) => (
-          <thead className="bg-dark/60" {...props}>
+          <thead className="bg-white/5" {...props}>
             {children}
           </thead>
         ),
-        tbody: ({ children, ...props }) => (
-          <tbody className="divide-y divide-body/40" {...props}>
-            {children}
-          </tbody>
-        ),
+        tbody: ({ children, ...props }) => <tbody {...props}>{children}</tbody>,
         tr: ({ children, ...props }) => (
-          <tr
-            className="hover:bg-grey/30 transition-colors duration-200"
-            {...props}
-          >
+          <tr className="border-b border-white/10" {...props}>
             {children}
           </tr>
         ),
         th: ({ children, ...props }) => (
           <th
-            className="text-milk font-bold font-sora p-4 text-left border-r border-body/40 last:border-r-0"
+            className="px-3 py-2 text-sm font-semibold text-white/90 border-r border-white/10 last:border-r-0"
             {...props}
           >
             {children}
@@ -243,19 +266,19 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         ),
         td: ({ children, ...props }) => (
           <td
-            className="text-milk/80 font-lato p-4 border-r border-body/40 last:border-r-0"
+            className="px-3 py-2 text-sm text-white/70 border-r border-white/10 last:border-r-0"
             {...props}
           >
             {children}
           </td>
         ),
 
-        // Images with responsive styling
+        // Images
         img: ({ src, alt, ...props }) => (
           <img
             src={src}
             alt={alt || ""}
-            className=""
+            className="rounded max-w-full h-auto my-2"
             loading="lazy"
             {...props}
           />
@@ -263,38 +286,37 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
         // Horizontal rule
         hr: ({ ...props }) => (
-          <hr className="border-0 border-t-2 border-body/30 my-12" {...props} />
+          <hr className="border-0 border-t border-white/10 my-6" {...props} />
         ),
 
-        // Strong/Bold
+        // Strong - Notion'da sadece bold
         strong: ({ children, ...props }) => (
-          <strong className="text-milk font-extrabold font-sora" {...props}>
+          <strong className="font-semibold text-white" {...props}>
             {children}
           </strong>
         ),
 
-        // Emphasis/Italic
+        // Emphasis
         em: ({ children, ...props }) => (
-          <em className="text-milk/90 italic font-normal" {...props}>
+          <em className="italic" {...props}>
             {children}
           </em>
         ),
 
-        // Delete/Strikethrough
+        // Strikethrough
         del: ({ children, ...props }) => (
-          <del className="text-milk/60 line-through" {...props}>
+          <del className="line-through opacity-60" {...props}>
             {children}
           </del>
         ),
 
-        // Custom aside component with icon background
+        // Callout - Notion callout blokları gibi
         aside: ({ children, ...props }: any) => {
           const childArray = Array.isArray(children) ? children : [children];
           let icon: ReactNode = null;
           let content: ReactNode[] = [...childArray];
 
           const iconIndex = content.findIndex((child) => {
-            // Case 1: Child is an image element
             if (
               React.isValidElement(child) &&
               (child.type as any).name === "img"
@@ -302,12 +324,11 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return true;
             }
 
-            // Case 2: Child is a string containing just an emoji
             if (typeof child === "string") {
               const trimmed = child.trim();
               if (trimmed === "") return false;
               const emojiRegex =
-                /^(\p{Emoji_Presentation}|\p{Emoji_Modifier_Base}|\p{Extended_Pictographic}|\p{Emoji_Component}|\uFE0F|\u200D|\u2640|\u2642)+$/u;
+                /^(\p{Emoji_Presentation}|\p{Emoji_Modifier_Base}|\p{Extended_Pictographic}|\p{Emoji_Component}|\uFE0F|\u200D)+$/u;
               return emojiRegex.test(trimmed);
             }
             return false;
@@ -324,15 +345,13 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
           return (
             <aside
-              className="relative bg-dark border border-body/30 flex h-max gap-3 rounded-2xl p-6 my-6 overflow-hidden group items-start"
+              className="bg-white/5 flex gap-2.5 rounded px-4 py-3 my-2 items-start"
               {...props}
             >
               {icon && (
-                <div className="shrink-0 select-none pointer-events-none flex items-center justify-center text-4xl mt-1">
-                  {icon}
-                </div>
+                <div className="shrink-0 text-xl leading-none">{icon}</div>
               )}
-              <div className="relative z-10 flex-1 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+              <div className="flex-1 [&>:first-child]:mt-0 [&>:last-child]:mb-0 [&>p]:mb-1">
                 {finalContent}
               </div>
             </aside>

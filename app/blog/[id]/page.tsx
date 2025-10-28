@@ -24,6 +24,7 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
           .collection("blogs")
           .getOne(resolvedParams.id, {
             filter: "is_published=true",
+            requestKey: resolvedParams.id,
           });
         data.embeds.forEach((embed) => {
           const parts = embed.split("_");
@@ -42,7 +43,7 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
         _loading(false);
       }
     })();
-  }, [resolvedParams.id]);
+  }, []);
 
   return (
     <>
