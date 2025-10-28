@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  color: #e8e4f5;
-  background-color: #242424;
-  scroll-behavior: smooth;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 @theme {
   --color-body: #292929;
   --color-dark: #121212;

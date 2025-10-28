@@ -34,6 +34,7 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
           const full = `${pb.baseURL}api/files/${data.collectionId}/${data.id}/${embed}`;
           const mdlook = encodeURIComponent(pure.replaceAll("_", " "));
           data.content = data.content.replaceAll(mdlook, full);
+          data.content = data.content.replaceAll(pure, full);
         });
         _blog(data);
       } catch (error) {
@@ -178,7 +179,8 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
           )}
         </section>
       </div>
-      <div className="p-4 sm:p-6 md:p-8 !py-0">
+
+      <div className="p-4 sm:p-6 md:p-8 py-0">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -195,9 +197,9 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
           className=" bg-about overflow-hidden p-6 gap-6 flex flex-col md:flex-row justify-between rounded-3xl size-full"
         >
           <h1 className="font-light text-4xl flex gap-6 items-center justify-center text-center md:text-left">
-            <img src="/star.svg" alt="" className="!size-10" />
+            <img src="/star.svg" alt="" className="size-10" />
             Subscribe for stay tuned!
-            <img src="/star.svg" alt="" className="!size-10" />
+            <img src="/star.svg" alt="" className="size-10" />
           </h1>
           <span className="flex gap-4 md:max-w-2/5 w-full">
             <input

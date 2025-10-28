@@ -3,10 +3,13 @@ import "./globals.css";
 import Contact from "@/components/Contact";
 
 const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   display: "swap",
+  variable: "--font-sora",
+  preload: true,
+  subsets: ["latin", "latin-ext"],
 });
+
 const lato = Lato({
   subsets: ["latin"],
   variable: "--font-lato",
@@ -128,7 +131,7 @@ export default function RootLayout({
         </title>
       </head>
       <body
-        className={`${sora.variable} ${lato.variable} ${jbmono.variable} bg-body font-sora antialiased`}
+        className={`${sora.variable} ${lato.variable} ${jbmono.variable} bg-body text-milk font-sora antialiased`}
       >
         <div
           className="fixed left-0 top-0 z-999 w-screen h-screen pointer-events-none mix-blend-overlay"

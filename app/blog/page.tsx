@@ -255,7 +255,7 @@ export default function Blogs() {
                             <ImageTrace
                               image={
                                 blog.image
-                                  ? `${pb.baseURL}/api/files/${blog.collectionId}/${blog.id}/${blog.image}`
+                                  ? `${pb.baseURL}/api/files/${blog.collectionId}/${blog.id}/${blog.image}?thumb=256x256`
                                   : "/main.webp"
                               }
                               title={blog.title}
@@ -282,7 +282,7 @@ export default function Blogs() {
           </div>
         </section>
       </div>
-      <div className="p-4 sm:p-6 md:p-8 !py-0">
+      <div className="p-4 sm:p-6 md:p-8 py-0">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -301,9 +301,9 @@ export default function Blogs() {
           className=" bg-about overflow-hidden p-6 gap-6 flex flex-col md:flex-row justify-between rounded-3xl size-full"
         >
           <h1 className="font-light text-4xl flex gap-6 items-center justify-center text-center md:text-left">
-            <img src="/star.svg" alt="" className="!size-10" />
+            <img src="/star.svg" alt="" className="size-10" />
             Subscribe for stay tuned!
-            <img src="/star.svg" alt="" className="!size-10" />
+            <img src="/star.svg" alt="" className="size-10" />
           </h1>
           <span className="flex gap-4 md:max-w-2/5 w-full">
             <input

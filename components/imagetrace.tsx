@@ -147,9 +147,8 @@ export default function ImageTrace(props: { image: string; title: string }) {
                 draggable="false"
                 src={props.image}
                 alt={props.title}
-                className="rounded-2xl aspect-[5/4] object-center object-cover w-64 shadow-2xl"
+                className="rounded-2xl aspect-5/4 object-center object-cover w-64 shadow-2xl"
                 style={{
-                  // Safari için hardware acceleration
                   transform: "translateZ(0)",
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
