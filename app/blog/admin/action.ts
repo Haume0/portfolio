@@ -2,7 +2,7 @@
 
 import PocketBase from "pocketbase";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+
 import AdmZip from "adm-zip";
 import path from "path";
 
@@ -131,6 +131,5 @@ export async function addBlog(formdata: FormData) {
         );
     }
 
-    revalidatePath("/blog");
-    redirect("/blog");
+    revalidatePath("/");
 }
