@@ -12,6 +12,7 @@ import WorkCard from "@/components/WorkCard";
 import Header from "@/layouts/header";
 import Footer from "@/layouts/footer";
 import BlogSection from "./blog/blog";
+import Link from "next/link";
 
 export default function Home() {
   const contact = useContact();
@@ -146,7 +147,7 @@ export default function Home() {
           </div>
         </main>
       </div>
-      <div className="p-4 sm:p-6 md:p-8 pt-0">
+      <div className="p-4 sm:p-6 md:p-8 !pt-0">
         <section className="bg-works overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full">
           <span ref={sectionRef1}></span>
           <div className="flex flex-col sm:flex-row gap-2 sm:justify-between w-full">
@@ -417,7 +418,7 @@ export default function Home() {
           </DragWrapper>
         </section>
       </div>
-      <div className="p-4 sm:p-6 md:p-8 pt-0">
+      <div className="p-4 sm:p-6 md:p-8 !pt-0">
         <section
           className=" bg-grey overflow-hidden p-4 sm:p-6 md:p-8 pb-12 flex flex-col rounded-3xl size-full"
           ref={techsRef}
@@ -480,10 +481,10 @@ export default function Home() {
           </motion.p>
         </section>
       </div>
-      <div className="p-4 sm:p-6 md:p-8 pt-0">
-        <BlogSection />
+      <div className="p-4 sm:p-6 md:p-8 !pt-0">
+        <BlogSection limit={4} showcase />
       </div>
-      <div className="p-4 sm:p-6 md:p-8 pt-0">
+      <div className="p-4 sm:p-6 md:p-8 !pt-0">
         <section
           className="bg-about overflow-hidden gap-12 p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-7 rounded-3xl size-full"
           ref={aboutRef}
@@ -631,7 +632,7 @@ export default function Home() {
           </motion.div>
         </section>
       </div>
-      <div className="p-4 sm:p-6 md:p-8 pt-0">
+      <div className="p-4 sm:p-6 md:p-8 !pt-0">
         <section className=" bg-about overflow-hidden p-6 py-4 flex justify-between rounded-3xl size-full">
           <Slider text="Let’s work together">
             <button

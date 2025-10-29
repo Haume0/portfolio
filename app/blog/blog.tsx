@@ -5,10 +5,14 @@ import Header from "@/layouts/header";
 import { Icon } from "@iconify/react";
 import { useInView, motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import PocketBase from "pocketbase";
+import PocketBase, { RecordFullListOptions } from "pocketbase";
 import { useState, useRef, useEffect } from "react";
 import { BlogPost } from "./page";
-export default function BlogSection() {
+export default function BlogSection(props: {
+  limit?: number;
+  children?: React.ReactNode;
+  showcase?: boolean;
+}) {
   const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
   const [blogs, setBlogs] = useState<BlogPost[] | null>(null);
   const [loading, setLoading] = useState(true);
@@ -18,9 +22,19 @@ export default function BlogSection() {
 
   useEffect(() => {
     (async () => {
-      const datas = await pb.collection("blogs").getFullList({
+      const options: RecordFullListOptions = {
         filter: "is_published=true",
-      });
+      };
+      let datas;
+      if (props.limit) {
+        datas = (
+          await pb.collection("blogs").getList(1, props.limit, {
+            filter: "is_published=true",
+          })
+        ).items;
+      } else {
+        datas = await pb.collection("blogs").getFullList(options);
+      }
 
       setTimeout(() => {
         setBlogs(datas as BlogPost[]);
@@ -121,6 +135,23 @@ export default function BlogSection() {
               </button>
             </motion.span>
             <motion.span
+              initial={{
+                x: "100%",
+                opacity: 0,
+              }}
+              animate={sectionInView ? { x: "0%", opacity: 1 } : {}}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 100,
+                delay: 0.2,
+              }}
+            >
+              <Link href="blog" className="main-button">
+                ✦ See More
+              </Link>
+            </motion.span>
+            <motion.span
               className="flex gap-2 seeMore"
               initial={{
                 x: "100%",
@@ -138,7 +169,7 @@ export default function BlogSection() {
           </span>
         </div>
 
-        <div className="flex flex-col w-full max-w-full min-h-64 gap-2 mt-6">
+        <div className="flex flex-col w-full max-w-full gap-2 mt-12">
           <AnimatePresence mode="wait">
             {loading ? (
               <motion.div
@@ -170,136 +201,82 @@ export default function BlogSection() {
               </motion.div>
             ) : blogs && blogs.length > 0 ? (
               <motion.div
+                className="flex flex-col gap-4"
                 key="blog-list"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                {Object.entries(
-                  blogs
-                    .sort((a, b) => {
-                      return (
-                        new Date(b.created!).getTime() -
-                        new Date(a.created!).getTime()
-                      );
-                    })
-                    .reduce(
-                      (acc: Record<string, BlogPost[]>, blog: BlogPost) => {
-                        const monthYear = blog.created
-                          ? new Date(blog.created).toLocaleDateString("tr-TR", {
-                              day: "numeric",
-                              year: "numeric",
-                              month: "numeric",
-                            })
-                          : "Bilinmiyor";
-                        if (!acc[monthYear]) {
-                          acc[monthYear] = [];
-                        }
-                        acc[monthYear].push(blog);
-                        return acc;
-                      },
-                      {},
-                    ),
-                ).map(([monthYear, monthBlogs]: [string, BlogPost[]]) => (
-                  <div key={monthYear} className="flex flex-col gap-4 pb-12">
-                    <motion.h2
-                      initial={{
-                        y: "-40%",
-                        opacity: 0,
-                      }}
-                      animate={
-                        sectionInView
-                          ? {
-                              y: "0%",
-                              opacity: 1,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        type: "spring",
-                        damping: 25,
-                        stiffness: 100,
-                        delay: 0.6,
-                      }}
-                      className="text-2xl font-bold text-milk"
-                    >
-                      {monthYear}
-                    </motion.h2>
-                    <div className="flex flex-col gap-2">
-                      {/* Removed the <pre> tag as it was likely for debugging */}
-                      {monthBlogs.map((blog, i) => (
-                        <motion.span
-                          key={blog.id}
-                          initial={{
-                            y: "-40%",
-                            opacity: 0,
-                          }}
-                          animate={
-                            sectionInView
-                              ? {
-                                  y: "0%",
-                                  opacity: 1,
-                                }
-                              : {}
+                {blogs.map((blog, i) => (
+                  <motion.span
+                    key={blog.id}
+                    initial={{
+                      y: "-40%",
+                      opacity: 0,
+                    }}
+                    animate={
+                      sectionInView
+                        ? {
+                            y: "0%",
+                            opacity: 1,
                           }
-                          transition={{
-                            type: "spring",
-                            damping: 25,
-                            stiffness: 100,
-                            delay: 0.8 + 0.1 * i,
-                          }}
+                        : {}
+                    }
+                    transition={{
+                      type: "spring",
+                      damping: 25,
+                      stiffness: 100,
+                      delay: 0.8 + 0.1 * i,
+                    }}
+                  >
+                    <article
+                      className={`relative group items-center rounded-2xl bg-body hover:bg-milk hover:text-dark ease-spring-stiff duration-500 flex gap-4 sm:gap-8 p-4 md:p-0`}
+                    >
+                      <span className="size-full p-0 md:p-5 items-center gap-3 md:gap-4 flex flex-row *:text-start">
+                        <span className="text-primary text-sm sm:text-base">
+                          #{i + 1}
+                        </span>
+                        <Link
+                          href={`/blog/${blog.id}`}
+                          className="hover:underline text-center sm:text-left"
                         >
-                          <article
-                            className={`relative group items-center rounded-2xl bg-body hover:bg-milk hover:text-dark ease-spring-stiff duration-500 flex gap-4 sm:gap-8 p-4 md:p-0`}
-                          >
-                            <span className="size-full p-0 md:p-5 items-center gap-3 md:gap-4 flex flex-row *:text-start">
-                              <span className="text-primary text-sm sm:text-base">
-                                #{i + 1}
-                              </span>
-                              <Link
-                                href={`/blog/${blog.id}`}
-                                className="hover:underline text-center sm:text-left"
-                              >
-                                <h1 className="text-xl sm:text-2xl lg:text-3xl">
-                                  {blog.title}
-                                </h1>
-                              </Link>
-                              <span className="mx-auto hidden sm:block"></span>
-                              <span className="absolute pointer-events-none inset-0 m-auto size-6 items-center justify-center text-2xl hidden sm:flex">
-                                -
-                              </span>
-                              <p className="text-xs sm:text-sm text-light/60 text-center sm:text-right">
-                                {blog.created
-                                  ? new Date(blog.created).toLocaleDateString(
-                                      "tr-TR",
-                                      {
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                      },
-                                    )
-                                  : "Bilinmiyor"}
-                              </p>
-                              <Link
-                                href={`/blog/${blog.id}`}
-                                className="text-blog hover:underline text-base sm:text-lg"
-                              >
-                                Read Post
-                              </Link>
-                              <ImageTrace
-                                image={
-                                  blog.image
-                                    ? `${pb.baseURL}/api/files/${blog.collectionId}/${blog.id}/${blog.image}?thumb=256x256`
-                                    : "/main.webp"
-                                }
-                                title={blog.title}
-                              />
-                            </span>
-                          </article>
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
+                          <h1 className="text-xl sm:text-2xl lg:text-3xl">
+                            {blog.title}
+                          </h1>
+                        </Link>
+                        <span className="mx-auto hidden sm:block"></span>
+                        <span className="absolute pointer-events-none inset-0 m-auto size-6 items-center justify-center text-2xl hidden sm:flex">
+                          -
+                        </span>
+                        <p className="text-xs sm:text-sm text-light/60 text-center sm:text-right">
+                          {blog.created
+                            ? new Date(blog.created).toLocaleDateString(
+                                "tr-TR",
+                                {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                },
+                              )
+                            : "Bilinmiyor"}
+                        </p>
+                        <Link
+                          href={`/blog/${blog.id}`}
+                          className="text-blog hover:underline text-base sm:text-lg"
+                        >
+                          Read Post
+                        </Link>
+                        <ImageTrace
+                          image={
+                            blog.image
+                              ? `${pb.baseURL}/api/files/${blog.collectionId}/${blog.id}/${blog.image}?thumb=256x256`
+                              : "/main.webp"
+                          }
+                          title={blog.title}
+                        />
+                      </span>
+                    </article>
+                  </motion.span>
                 ))}
               </motion.div>
             ) : (
@@ -334,6 +311,7 @@ export default function BlogSection() {
             )}
           </AnimatePresence>
         </div>
+        {props.children}
       </section>
     </>
   );
