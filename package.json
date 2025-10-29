@@ -25,6 +25,7 @@
     "rehype-slug": "^6.0.0",
     "remark-breaks": "^4.0.0",
     "remark-gfm": "^4.0.1",
+    "streamdown": "^1.4.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
