@@ -24,15 +24,15 @@ export default function WorkCard(props: {
                     rel="noreferrer"
                     href={props.link.url}
                     aria-label={props.link.name}
-                    className="flex justify-end gap-2"
+                    className="flex justify-end group/ext size-max ml-auto gap-2"
                 >
-                    <span className="h-12 px-5 mr-8 opacity-0 group-hover:opacity-100 group-hover:mr-0 ease-smooth duration-500 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center">
+                    <span className="h-12 px-5 mr-8 group-hover/ext:translate-x-2 opacity-0 group-hover:opacity-100 group-hover:mr-0 ease-smooth duration-500 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center">
                         {props.link.name}
                     </span>
-                    <div className="size-12 rounded-full bg-white/20 backdrop-blur-xl flex group/ext items-center justify-center">
+                    <div className="size-12 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center">
                         <svg
-                            width="17"
-                            height="18"
+                            width="16"
+                            height="16"
                             className="rotate-45 group-hover/ext:rotate-0 ease-in-out duration-300"
                             viewBox="0 0 17 18"
                             fill="none"
