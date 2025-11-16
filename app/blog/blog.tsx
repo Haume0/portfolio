@@ -242,10 +242,7 @@ export default function BlogSection(props: {
                             {blog.title}
                           </h1>
                         </Link>
-                        <span className="mx-auto hidden sm:block"></span>
-                        <span className="absolute pointer-events-none inset-0 m-auto size-6 items-center justify-center text-2xl hidden sm:flex">
-                          -
-                        </span>
+                        <span className="mx-auto"></span>
                         <p className="text-xs sm:text-sm text-light/60 text-center sm:text-right">
                           {blog.created
                             ? new Date(blog.created).toLocaleDateString(
