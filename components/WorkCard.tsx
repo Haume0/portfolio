@@ -53,12 +53,12 @@ export default function WorkCard(props: {
         <p className="text-base sm:text-xl hover:cursor-help line-clamp-2 peer">
           {props.description}
         </p>
-        <p className="text-base sm:text-xl absolute pointer-events-none inset-0 mt-auto mx-auto size-max bg-dark/10 backdrop-blur-3xl peer-hover:opacity-100 peer-hover:blur-none peer-hover:translate-y-0 opacity-0 translate-y-4 blur ease-gentle duration-500 rounded-3xl peer-hover:delay-500 max-w-full w-full p-6">
+        <span className="text-base sm:text-xl absolute pointer-events-none inset-0 mt-auto mx-auto size-max bg-dark/10 backdrop-blur-3xl peer-hover:opacity-100 peer-hover:blur-none peer-hover:translate-y-0 opacity-0 translate-y-4 blur ease-gentle duration-500 rounded-3xl peer-hover:delay-500 max-w-full w-full p-6">
           <h1 className=" font-bold text-3xl sm:text-[2rem] line-clamp-1">
             {props.title}
           </h1>
           {props.description}
-        </p>
+        </span>
       </div>
     </span>
   );
