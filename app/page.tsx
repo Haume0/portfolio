@@ -12,7 +12,6 @@ import WorkCard from "@/components/WorkCard";
 import Header from "@/layouts/header";
 import Footer from "@/layouts/footer";
 import BlogSection from "./blog/blog";
-import Link from "next/link";
 import Newsletter from "@/components/newsletter";
 
 export default function Home() {

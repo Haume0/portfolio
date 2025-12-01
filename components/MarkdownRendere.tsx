@@ -164,7 +164,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           a: ({ children, href, ...props }) => (
             <a
               href={href}
-              target="_blank"
+              target={href?.includes("//") ? "_blank" : "_self"}
               rel="noopener noreferrer"
               className="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors"
               {...props}
@@ -449,8 +449,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
 
             return (
-              <aside
-                className="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start"
+              <div
+                className="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"
                 {...props}
               >
                 {icon && (
@@ -463,10 +463,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                     {icon}
                   </div>
                 )}
-                <div className="relative flex-1 *:first:mt-0 *:last:mb-0 [&>p]:leading-relaxed">
+                <div className="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&>p]:leading-relaxed">
                   {finalContent}
                 </div>
-              </aside>
+              </div>
             );
           },
         }}
