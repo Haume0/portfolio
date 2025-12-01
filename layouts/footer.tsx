@@ -32,7 +32,7 @@ export default function Footer() {
         >
           <img src="/haume.svg" className=" h-14" alt="" />
           <p className="text-xl">Interstellar web developer.</p>
-          <p className="font-thin text-white/40">© 2024 ✦ Emin Erçoban</p>
+          <p className="font-thin text-white/40">© 2024-2025 ✦ Emin Erçoban</p>
           <p className="font-thin text-white/40 mt-1">
             Co-Founder of{" "}
             <a
