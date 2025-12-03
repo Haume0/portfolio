@@ -126,7 +126,7 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
                                     delay: 0.2,
                                 }}
                                 id="works"
-                                className="font-extrabold text-8xl mb-8"
+                                className="font-extrabold text-5xl sm:text-7xl lg:text-8xl mb-4"
                             >
                                 {blog.title}
                             </motion.h1>
