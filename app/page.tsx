@@ -5,7 +5,7 @@ import useProjects from "@/store/projects";
 import useSocials from "@/store/socials";
 import useTechs from "@/store/techstack";
 import { useContact } from "@/components/Contact";
-import DragWrapper from "@/components/DragWrapper";
+import DragWrapper from "@/components/DragComponent";
 import Slider from "@/components/Slider";
 import TechCard from "@/components/TechCard";
 import WorkCard from "@/components/WorkCard";
