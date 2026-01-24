@@ -407,6 +407,7 @@ export default function Home() {
                   key={idx}
                 >
                   <WorkCard
+                    object={project.object}
                     id={project.id}
                     image={project.image}
                     title={project.title}

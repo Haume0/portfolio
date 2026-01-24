@@ -5,6 +5,7 @@ interface IProject {
   image: string;
   title: string;
   description: string;
+  object?: string;
   link: {
     name: string;
     url: string;
@@ -17,10 +18,33 @@ interface IProjectStore {
 const useProjects = create<IProjectStore>(() => ({
   projects: [
     {
+      id: "bngtech",
+      image: "/works/bngtech.webp",
+      title: "bng-tech.com",
+      description: `Web design and development project for BNG-TECH.`,
+      object: "top-left",
+      link: {
+        name: "Visit",
+        url: "https://www.bng-tech.com",
+      },
+    },
+    {
+      id: "obglobalcomtr",
+      image: "/works/obglobalcomtr.webp",
+      title: "Obglobal.com.tr",
+      description: `Corporate web design and development for OBGlobal.`,
+      object: "top-left",
+      link: {
+        name: "Visit",
+        url: "https://obglobal.com.tr",
+      },
+    },
+    {
       id: "ulasbasaran",
       image: "/works/ulasbasaran.webp",
       title: "Ulasbasaran.com",
       description: `A brand identity and web design for Ulaş "Baso" Başaran `,
+      object: "top-left",
       link: {
         name: "Look",
         url: "https://www.behance.net/gallery/238240259/Ulasbasarancom",
@@ -31,6 +55,7 @@ const useProjects = create<IProjectStore>(() => ({
       image: "/works/quellstudio.webp",
       title: "Quell Studio",
       description: "The website I built for CharmQuell's game studio.",
+      object: "top-left",
       link: { name: "Visit", url: "https://quellstudios.com/" },
     },
     {
@@ -38,6 +63,7 @@ const useProjects = create<IProjectStore>(() => ({
       image: "/works/oyunlayici.webp",
       title: "Oyunlayıcı Website",
       description: "A Re-Design of Oyunlayici Hosting's Website.",
+      object: "top-left",
       link: { name: "Visit", url: "https://oyunlayici.com/" },
     },
     {
