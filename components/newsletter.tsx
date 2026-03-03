@@ -14,7 +14,7 @@ export default function Newsletter() {
                         const record = await pb
                             .collection("subscribes")
                             .create({ mail: mail });
-                        alert(JSON.stringify(record));
+                        alert("Thank you for subscribing!");
                     } catch (e: any) {
                         alert("ERROR:\n" + e.data.data.mail.code);
                     }
