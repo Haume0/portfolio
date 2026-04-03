@@ -52,12 +52,17 @@ body {
     height: 0 !important;
 }
 
-/*make everything bigger on larger screens than 1920 */
-@media (max-width: 768px) {
-    html {
-        font-size: 80%;
-    }
-}
 img {
     -webkit-user-drag: none;
+}
+@layer base {
+    html {
+        font-size: 16px; /* mobil sabit */
+    }
+
+    @media (min-width: 768px) {
+        html {
+            font-size: clamp(14px, 0.862vw + 3px, 20px);
+        }
+    }
 }
