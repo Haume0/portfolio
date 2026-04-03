@@ -103,7 +103,7 @@ export default function BlogSection(props: {
                             mistakes, learnings, and experiences.
                         </motion.p>
                     </span>
-                    <span className="flex sm:flex-col items-end gap-2">
+                    <span className="flex sm:flex-col items-end gap-2 overflow-hidden">
                         <motion.span
                             initial={{
                                 x: "100%",
