@@ -146,7 +146,7 @@ export default function RootLayout({
                         background: `url("/grain.webp") repeat`,
                     }}
                 ></div>
-                <SmoothScroll />
+                {/*<SmoothScroll />*/}
                 {children}
                 <Contact />
             </body>
