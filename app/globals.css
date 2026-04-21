@@ -62,7 +62,7 @@ img {
 
     @media (min-width: 768px) {
         html {
-            font-size: clamp(14px, 0.862vw + 3px, 20px);
+            font-size: clamp(14px, 0.8vw + 3px, 20px);
         }
     }
 }
