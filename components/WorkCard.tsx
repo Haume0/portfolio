@@ -1,4 +1,8 @@
+import Link from "next/link";
+import { HTMLAttributeAnchorTarget } from "react";
+
 export default function WorkCard(props: {
+  target?: HTMLAttributeAnchorTarget;
   id: string;
   image: string;
   title: string;
@@ -10,20 +14,21 @@ export default function WorkCard(props: {
   };
   className?: string;
 }) {
+  const objectPosition = props.object?.replaceAll("-", " ") || "center";
+
   return (
     <span
-      className={` w-96 sm:w-[32rem] max-w-[86vw] aspect-square! group hover:p-3 flex flex-col ease-smooth duration-500 bg-dark relative rounded-3xl z-10 overflow-hidden p-0 gap-3 ${props.className}`}
+      className={` w-96 sm:w-lg max-w-[86vw] aspect-square! group hover:p-3 flex flex-col ease-smooth duration-500 bg-dark relative rounded-3xl z-10 overflow-hidden p-0 gap-3 ${props.className}`}
     >
       <div className="w-full group-hover:h-4/5 group-hover:shrink ease-smooth duration-500 size-full shrink-0 rounded-2xl overflow-hidden p-3 relative">
         <img
           src={props.image}
-          className={`absolute inset-0 object-cover size-full -z-10
-            ${props.object == "top-left" ? "object-top-left" : "object-center"}
-            `}
+          className="absolute inset-0 object-cover size-full -z-10"
+          style={{ objectPosition }}
           alt={props.title}
         />
-        <a
-          target="_blank"
+        <Link
+          target={props.target ?? "_blank"}
           rel="noreferrer"
           href={props.link.url}
           aria-label={props.link.name}
@@ -47,7 +52,7 @@ export default function WorkCard(props: {
               />
             </svg>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="flex flex-col p-3">
         <h1 className=" font-bold text-2xl sm:text-[2rem] line-clamp-1">

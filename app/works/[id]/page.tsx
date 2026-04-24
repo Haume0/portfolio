@@ -4,16 +4,15 @@ import Link from "next/link";
 import PocketBase from "pocketbase";
 import { Icon } from "@iconify/react";
 import { motion, useInView } from "framer-motion";
-
 import Header from "@/layouts/header";
 import Footer from "@/layouts/footer";
 import MarkdownRenderer from "@/components/MarkdownRendere";
-import { BlogPost } from "@/app/admin/blogs/page";
+import { WorkPost } from "@/app/admin/works/page";
 
-export default function Blog({ params }: { params: Promise<{ id: string }> }) {
+export default function Work({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
-  const [blog, _blog] = useState<BlogPost | null>(null);
+  const [work, _work] = useState<WorkPost | null>(null);
   const [loading, _loading] = useState(true);
   const sectionRef = useRef(null);
   const sectionInView = useInView(sectionRef, { once: true });
@@ -21,12 +20,21 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
   useEffect(() => {
     (async () => {
       try {
-        let data: BlogPost = await pb
-          .collection("blogs")
-          .getOne(resolvedParams.id, {
+        const escapedId = resolvedParams.id.replaceAll('"', '\\"');
+        let data: WorkPost;
+
+        try {
+          data = await pb
+            .collection("works")
+            .getFirstListItem(`slug = "${escapedId}" && is_published = true`, {
+              requestKey: `${resolvedParams.id}:slug`,
+            });
+        } catch {
+          data = await pb.collection("works").getOne(resolvedParams.id, {
             filter: "is_published=true",
             requestKey: resolvedParams.id,
           });
+        }
         data.embeds.forEach((embed) => {
           const parts = embed.split("_");
           const exc = parts[parts.length - 1].split(".")[0];
@@ -36,10 +44,10 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
           console.log(full);
           data.content = data.content.replaceAll(pure, full);
         });
-        _blog(data);
+        _work(data);
       } catch (error) {
-        console.error("Failed to fetch blog post:", error);
-        _blog(null);
+        console.error("Failed to fetch work post:", error);
+        _work(null);
       } finally {
         _loading(false);
       }
@@ -63,17 +71,17 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
                 Searching...
               </h3>
               <p className="text-milk/60 max-w-md">
-                Please wait while we search for your blog post.
+                Please wait while we search for your work post.
               </p>
             </div>
-          ) : !blog ? (
+          ) : !work ? (
             <div className="flex flex-col items-center justify-center py-16 text-center m-auto">
               <Icon icon="material-symbols:sad-tab-rounded" fontSize="7rem" />
               <h3 className="text-5xl font-black text-milk mb-2">
                 Ops, Not Found
               </h3>
               <p className="text-milk/60 max-w-md">
-                We couldn't find such a blog post. Please come back later.
+                We couldn't find such a work post. Please come back later.
               </p>
             </div>
           ) : (
@@ -85,12 +93,12 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
                     Home
                   </Link>
                   <span className="mx-2 shrink-0">/</span>
-                  <Link href="/blog" className="hover:text-light shrink-0">
-                    Blog
+                  <Link href="/works" className="hover:text-light shrink-0">
+                    Works
                   </Link>
                   <span className="mx-2 shrink-0">/</span>
                   <span className="text-light truncate min-w-0">
-                    {blog.title}
+                    {work.title}
                   </span>
                 </div>
               </nav>
@@ -114,11 +122,35 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
                   delay: 0.2,
                 }}
                 id="works"
-                className="font-extrabold text-5xl sm:text-7xl lg:text-8xl mb-4"
+                className="font-extrabold text-5xl sm:text-6xl lg:text-7xl"
               >
-                {blog.title}
+                {work.title}
               </motion.h1>
-              <motion.img
+              <motion.p
+                initial={{
+                  y: -48,
+                  opacity: 0,
+                }}
+                animate={
+                  sectionInView
+                    ? {
+                        y: 0,
+                        opacity: 1,
+                      }
+                    : {}
+                }
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 100,
+                  delay: 0.2,
+                }}
+                id="works"
+                className="text-lg sm:text-xl lg:text-2xl mb-4 mt-2"
+              >
+                {work.description}
+              </motion.p>
+              {/*<motion.img
                 initial={{
                   y: -48,
                   opacity: 0,
@@ -138,37 +170,39 @@ export default function Blog({ params }: { params: Promise<{ id: string }> }) {
                   delay: 0.4,
                 }}
                 src={
-                  blog.image
-                    ? `${pb.baseURL}/api/files/${blog.collectionId}/${blog.id}/${blog.image}`
+                  work.image
+                    ? `${pb.baseURL}/api/files/${work.collectionId}/${work.id}/${work.image}`
                     : "/main.webp"
                 }
-                alt={blog.title}
+                alt={work.title}
                 className="w-full h-[400px] object-cover rounded-2xl shadow-2xl"
                 loading="eager"
-              />
-              <motion.article
-                initial={{
-                  y: -48,
-                  opacity: 0,
-                }}
-                animate={
-                  sectionInView
-                    ? {
-                        y: 0,
-                        opacity: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  type: "spring",
-                  damping: 25,
-                  stiffness: 100,
-                  delay: 0.6,
-                }}
-                className="max-w-none mt-8"
-              >
-                <MarkdownRenderer content={blog.content} />
-              </motion.article>
+              />*/}
+              {work.content ? (
+                <motion.article
+                  initial={{
+                    y: -48,
+                    opacity: 0,
+                  }}
+                  animate={
+                    sectionInView
+                      ? {
+                          y: 0,
+                          opacity: 1,
+                        }
+                      : {}
+                  }
+                  transition={{
+                    type: "spring",
+                    damping: 25,
+                    stiffness: 100,
+                    delay: 0.6,
+                  }}
+                  className="max-w-none mt-8"
+                >
+                  <MarkdownRenderer content={work.content} />
+                </motion.article>
+              ) : null}
             </div>
           )}
         </section>

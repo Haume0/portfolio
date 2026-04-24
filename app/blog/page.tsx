@@ -4,19 +4,6 @@ import Footer from "@/layouts/footer";
 import BlogSection from "./blog";
 import Newsletter from "@/components/newsletter";
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  image: string | null;
-  is_published: boolean;
-  created: string;
-  updated: string;
-  collectionId: string;
-  collectionName: string;
-  embeds: string[];
-}
-
 export default function Blogs() {
   return (
     <>
