@@ -1,8 +1,8 @@
 ---
 title: "Esin Kaynakları"
 slug: "esin-kaynaklari"
-date: "2026-04-25"
-updated: "2026-04-25T15:21:41.115Z"
+date: "2025-11-04"
+updated: "2026-04-25T15:50:36.646Z"
 published: true
 cover: "/blogs/esin-kaynaklari/cover.png"
 ---

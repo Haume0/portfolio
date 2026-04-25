@@ -14,7 +14,7 @@ export default function AddBlogForm() {
         >
             <label
                 htmlFor="blog"
-                className="group cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300"
+                className="group cursor-pointer rounded-2xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300"
             >
                 <span className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <span>

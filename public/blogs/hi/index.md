@@ -1,7 +1,7 @@
 ---
 title: "Hi!"
 slug: "hi"
-date: "2026-04-25"
+date: "2025-10-28"
 updated: "2026-04-25T12:31:54.742Z"
 published: true
 cover: "/blogs/hi/cover.jpg"

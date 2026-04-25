@@ -5,7 +5,7 @@ import path from "path";
 import { revalidatePath } from "next/cache";
 
 import AdmZip from "adm-zip";
-import type { BlogData, FileData } from "@/lib/blogs";
+import { parseFrontmatter, type BlogData, type FileData } from "@/lib/blogs";
 
 const blogsDirectory = path.join(process.cwd(), "public", "blogs");
 
@@ -175,6 +175,50 @@ function createFrontmatter(data: {
     ].join("\n");
 }
 
+function assertSafeSlug(value: FormDataEntryValue | null) {
+    if (typeof value !== "string" || !/^[a-z0-9-]+$/.test(value)) {
+        throw new Error("Geçersiz blog slug değeri.");
+    }
+
+    return value;
+}
+
+function getBlogDirectory(slug: string) {
+    const directory = path.resolve(blogsDirectory, slug);
+    const root = path.resolve(blogsDirectory);
+
+    if (!directory.startsWith(root + path.sep)) {
+        throw new Error("Geçersiz blog yolu.");
+    }
+
+    return directory;
+}
+
+function serializeFrontmatter(data: Record<string, string | boolean | null>) {
+    return [
+        "---",
+        ...Object.entries(data).map(([key, value]) => {
+            if (typeof value === "string") {
+                return `${key}: ${JSON.stringify(value)}`;
+            }
+
+            return `${key}: ${value}`;
+        }),
+        "---",
+        "",
+    ].join("\n");
+}
+
+function revalidateBlogPaths(slug?: string) {
+    revalidatePath("/");
+    revalidatePath("/blog");
+    revalidatePath("/editor/blog");
+
+    if (slug) {
+        revalidatePath(`/blog/${slug}`);
+    }
+}
+
 export async function addBlog(prev: any, formdata: FormData) {
     const blogFile = formdata.get("blog") as File;
     if (!blogFile || blogFile.size === 0) {
@@ -254,7 +298,36 @@ export async function addBlog(prev: any, formdata: FormData) {
         );
     }
 
-    revalidatePath("/");
-    revalidatePath("/blog");
+    revalidateBlogPaths();
     return "Blog yüklendi";
+}
+
+export async function toggleBlogPublished(formdata: FormData) {
+    const slug = assertSafeSlug(formdata.get("slug"));
+    const published = formdata.get("published") === "true";
+    const markdownPath = path.join(getBlogDirectory(slug), "index.md");
+
+    const markdown = await fs.readFile(markdownPath, "utf8");
+    const { data, content } = parseFrontmatter(markdown);
+    const nextData = {
+        ...data,
+        slug,
+        published,
+        updated: new Date().toISOString(),
+    };
+
+    await fs.writeFile(
+        markdownPath,
+        serializeFrontmatter(nextData) + content.trimStart() + "\n",
+        "utf8",
+    );
+
+    revalidateBlogPaths(slug);
+}
+
+export async function deleteBlog(formdata: FormData) {
+    const slug = assertSafeSlug(formdata.get("slug"));
+
+    await fs.rm(getBlogDirectory(slug), { recursive: true, force: true });
+    revalidateBlogPaths(slug);
 }
