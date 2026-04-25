@@ -259,7 +259,7 @@ export default function BlogSection(props: {
                                 className="flex flex-col items-center justify-center py-16 text-center m-auto"
                             >
                                 <Icon
-                                    icon="material-symbols:sad-tab-rounded"
+                                    icon="ion:sad-outline"
                                     fontSize="7rem"
                                 />
                                 <h3 className="text-5xl font-black text-milk mb-2">

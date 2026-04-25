@@ -1,23 +1,31 @@
 "use client";
-import { AnimatePresence, useInView } from "motion/react";
-import { useRef } from "react";
+import { useInView } from "motion/react";
+import { useRef, useState } from "react";
 import * as motion from "motion/react-client";
 import ExpandingButton from "@/components/expanding-button";
 import useSocials from "@/store/socials";
 import { useContact } from "@/components/contact";
 import DragWrapper from "@/components/drag-component";
-import useProjects from "@/store/projects";
-import WorkCard from "@/components/work-card";
-import { getAllProjects } from "@/lib/projects";
+import WorkCard from "@/components/works/card";
+import { IProject } from "@/lib/projects";
+import WorksPreview from "@/components/works/preview";
 
-export default function WorksSection(props: { projects: any }) {
-    // const projects = useProjects();
+export default function WorksSection(props: { projects: IProject[] }) {
+    const contact = useContact();
+    const socials = useSocials();
+
+    const [inspect, setInspect] = useState<IProject>();
+
     const sectionRef1 = useRef(null);
     const sectionInView1 = useInView(sectionRef1, { once: true });
-    const socials = useSocials();
-    const contact = useContact();
     return (
         <div className="p-4 sm:p-6 md:p-8 pt-0!">
+            {inspect && (
+                <WorksPreview
+                    onClose={() => setInspect(undefined)}
+                    project={inspect}
+                />
+            )}
             <section className="bg-works overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full">
                 <span ref={sectionRef1}></span>
                 <div className="flex flex-col sm:flex-row gap-2 sm:justify-between w-full">
@@ -280,6 +288,9 @@ export default function WorksSection(props: { projects: any }) {
                                 key={idx}
                             >
                                 <WorkCard
+                                    onInspect={() => {
+                                        setInspect(project);
+                                    }}
                                     object={project.object}
                                     id={project.id}
                                     image={project.image}

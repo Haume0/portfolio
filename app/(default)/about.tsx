@@ -1,7 +1,6 @@
 "use client";
 import useSocials from "@/store/socials";
 import useTechs from "@/store/techstack";
-import { Icon } from "@iconify/react";
 import { useInView, motion } from "motion/react";
 import { useRef } from "react";
 
