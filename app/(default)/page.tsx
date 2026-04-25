@@ -4,7 +4,6 @@ import WorksSection from "./works";
 import TechSection from "./tech";
 import BlogSection from "./blog/blog";
 import Footer from "@/layouts/footer";
-import Slider from "@/components/slider";
 import AboutSection from "./about";
 import SliderSection from "./slider-section";
 
