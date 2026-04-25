@@ -125,16 +125,26 @@ export default function AboutSection() {
                             </motion.li>
                         ))}
                     </ul>
-                    <a
-                        href="/cv.pdf"
-                        className="font-light flex gap-2 items-center text-lg md:text-xl rounded-2xl bg-dark ease-gentle duration-300 hover:bg-white hover:text-black size-max py-1.5 pl-1.5 px-3"
+                    <motion.span
+                        initial={{
+                            y: "-40%",
+                            opacity: 0,
+                        }}
+                        animate={aboutInView ? { y: "0%", opacity: 1 } : {}}
+                        transition={{
+                            type: "spring",
+                            damping: 25,
+                            stiffness: 100,
+                            delay: 1.2,
+                        }}
                     >
-                        <Icon
-                            icon="tabler:file-cv-filled"
-                            className="text-3xl"
-                        />
-                        Check my CV
-                    </a>
+                        <a
+                            href="/cv.pdf"
+                            className="font-light flex gap-2 items-center text-lg md:text-xl rounded-xl bg-dark ease-gentle duration-300 hover:bg-white hover:text-black size-max py-1.5 px-3"
+                        >
+                            Check my CV. 👀
+                        </a>
+                    </motion.span>
                 </div>
                 <motion.div
                     initial={{
