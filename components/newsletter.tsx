@@ -1,23 +1,16 @@
 "use client";
-import PocketBase from "pocketbase";
+
 export default function Newsletter() {
-    const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
     return (
         <div className="p-4 sm:p-6 md:p-8 !pt-0">
             <form
                 onSubmit={async (e) => {
                     e.preventDefault();
-                    // Newsletter subscription
                     const mail = (e.target as HTMLFormElement).mail.value;
+                    const subject = encodeURIComponent("Newsletter subscription");
+                    const body = encodeURIComponent(`Subscribe this email: ${mail}`);
 
-                    try {
-                        const record = await pb
-                            .collection("subscribes")
-                            .create({ mail: mail });
-                        alert("Thank you for subscribing!");
-                    } catch (e: any) {
-                        alert("ERROR:\n" + e.data.data.mail.code);
-                    }
+                    window.open(`mailto:haume341@outlook.com?subject=${subject}&body=${body}`);
                 }}
                 className=" bg-about overflow-hidden pl-6 p-4 gap-6 flex flex-col md:flex-row justify-between rounded-3xl size-full"
             >

@@ -1,7 +1,7 @@
 import { Sora, Lato, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Contact from "@/components/Contact";
-import SmoothScroll from "@/components/SmoothScroll";
+import Contact from "@/components/contact";
+import SmoothScroll from "@/components/smooth-scroll";
 
 const sora = Sora({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -138,15 +138,14 @@ export default function RootLayout({
                 </title>
             </head>
             <body
-                className={`${sora.variable} ${lato.variable} ${jbmono.variable} bg-body max-w-full min-w-screen overflow-x-clip text-milk font-sora antialiased`}
+                className={`${sora.variable} ${lato.variable} ${jbmono.variable} relative bg-body overflow-x-clip text-milk font-sora antialiased`}
             >
                 <div
-                    className="fixed left-0 top-0 z-999 w-screen h-screen pointer-events-none mix-blend-overlay"
+                    className="absolute inset-0 z-999 w-screen h-full pointer-events-none mix-blend-overlay"
                     style={{
                         background: `url("/grain.webp") repeat`,
                     }}
-                ></div>
-                {/*<SmoothScroll />*/}
+                />
                 {children}
                 <Contact />
             </body>

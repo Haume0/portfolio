@@ -1,6 +1,6 @@
 "use client";
-import { useContact } from "@/components/Contact";
-import FanList from "@/components/FanList";
+import { useContact } from "@/components/contact";
+import FanList from "@/components/fan-list";
 import { motion, useInView } from "motion/react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
