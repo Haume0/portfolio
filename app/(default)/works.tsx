@@ -8,9 +8,10 @@ import { useContact } from "@/components/contact";
 import DragWrapper from "@/components/drag-component";
 import useProjects from "@/store/projects";
 import WorkCard from "@/components/work-card";
+import { getAllProjects } from "@/lib/projects";
 
-export default function WorksSection() {
-    const projects = useProjects();
+export default function WorksSection(props: { projects: any }) {
+    // const projects = useProjects();
     const sectionRef1 = useRef(null);
     const sectionInView1 = useInView(sectionRef1, { once: true });
     const socials = useSocials();
@@ -255,7 +256,7 @@ export default function WorksSection() {
                 </div>
                 <DragWrapper>
                     <ul className="h-max grid grid-flow-col hidden-scroll grid-rows-1 gap-4 mt-6 overflow-x-auto overflow-y-hidden">
-                        {projects.projects.map((project, idx) => (
+                        {props.projects.map((project, idx) => (
                             <motion.span
                                 initial={{
                                     transform: "scale(0.4)",

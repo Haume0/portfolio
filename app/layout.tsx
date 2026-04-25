@@ -1,7 +1,6 @@
 import { Sora, Lato, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Contact from "@/components/contact";
-import SmoothScroll from "@/components/smooth-scroll";
 
 const sora = Sora({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800"],

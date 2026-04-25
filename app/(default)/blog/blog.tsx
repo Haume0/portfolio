@@ -5,12 +5,12 @@ import { Icon } from "@iconify/react";
 import { useInView, motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { useRef } from "react";
-import type { BlogPost } from "@/lib/blogs";
+import type { IBlog } from "@/lib/blogs";
 export default function BlogSection(props: {
     limit?: number;
     children?: React.ReactNode;
     showcase?: boolean;
-    blogs?: BlogPost[];
+    blogs?: IBlog[];
 }) {
     const allBlogs = props.blogs || [];
     const blogs = props.limit ? allBlogs.slice(0, props.limit) : allBlogs;

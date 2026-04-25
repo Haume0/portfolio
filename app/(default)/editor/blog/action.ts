@@ -5,7 +5,8 @@ import path from "path";
 import { revalidatePath } from "next/cache";
 
 import AdmZip from "adm-zip";
-import { parseFrontmatter, type BlogData, type FileData } from "@/lib/blogs";
+import matter from "gray-matter";
+import { type IBlogData, type IFileData } from "@/lib/blogs";
 
 const blogsDirectory = path.join(process.cwd(), "public", "blogs");
 
@@ -61,7 +62,7 @@ function getTitleAndContent(markdown: string, fallbackTitle: string) {
     };
 }
 
-function collectZipEntries(zip: AdmZip, blogData: BlogData) {
+function collectZipEntries(zip: AdmZip, blogData: IBlogData) {
     for (const entry of zip.getEntries()) {
         if (entry.isDirectory) continue;
 
@@ -111,7 +112,7 @@ async function getAvailableSlug(title: string) {
     }
 }
 
-function getSafeAssetName(file: FileData, usedNames: Set<string>) {
+function getSafeAssetName(file: IFileData, usedNames: Set<string>) {
     const parsed = path.parse(path.posix.basename(file.name));
     const base = slugify(parsed.name);
     const extension = parsed.ext.toLowerCase();
@@ -225,7 +226,7 @@ export async function addBlog(prev: any, formdata: FormData) {
         throw new Error("Blog için bir zip dosyası yüklenmelidir.");
     }
 
-    const blogData: BlogData = {
+        const blogData: IBlogData = {
         title: "",
         content: "",
         embeds: [],
@@ -308,7 +309,7 @@ export async function toggleBlogPublished(formdata: FormData) {
     const markdownPath = path.join(getBlogDirectory(slug), "index.md");
 
     const markdown = await fs.readFile(markdownPath, "utf8");
-    const { data, content } = parseFrontmatter(markdown);
+    const { data, content } = matter(markdown);
     const nextData = {
         ...data,
         slug,
