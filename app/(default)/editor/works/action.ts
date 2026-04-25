@@ -130,6 +130,11 @@ function getString(formdata: FormData, key: string, fallback = "") {
     return typeof value === "string" ? value.trim() : fallback;
 }
 
+function getText(formdata: FormData, key: string) {
+    const value = formdata.get(key);
+    return typeof value === "string" ? value : "";
+}
+
 function assertSafeId(value: FormDataEntryValue | null) {
     if (typeof value !== "string" || !/^[a-z0-9-]+$/.test(value)) {
         throw new Error("Geçersiz proje id değeri.");
@@ -171,6 +176,15 @@ function revalidateWorksPaths() {
     revalidatePath("/editor/works");
 }
 
+async function projectExists(id: string) {
+    try {
+        await fs.access(getProjectDirectory(id));
+        return true;
+    } catch {
+        return false;
+    }
+}
+
 export async function addProject(prev: string | null, formdata: FormData) {
     const rawId = getString(formdata, "id");
     const id = slugify(rawId);
@@ -179,6 +193,7 @@ export async function addProject(prev: string | null, formdata: FormData) {
     const object = getString(formdata, "object");
     const linkName = getString(formdata, "linkName", "Visit");
     const linkUrl = getString(formdata, "linkUrl", "#");
+    const manualContent = getText(formdata, "content");
     const published = formdata.get("published") === "true";
     const imageFile = formdata.get("image") as File | null;
     const notionFile = formdata.get("notion") as File | null;
@@ -195,9 +210,14 @@ export async function addProject(prev: string | null, formdata: FormData) {
     const assetsDirectory = path.join(projectDirectory, "assets");
 
     try {
+        if (await projectExists(id)) {
+            throw new Error("Bu proje id değeri zaten kullanılıyor.");
+        }
+
         await fs.mkdir(assetsDirectory, { recursive: true });
 
-        const imageExtension = path.extname(imageFile.name).toLowerCase() || ".webp";
+        const imageExtension =
+            path.extname(imageFile.name).toLowerCase() || ".webp";
         const imageName = `image${imageExtension}`;
         const imagePath = `/works/${id}/${imageName}`;
 
@@ -219,14 +239,19 @@ export async function addProject(prev: string | null, formdata: FormData) {
             );
         }
 
-        let content = projectData.content;
+        let content = projectData.mdFileFound
+            ? projectData.content
+            : manualContent;
         const usedAssetNames = new Set<string>();
 
         for (const embed of projectData.embeds) {
             const assetName = getSafeAssetName(embed, usedAssetNames);
             const publicPath = `/works/${id}/assets/${encodeURIComponent(assetName)}`;
 
-            await fs.writeFile(path.join(assetsDirectory, assetName), embed.buffer);
+            await fs.writeFile(
+                path.join(assetsDirectory, assetName),
+                embed.buffer,
+            );
             content = replaceAssetReferences(content, embed.name, publicPath);
         }
 
@@ -256,6 +281,131 @@ export async function addProject(prev: string | null, formdata: FormData) {
 
     revalidateWorksPaths();
     return "Proje kaydedildi";
+}
+
+export async function updateProject(prev: string | null, formdata: FormData) {
+    const originalId = assertSafeId(formdata.get("originalId"));
+    const rawId = getString(formdata, "id");
+    const id = slugify(rawId);
+    const title = getString(formdata, "title");
+    const description = getString(formdata, "description");
+    const object = getString(formdata, "object");
+    const linkName = getString(formdata, "linkName", "Visit");
+    const linkUrl = getString(formdata, "linkUrl", "#");
+    const manualContent = getText(formdata, "content");
+    const published = formdata.get("published") === "true";
+    const imageFile = formdata.get("image") as File | null;
+    const notionFile = formdata.get("notion") as File | null;
+
+    if (!id || !title || !description || !linkName || !linkUrl) {
+        throw new Error("Zorunlu proje bilgileri eksik.");
+    }
+
+    const originalDirectory = getProjectDirectory(originalId);
+    const projectDirectory = getProjectDirectory(id);
+
+    try {
+        const originalMarkdownPath = path.join(originalDirectory, "index.md");
+        const markdown = await fs.readFile(originalMarkdownPath, "utf8");
+        const { data } = matter(markdown);
+
+        if (id !== originalId) {
+            if (await projectExists(id)) {
+                throw new Error("Bu proje id değeri zaten kullanılıyor.");
+            }
+
+            await fs.rename(originalDirectory, projectDirectory);
+        }
+
+        const assetsDirectory = path.join(projectDirectory, "assets");
+        const markdownPath = path.join(projectDirectory, "index.md");
+        const now = new Date().toISOString();
+        let imagePath =
+            typeof data.image === "string"
+                ? data.image
+                : `/works/${originalId}/image.webp`;
+
+        imagePath = imagePath
+            .split(`/works/${originalId}/`)
+            .join(`/works/${id}/`);
+
+        if (imageFile && imageFile.size > 0) {
+            const imageExtension =
+                path.extname(imageFile.name).toLowerCase() ||
+                path.extname(imagePath) ||
+                ".webp";
+            const imageName = `image${imageExtension}`;
+
+            imagePath = `/works/${id}/${imageName}`;
+
+            await fs.writeFile(
+                path.join(projectDirectory, imageName),
+                Buffer.from(await imageFile.arrayBuffer()),
+            );
+        }
+
+        const projectData: ProjectImportData = {
+            content: "",
+            embeds: [],
+            mdFileFound: false,
+        };
+        let content = manualContent;
+
+        if (notionFile && notionFile.size > 0) {
+            collectZipEntries(
+                new AdmZip(Buffer.from(await notionFile.arrayBuffer())),
+                projectData,
+            );
+            content = projectData.content;
+
+            await fs.rm(assetsDirectory, { recursive: true, force: true });
+            await fs.mkdir(assetsDirectory, { recursive: true });
+
+            const usedAssetNames = new Set<string>();
+            for (const embed of projectData.embeds) {
+                const assetName = getSafeAssetName(embed, usedAssetNames);
+                const publicPath = `/works/${id}/assets/${encodeURIComponent(assetName)}`;
+
+                await fs.writeFile(
+                    path.join(assetsDirectory, assetName),
+                    embed.buffer,
+                );
+                content = replaceAssetReferences(
+                    content,
+                    embed.name,
+                    publicPath,
+                );
+            }
+        }
+
+        content = content.split(`/works/${originalId}/`).join(`/works/${id}/`);
+
+        const frontmatter = serializeFrontmatter({
+            id,
+            image: imagePath,
+            title,
+            description,
+            object,
+            linkName,
+            linkUrl,
+            published,
+            createdAt:
+                typeof data.createdAt === "string" ? data.createdAt : now,
+            updated: now,
+        });
+
+        await fs.writeFile(
+            markdownPath,
+            frontmatter + content.trimStart() + "\n",
+            "utf8",
+        );
+    } catch (error) {
+        console.error("Proje güncellenirken bir hata oluştu:", error);
+        throw new Error("Proje güncellenemedi.");
+    }
+
+    revalidateWorksPaths();
+    return "Proje güncellendi";
 }
 
 export async function toggleProjectPublished(formdata: FormData) {

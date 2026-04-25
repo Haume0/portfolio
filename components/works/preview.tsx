@@ -71,7 +71,7 @@ export default function WorksPreview({
                         className="w-full aspect-289/226_ object-cover rounded-2xl shadow-2xl"
                         loading="eager"
                     />
-                    <article className="max-w-none mt-8 [&_img]:w-full">
+                    <article className="*:max-w-none [&_img]:w-full">
                         <MarkdownRenderer content={project.content} />
                     </article>
                 </div>

@@ -1,13 +1,22 @@
 import Footer from "@/layouts/footer";
 import Header from "@/layouts/header";
 import { getAllProjects } from "@/lib/projects";
+import Link from "next/link";
 
 import { toggleProjectPublished } from "./action";
-import AddProjectForm from "./form";
+import ProjectForm from "./form";
 import DeleteProjectButton from "./delete-button";
 
-export default function WorksEditor() {
+export default async function WorksEditor(props: {
+    searchParams: Promise<{ edit?: string | string[] }>;
+}) {
     const projects = getAllProjects({ includeDrafts: true });
+    const searchParams = await props.searchParams;
+    const editId =
+        typeof searchParams.edit === "string" ? searchParams.edit : undefined;
+    const selectedProject = editId
+        ? projects.find((project) => project.id === editId)
+        : undefined;
 
     return (
         <>
@@ -20,18 +29,29 @@ export default function WorksEditor() {
                     <div className="flex flex-col sm:flex-row gap-4 sm:justify-between w-full">
                         <span>
                             <h1 className="font-extrabold text-5xl sm:text-7xl lg:text-8xl">
-                                Project Import
+                                {selectedProject ? "Project Edit" : "Project Import"}
                             </h1>
                             <p className="font-medium text-lg sm:text-xl mt-2">
-                                Project card bilgisini frontmatter olarak kaydet. ✦
+                                {selectedProject
+                                    ? `${selectedProject.title} projesini düzenliyorsun. ✦`
+                                    : "Project card bilgisini frontmatter olarak kaydet. ✦"}
                             </p>
                             <p className="font-light text-lg sm:text-xl max-w-3xl mt-2">
-                                Notion export opsiyonel. Markdown içerik ileride
-                                Behance tarzı proje detay sayfasında kullanılacak.
+                                Notion export opsiyonel. Markdown içerik Behance
+                                tarzı proje detay sayfasında kullanılacak.
                             </p>
                         </span>
                     </div>
-                    <AddProjectForm />
+                    {editId && !selectedProject && (
+                        <p className="font-light text-lg md:text-xl rounded-2xl bg-dark py-3 px-4">
+                            Düzenlenecek proje bulunamadı. Yeni proje formu
+                            gösteriliyor.
+                        </p>
+                    )}
+                    <ProjectForm
+                        key={selectedProject?.id || "new-project"}
+                        project={selectedProject}
+                    />
                 </section>
 
                 <section className="bg-grey overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full gap-8">
@@ -102,6 +122,13 @@ export default function WorksEditor() {
                                     </span>
 
                                     <span className="flex flex-col sm:flex-row lg:flex-col gap-2 lg:items-end">
+                                        <Link
+                                            href={`/editor/works?edit=${project.id}`}
+                                            className="main-button w-full! sm:w-max!"
+                                        >
+                                            Düzenle
+                                        </Link>
+
                                         <form action={toggleProjectPublished}>
                                             <input
                                                 type="hidden"
