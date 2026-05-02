@@ -15,11 +15,10 @@ const editorSections = [
     {
         title: "Works",
         description:
-            "Projeleri, case study içeriklerini ve vitrin sıralamasını yönetmek için hazır alan.",
-        href: "#",
-        status: "Yakında",
-        action: "Planlandı",
-        disabled: true,
+            "Projeleri, case study içeriklerini ve vitrin yayın durumunu yönet.",
+        href: "/editor/works",
+        status: "Aktif",
+        action: "Works Yönet",
     },
     {
         title: "Content",
@@ -59,9 +58,9 @@ export default function EditorPage() {
                                 Site içeriklerini tek yerden yönet. ✦
                             </p>
                             <p className="font-light text-lg sm:text-xl max-w-3xl mt-2">
-                                Şimdilik blog aktif. Sonra works, ana sayfa
-                                içerikleri ve diğer küçük modüller buraya aynı
-                                düzenle eklenebilir.
+                                Blog ve works aktif. Sonra ana sayfa içerikleri
+                                ve diğer küçük modüller buraya aynı düzenle
+                                eklenebilir.
                             </p>
                         </span>
                     </div>
