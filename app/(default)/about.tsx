@@ -94,7 +94,7 @@ export default function AboutSection() {
                         }}
                         className="font-light text-lg md:text-xl"
                     >
-                        It has been about 4 years since I started design and
+                        It has been about 4+ years since I started design and
                         developing things, I am a self-taught Product Designer & Developer. In 2023 i started studying in an associate
                         degree program. I met very nice people in there, my
                         current goal is to switch to a bachelor program and get

@@ -43,7 +43,7 @@ export default function RootLayout({
                 />
                 <meta
                     name="description"
-                    content="I make dreams come true. Product Designer & Developer Emin Erçoban (Haume) creates creative and eye-catching web projects with modern technologies. 4 years of self-taught development experience."
+                    content="I make dreams come true. Product Designer & Developer Emin Erçoban (Haume) creates creative and eye-catching web projects with modern technologies. 4+ years of self-taught development experience."
                 />
                 <meta name="language" content="English" />
                 <meta name="author" content="Emin Erçoban" />
@@ -56,7 +56,7 @@ export default function RootLayout({
                 <meta property="og:url" content="haume.me" />
                 <meta
                     property="og:description"
-                    content="Product Designer & Developer creating creative and eye-catching projects with modern technologies. 4 years of self-taught development experience. I make dreams come true through code."
+                    content="Product Designer & Developer creating creative and eye-catching projects with modern technologies. 4+ years of self-taught development experience. I make dreams come true through code."
                 />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="/og.webp" />
@@ -73,7 +73,7 @@ export default function RootLayout({
                 />
                 <meta
                     name="twitter:description"
-                    content="Product Designer & Developer creating creative and eye-catching projects with modern technologies. 4 years of self-taught development experience."
+                    content="Product Designer & Developer creating creative and eye-catching projects with modern technologies. 4+ years of self-taught development experience."
                 />
                 <meta name="twitter:image" content="/og.webp" />
 
@@ -102,7 +102,7 @@ export default function RootLayout({
             "name": "Emin Erçoban",
             "alternateName": "Haume",
             "jobTitle": "Product Designer & Developer",
-            "description": "Self-taught Product Designer & Developer with 4 years of experience creating creative and eye-catching projects with modern technologies",
+            "description": "Self-taught Product Designer & Developer with 4+ years of experience creating creative and eye-catching projects with modern technologies",
             "url": "https://haume.me",
             "sameAs": [
               "https://github.com/eminercbn",
