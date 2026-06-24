@@ -1,6 +1,6 @@
 # 🌌 haume.me – Emin Erçoban’ın Kişisel Portföyü
 
-Merhaba! Ben **Emin Erçoban**, Türkiye'de yaşayan bir **Full-Stack Web Geliştirici** ve **Tasarımcıyım**. Bu depo, kişisel portföy sitem [haume.me](https://haume.me/)’nin kaynak kodlarını içermektedir. Modern teknolojilerle oluşturduğum bu site, hem teknik becerilerimi hem de yaratıcı projelerimi sergilemektedir.
+Merhaba! Ben **Emin Erçoban**, Türkiye'de yaşayan bir **Product Designer & Developer**. Bu depo, kişisel portföy sitem [haume.me](https://haume.me/)’nin kaynak kodlarını içermektedir. Modern teknolojilerle oluşturduğum bu site, hem teknik becerilerimi hem de yaratıcı projelerimi sergilemektedir.
 
 ## 🚀 Proje Hakkında
 

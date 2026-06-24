@@ -65,7 +65,7 @@ export default function Main() {
                                 Emin Erçoban
                             </h1>
                             <p className="font-extralight text-lg sm:text-[1.8rem] sm:leading-[1.2] md:leading-none md:text-[2.5rem]">
-                                Full-Stack Web Developer
+                                Product Designer & Developer
                             </p>
                         </div>
                     </motion.h1>

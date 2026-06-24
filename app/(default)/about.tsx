@@ -48,7 +48,7 @@ export default function AboutSection() {
                         className="font-light text-lg md:text-xl"
                     >
                         Hello, I'm Emin Erçoban a{" "}
-                        <strong>full stack web developer & designer</strong> in
+                        <strong>Product Designer & Developer</strong> in
                         Turkey/Antalya. My mission is to enhance projects,
                         applications with creative design and modern
                         technologies.
@@ -95,8 +95,7 @@ export default function AboutSection() {
                         className="font-light text-lg md:text-xl"
                     >
                         It has been about 4 years since I started design and
-                        developing things, I am a self-taught software
-                        developer. In 2023 i started studying in an associate
+                        developing things, I am a self-taught Product Designer & Developer. In 2023 i started studying in an associate
                         degree program. I met very nice people in there, my
                         current goal is to switch to a bachelor program and get
                         my license.
@@ -171,7 +170,7 @@ export default function AboutSection() {
                         Emin Erçoban
                     </h1>
                     <p className="font-light text-center text-xl md:text-2xl lg:text-3xl">
-                        Full-Stack Developer & Designer
+                        Product Designer & Developer
                     </p>
                     <ul className="grid grid-cols-2 grid-rows-2 sm:flex sm:flex-wrap items-center justify-center gap-2">
                         {socials.socials.map((social, i) => (

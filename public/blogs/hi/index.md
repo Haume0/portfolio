@@ -11,7 +11,7 @@ cover: "/blogs/hi/cover.jpg"
 <aside>
 <img src="/blogs/hi/assets/glorp-skin.jpg" alt="/blogs/hi/assets/glorp-skin.jpg" width="40px" />
 
-Hello, I'm Emin Erçoban a **full stack web developer & designer** in Turkey/Antalya. My mission is to enhance projects, applications with creative design and modern technologies.
+Hello, I'm Emin Erçoban a **Product Designer & Developer** in Turkey/Antalya. My mission is to enhance projects, applications with creative design and modern technologies.
 
 </aside>
 
@@ -21,7 +21,7 @@ I'm currently working as a freelancer alongside my best friend on platforms like
 
 # 💼 Experience
 
-### Full-Stack Developer
+### Product Designer & Developer
 
 - I’m using JavaScript/TypeScript, Go programming languages.
 - For front-end currently using Next/React but in the past i used Nuxt/Vue and Svelte.
