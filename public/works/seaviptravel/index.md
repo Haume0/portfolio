@@ -6,6 +6,7 @@ description: "A website offering VIP Transfer services. I was responsible for br
 linkName: "Visit Project"
 linkUrl: "https://seaviptravel.com"
 published: true
+object: "top-left"
 createdAt: "2026-04-25T13:00:00.000Z"
 updated: "2026-05-02T01:21:50.785Z"
 ---
@@ -16,5 +17,3 @@ updated: "2026-05-02T01:21:50.785Z"
 ![/works/seaviptravel/assets/mail.webp](/works/seaviptravel/assets/mail.webp)
 
 ![/works/seaviptravel/assets/ticket.webp](/works/seaviptravel/assets/ticket.webp)
-
-
