@@ -43,7 +43,7 @@ export default function RootLayout({
                 />
                 <meta
                     name="description"
-                    content="I make dreams come true. Product Designer & Developer Emin Erçoban (Haume) creates creative and eye-catching web projects with modern technologies. 4+ years of self-taught development experience."
+                    content="I create imaginative ideas. Product Designer & Developer Emin Erçoban (Haume) creates creative and eye-catching web projects with modern technologies. 4+ years of self-taught development experience."
                 />
                 <meta name="language" content="English" />
                 <meta name="author" content="Emin Erçoban" />
@@ -51,12 +51,12 @@ export default function RootLayout({
                 <meta name="robots" content="index, follow" />
                 <meta
                     property="og:title"
-                    content="Haume ▴ Emin Erçoban - I Make Dreams Come True"
+                    content="Haume ▴ Emin Erçoban - I Create Imaginative Ideas"
                 />
                 <meta property="og:url" content="haume.me" />
                 <meta
                     property="og:description"
-                    content="Product Designer & Developer creating creative and eye-catching projects with modern technologies. 4+ years of self-taught development experience. I make dreams come true through code."
+                    content="Product Designer & Developer creating creative and eye-catching projects with modern technologies. 4+ years of self-taught development experience. I create imaginative ideas through code."
                 />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="/og.webp" />
@@ -69,7 +69,7 @@ export default function RootLayout({
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta
                     name="twitter:title"
-                    content="Haume ▴ Emin Erçoban - I Make Dreams Come True"
+                    content="Haume ▴ Emin Erçoban - I Create Imaginative Ideas"
                 />
                 <meta
                     name="twitter:description"
@@ -131,10 +131,10 @@ export default function RootLayout({
                 <link rel="preload" href="/glowing-star.svg" as="image" />
                 <link rel="preload" href="/star.svg" as="image" />
                 <link rel="preload" href="/main.webp" as="image" />
-                <title>
-                    Haume ▴ Emin Erçoban - Product Designer & Developer | I Make
-                    Dreams Come True
-                </title>
+                    <title>
+                        Haume ▴ Emin Erçoban - Product Designer & Developer | I
+                        Create Imaginative Ideas
+                    </title>
             </head>
             <body
                 className={`${sora.variable} ${lato.variable} ${jbmono.variable} relative bg-body overflow-x-clip text-milk font-sora antialiased`}
