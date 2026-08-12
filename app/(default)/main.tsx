@@ -33,7 +33,7 @@ export default function Main() {
                             delay: 0.7,
                         }}
                     >
-                        I MAKE
+                        I CREATE
                     </motion.h1>
                     <motion.h1
                         className="font-lato font-black leading-[88%] text-7xl sm:text-[9rem] xl:text-[11.25rem] text-white"
@@ -46,7 +46,7 @@ export default function Main() {
                             delay: 0.8,
                         }}
                     >
-                        DREAMS COME
+                        IMAGINATIVE
                     </motion.h1>
                     <motion.h1
                         className="font-lato font-black flex flex-col items-start sm:items-center sm:flex-row w-full gap-2 leading-[88%] text-7xl sm:text-[9rem] 2xl:text-[11.25rem] text-white"
@@ -59,7 +59,7 @@ export default function Main() {
                             delay: 0.9,
                         }}
                     >
-                        TRUE
+                        IDEAS
                         <div className="px-6 py-2 h-max bg-white text-[var(--myname)]! mt-2 font-sora rounded-[1.25rem] flex flex-col">
                             <h1 className="font-bold text-4xl sm:text-[2.8rem] ease-smooth duration-500 sm:leading-[1.2] md:leading-none md:text-[4.5rem]">
                                 Emin Erçoban

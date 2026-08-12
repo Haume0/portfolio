@@ -32,6 +32,10 @@ const editorSections = [
 ];
 
 export default function EditorPage() {
+    if (process.env.NODE_ENV === "production") {
+        const { notFound } = require("next/navigation");
+        notFound();
+    }
     const blogs = getAllBlogs({ includeDrafts: true });
     const publishedBlogs = blogs.filter((blog) => blog.published).length;
     const draftBlogs = blogs.length - publishedBlogs;
