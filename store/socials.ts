@@ -1,8 +1,8 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
 interface ISocials {
   name: string;
-  url: string
+  url: string;
 }
 interface ISocialsStore {
   socials: ISocials[];
@@ -13,24 +13,24 @@ const useSocials = create<ISocialsStore>((_, get) => ({
   socials: [
     {
       name: "GitHub",
-      url: "https://github.com/haume0"
+      url: "https://github.com/haume0",
     },
     {
       name: "Behance",
-      url: "https://www.behance.net/haume"
+      url: "https://www.behance.net/haume",
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/eminercoban/"
+      url: "https://www.linkedin.com/in/eminercoban/",
     },
     {
       name: "Instagram",
-      url: "https://www.instagram.com/eminercbn/"
-    }
+      url: "https://www.instagram.com/eminercbn/",
+    },
   ],
   getSocial: (name: string): ISocials | undefined => {
-    return get().socials.find((social: ISocials) => social.name === name)
-  }
-}))
+    return get().socials.find((social: ISocials) => social.name === name);
+  },
+}));
 
-export default useSocials
+export default useSocials;

@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
@@ -13,7 +13,13 @@ interface MarkdownRendererProps {
 
 // Icon component for checkboxes and toggles
 const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <svg
+    aria-hidden="true"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
     <path
       d="M13 4L6 11L3 8"
       stroke="currentColor"
@@ -26,6 +32,7 @@ const CheckIcon = () => (
 
 const ArrowIcon = ({ open }: { open?: boolean }) => (
   <svg
+    aria-hidden="true"
     width="20"
     height="20"
     viewBox="0 0 24 24"
@@ -134,17 +141,17 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               {children}
             </small>
           ),
-          em: ({ children, ...props }: any) => (
+          em: ({ children, ...props }) => (
             <em className="text-milk/90 italic" {...props}>
               {children}
             </em>
           ),
-          strong: ({ children, ...props }: any) => (
+          strong: ({ children, ...props }) => (
             <strong className="text-milk font-bold" {...props}>
               {children}
             </strong>
           ),
-          del: ({ children, ...props }: any) => (
+          del: ({ children, ...props }) => (
             <del className="text-milk/60 line-through" {...props}>
               {children}
             </del>
@@ -174,7 +181,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
 
           // Inline code
-          code: ({ className, children, ...props }: any) => {
+          code: ({ className, children, ...props }) => {
             const isInline = !className;
             if (isInline) {
               return (
@@ -214,7 +221,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
 
           // Unordered lists
-          ul: ({ children, ...props }: any) => {
+          ul: ({ children, ...props }) => {
             const isTaskList = props.className?.includes("contains-task-list");
 
             return (
@@ -338,7 +345,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
 
           // Checkboxes
-          input: ({ type, checked, ...props }: any) => {
+          input: ({ type, checked, ...props }) => {
             if (type === "checkbox") {
               return (
                 <div
@@ -419,7 +426,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           aside: ({ children, ...props }: any) => {
             const childArray = Array.isArray(children) ? children : [children];
             let icon: ReactNode = null;
-            let content: ReactNode[] = [...childArray];
+            const content: ReactNode[] = [...childArray];
 
             const iconIndex = content.findIndex((child) => {
               if (

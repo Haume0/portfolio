@@ -15,7 +15,6 @@ const isSafari =
 
 export default function ImageTrace(props: { image: string; title: string }) {
   const [isParentHovered, setIsParentHovered] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const eheRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +34,6 @@ export default function ImageTrace(props: { image: string; title: string }) {
   useEffect(() => {
     const preloadImage = (src: string) => {
       const img = new Image();
-      img.onload = () => setImageLoaded(true);
       img.src = src;
     };
 

@@ -1,8 +1,9 @@
 "use client";
-import React, {
+import type React from "react";
+import {
   useRef,
   useState,
-  ReactNode,
+  type ReactNode,
   cloneElement,
   isValidElement,
 } from "react";

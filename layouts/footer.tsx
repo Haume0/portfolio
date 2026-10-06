@@ -2,7 +2,7 @@
 import useSocials from "@/store/socials";
 import { useInView, motion } from "motion/react";
 import Link from "next/link";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 export default function Footer() {
   // Footer ref
@@ -39,6 +39,7 @@ export default function Footer() {
               href="https://cubidron.com"
               target="_blank"
               className="hover:underline font-normal hover:text-main"
+              rel="noopener"
             >
               Cubidron
             </a>
@@ -131,6 +132,7 @@ export default function Footer() {
               target="_blank"
               href={social.url}
               className="font-extralight text-base hover:underline hover:text-main"
+              rel="noopener"
             >
               {social.name}
             </a>

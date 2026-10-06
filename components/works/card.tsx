@@ -21,11 +21,12 @@ export default function WorkCard(props: {
         <img
           src={props.image}
           className={`absolute inset-0 object-cover size-full -z-10
-            ${props.object == "top-left" ? "object-top-left" : "object-center"}
+            ${props.object === "top-left" ? "object-top-left" : "object-center"}
             `}
           alt={props.title}
         />
         <button
+          type="button"
           onClick={props.onInspect}
           aria-label={props.link.name}
           className="flex justify-end group/ext size-max ml-auto gap-2 cursor-pointer"

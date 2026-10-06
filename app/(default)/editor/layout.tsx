@@ -1,11 +1,11 @@
 export default function Layout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    if (process.env.NODE_ENV === "production") {
-        const { notFound } = require("next/navigation");
-        notFound();
-    }
-    return <>{children}</>;
+  if (process.env.NODE_ENV === "production") {
+    const { notFound } = require("next/navigation");
+    notFound();
+  }
+  return <>{children}</>;
 }
