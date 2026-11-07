@@ -1,8 +1,8 @@
 ---
 id: "fedefood"
 image: "/works/fedefood/image.webp"
-title: "fedefood.com"
-description: "Web design and development project for FedeFood."
+title: "FedeFood Website"
+description: "Web design & development for FedeFood's product and brand catalog."
 object: "top-left"
 linkName: "Visit Project"
 linkUrl: "https://www.fedefood.com"

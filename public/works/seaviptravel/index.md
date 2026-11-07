@@ -2,7 +2,7 @@
 id: "seaviptravel"
 image: "/works/seaviptravel/image.webp"
 title: "Sea VIP Travel"
-description: "A website offering VIP Transfer services. I was responsible for brand design, UI/UX design, and development of the website."
+description: "Brand identity, UI/UX design and development for a VIP transfer service."
 linkName: "Visit Project"
 linkUrl: "https://seaviptravel.com"
 published: true

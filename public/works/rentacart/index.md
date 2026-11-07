@@ -1,8 +1,8 @@
 ---
 id: "rentacart"
 image: "/works/rentacart/image.webp"
-title: "Rent A Cart Web Design"
-description: "A humorous car (grocery cart) rental site. It was a school project, so I came up with such a fun work."
+title: "Rent A Cart"
+description: "A playful grocery-cart rental website, designed as a school project."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/215917075/Rent-A-Cart"
 published: true

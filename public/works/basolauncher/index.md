@@ -2,7 +2,7 @@
 id: "basolauncher"
 image: "/works/basolauncher/image.webp"
 title: "Baso Launcher"
-description: "Premium Minecraft Launcher for Baso Network."
+description: "Minecraft launcher UI design for Baso Network."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/194630849/Baso-Minecraft-Launcher"
 published: true

@@ -2,7 +2,7 @@
 id: "bilentropy"
 image: "/works/bilentropy/image.png"
 title: "Bilentropy Magazine"
-description: "A fictional popular science magazine, this is a school project but I think it's cool and I had a lot of fun."
+description: "Editorial design for a fictional popular science magazine, a school project."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/213763703/Bilentropy-Popueler-Bilim-Dergisi"
 published: true

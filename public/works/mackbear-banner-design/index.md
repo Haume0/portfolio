@@ -1,8 +1,8 @@
 ---
 id: "mackbear-banner-design"
 image: "/works/mackbear-banner-design/image.webp"
-title: "Mackbear Coffee Advertisement"
-description: "Advertisement banner for Mackbear Coffee Co."
+title: "Mackbear Coffee Ad"
+description: "Advertising banner design for Mackbear Coffee Co., a school project."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/184409237/Mackbear-Banner-Design"
 published: true

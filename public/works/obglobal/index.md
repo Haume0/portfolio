@@ -1,8 +1,8 @@
 ---
 id: "obglobal"
 image: "/works/obglobal/image.png"
-title: "Obglobal Website"
-description: "A rent a car website. That i developt for a client. (not my design only code)"
+title: "OB Car Service"
+description: "Developed a rent-a-car website from a client's design."
 linkName: "Visit Project"
 linkUrl: "https://obcarservice.com/"
 published: true

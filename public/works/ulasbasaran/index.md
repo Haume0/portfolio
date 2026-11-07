@@ -1,8 +1,8 @@
 ---
 id: "ulasbasaran"
 image: "/works/ulasbasaran/image.webp"
-title: "Ulasbasaran.com"
-description: "A brand identity and web design for Ulaş \"Baso\" Başaran"
+title: "Ulaş Başaran"
+description: "Personal brand identity and website for Ulaş \"Baso\" Başaran."
 object: "top-left"
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/238240259/Ulasbasarancom"

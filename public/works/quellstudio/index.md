@@ -1,8 +1,8 @@
 ---
 id: "quellstudio"
 image: "/works/quellstudio/image.webp"
-title: "Quell Studio"
-description: "The website I built for CharmQuell's game studio."
+title: "Quell Studios Website"
+description: "Website development for CharmQuell's game studio."
 object: "top-left"
 linkName: "Visit Project"
 linkUrl: "https://quellstudios.com/"

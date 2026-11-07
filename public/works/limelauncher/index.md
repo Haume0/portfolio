@@ -2,7 +2,7 @@
 id: "limelauncher"
 image: "/works/limelauncher/image.webp"
 title: "CraftLime Launcher"
-description: "Premium Minecraft Launcher for CraftLime Minecraft Server."
+description: "Minecraft launcher UI design for the CraftLime server."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/215921483/CraftLime-Launcher"
 published: true

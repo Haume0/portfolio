@@ -1,8 +1,8 @@
 ---
 id: "oyunlayici"
 image: "/works/oyunlayici/image.webp"
-title: "Oyunlayıcı Website"
-description: "A Re-Design of Oyunlayici Hosting's Website."
+title: "Oyunlayıcı Redesign"
+description: "Website redesign for Oyunlayıcı, a game server hosting provider."
 object: "top-left"
 linkName: "Visit Project"
 linkUrl: "https://oyunlayici.com/"

@@ -1,8 +1,8 @@
 ---
 id: "paperlauncher"
 image: "/works/paperlauncher/image.webp"
-title: "Papyrus Launcher Theme"
-description: "Premium Minecraft Launcher Theme"
+title: "Papyrus Launcher"
+description: "Minecraft launcher UI design inspired by a game my friend was playing."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/195096833/Papyrus-Launcher-Theme"
 published: true

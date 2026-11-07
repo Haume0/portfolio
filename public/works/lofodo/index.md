@@ -2,7 +2,7 @@
 id: "lofodo"
 image: "/works/lofodo/image.webp"
 title: "LOFODO"
-description: "Customizable Pomodoro Timer that i built for learning project."
+description: "A customizable Pomodoro timer I built as a learning project."
 linkName: "Visit Project"
 linkUrl: "https://lofodo.haume.me"
 published: true

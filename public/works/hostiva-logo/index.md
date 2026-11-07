@@ -2,7 +2,7 @@
 id: "hostiva-logo"
 image: "/works/hostiva-logo/image.png"
 title: "Hostiva Branding"
-description: "Hostiva is a hosting and server infrastructure brand. It provides hosting and server solutions designed to keep digital projects running smoothly Daha Fazla Bilgi"
+description: "Logo and brand identity for a hosting and server infrastructure brand."
 object: "top-left"
 linkName: "Explore"
 linkUrl: "https://www.behance.net/gallery/254954981/Hostiva-Branding"

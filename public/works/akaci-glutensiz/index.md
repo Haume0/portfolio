@@ -1,8 +1,8 @@
 ---
 id: "akaci-glutensiz"
 image: "/works/akaci-glutensiz/image.png"
-title: "Akaçi Glutensiz ✦ akaci.tr"
-description: "Akaçi is a online store for gluten-free products."
+title: "Akaçi Glutensiz"
+description: "Web design & development for a gluten-free online store."
 linkName: "Visit"
 linkUrl: "https://akaci.tr"
 published: true

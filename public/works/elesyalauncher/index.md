@@ -1,8 +1,8 @@
 ---
 id: "elesyalauncher"
 image: "/works/elesyalauncher/image.webp"
-title: "Papyrus Launcher Theme"
-description: "Premium Minecraft Launcher Theme"
+title: "Elsya Launcher"
+description: "An older Minecraft launcher UI design, added because a friend liked it so much."
 linkName: "Look"
 linkUrl: "https://www.behance.net/gallery/194632301/Elsya-Minecraft-Launcher"
 published: true

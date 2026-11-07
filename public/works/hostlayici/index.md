@@ -1,8 +1,8 @@
 ---
 id: "hostlayici"
 image: "/works/hostlayici/image.webp"
-title: "hostlayici.com"
-description: "Website re-design for Hostlayici Hosting Platform."
+title: "Hostlayıcı Redesign"
+description: "Website redesign for the Hostlayıcı hosting platform."
 object: "top-left"
 linkName: "Visit Project"
 linkUrl: "https://hostlayici.com"

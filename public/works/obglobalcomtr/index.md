@@ -1,8 +1,8 @@
 ---
 id: "obglobalcomtr"
 image: "/works/obglobalcomtr/image.webp"
-title: "Obglobal.com.tr"
-description: "Corporate web design and development for OBGlobal."
+title: "OB Global Website"
+description: "Corporate web design & development for OB Global."
 object: "top-left"
 linkName: "Visit Project"
 linkUrl: "https://obglobal.com.tr"
