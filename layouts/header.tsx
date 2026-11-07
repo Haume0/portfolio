@@ -194,7 +194,7 @@ export default function Header(props: { hideStar?: boolean }) {
             <Link href="/blog" className="main-button">
               Blog
             </Link>
-            <Link href="/#works" className="main-button">
+            <Link href="/works" className="main-button">
               Work
             </Link>
             <Link href="/#about" className="main-button">

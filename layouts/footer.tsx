@@ -98,7 +98,7 @@ export default function Footer() {
             Blog
           </Link>
           <Link
-            href="/#works"
+            href="/works"
             className="font-extralight text-base hover:underline hover:text-main"
           >
             Work
