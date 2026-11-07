@@ -11,8 +11,6 @@ createdAt: "2026-11-07T19:49:01.764Z"
 updated: "2026-11-07T19:49:01.764Z"
 ---
 
-# Akaci.tr
-
 ![AKAÇİ _ Glutensiz, %100 Doğal.jpg](/works/akaci-glutensiz/assets/aka-glutensiz-100-doal.jpg)
 
 ![Tüm ürünler _ AKAÇİ.png](/works/akaci-glutensiz/assets/tm-rnler-aka.png)
