@@ -13,8 +13,8 @@ updated: "2026-11-07T19:49:01.764Z"
 
 # Akaci.tr
 
-![AKAÇİ _ Glutensiz, %100 Doğal.jpg](Akaci%20tr//works/akaci-glutensiz/assets/aka-glutensiz-100-doal.jpg)
+![AKAÇİ _ Glutensiz, %100 Doğal.jpg](/works/akaci-glutensiz/assets/aka-glutensiz-100-doal.jpg)
 
-![Tüm ürünler _ AKAÇİ.png](Akaci%20tr//works/akaci-glutensiz/assets/tm-rnler-aka.png)
+![Tüm ürünler _ AKAÇİ.png](/works/akaci-glutensiz/assets/tm-rnler-aka.png)
 
-![Cheese Burger _ AKAÇİ.png](Akaci%20tr//works/akaci-glutensiz/assets/cheese-burger-aka.png)
+![Cheese Burger _ AKAÇİ.png](/works/akaci-glutensiz/assets/cheese-burger-aka.png)
