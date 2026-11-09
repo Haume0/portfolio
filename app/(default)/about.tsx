@@ -45,12 +45,13 @@ export default function AboutSection() {
               stiffness: 100,
               delay: 0.4,
             }}
-            className="font-light text-lg md:text-xl"
+            className="font-light text-lg md:text-xl [&_strong]:font-semibold"
           >
-            Hello, I'm Emin Erçoban a{" "}
-            <strong>Product Designer & Developer</strong> in Turkey/Antalya. My
-            mission is to enhance projects, applications with creative design
-            and modern technologies.
+            Hello, I'm Emin Erçoban, a{" "}
+            <strong>self-taught Product Designer & Developer</strong> based in
+            Antalya, Türkiye. I started learning design and code on my own{" "}
+            <strong>over 5 years ago</strong> and have been building products
+            for real clients ever since.
           </motion.p>
           <motion.p
             initial={{
@@ -64,17 +65,15 @@ export default function AboutSection() {
               stiffness: 100,
               delay: 0.6,
             }}
-            className="font-light text-lg md:text-xl"
+            className="font-light text-lg md:text-xl [&_strong]:font-semibold"
           >
-            I'm currently working as a freelancer alongside my best friend on
-            platforms like Fiverr and Bionluk, where we deliver{" "}
-            <strong>
-              websites, web applications, desktop and mobile applications
-            </strong>
-            . I also experianced in{" "}
-            <strong>
-              UI/UX design, graphic design, and brand identity development.
-            </strong>
+            Because I work as a freelancer, I take part in{" "}
+            <strong>every stage of product development</strong>,{" "}
+            <strong>from design to code, and from code to launch</strong>. This
+            gave me experience in{" "}
+            <strong>brand identity, UI, frontend and backend</strong>. I design
+            and build websites, e-commerce stores, web applications, desktop and
+            mobile applications.
           </motion.p>
           <motion.p
             initial={{
@@ -88,13 +87,26 @@ export default function AboutSection() {
               stiffness: 100,
               delay: 0.8,
             }}
+            className="font-light text-lg md:text-xl [&_strong]:font-semibold"
+          >
+            I also have an <strong>associate degree</strong> in this field. It
+            strengthened my fundamentals, and I met great people there.
+          </motion.p>
+          <motion.p
+            initial={{
+              y: "-40%",
+              opacity: 0,
+            }}
+            animate={aboutInView ? { y: "0%", opacity: 1 } : {}}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+              delay: 1,
+            }}
             className="font-light text-lg md:text-xl"
           >
-            It has been about 4+ years since I started design and developing
-            things, I am a self-taught Product Designer & Developer. In 2023 i
-            started studying in an associate degree program. I met very nice
-            people in there, my current goal is to switch to a bachelor program
-            and get my license.
+            Have a project idea or a job opportunity? Feel free to reach out.
           </motion.p>
           <ul className="flex flex-wrap">
             {techs.tags.map((tag, i) => (
@@ -134,7 +146,7 @@ export default function AboutSection() {
               href="/cv.pdf"
               className="font-light flex gap-2 items-center text-lg md:text-xl rounded-xl bg-dark ease-gentle duration-300 hover:bg-white hover:text-black size-max py-1.5 px-3"
             >
-              Check my CV. 👀
+              👀 My CV
             </a>
           </motion.span>
         </div>
