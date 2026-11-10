@@ -1,26 +1,28 @@
 "use client";
-import { useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { AnimatePresence, useInView } from "motion/react";
+import { useRef } from "react";
 import * as motion from "motion/react-client";
 import Link from "next/link";
 import { useContact } from "@/components/contact";
 import DragWrapper from "@/components/drag-component";
 import WorkCard from "@/components/works/card";
 import type { IProject } from "@/lib/projects";
-import WorksPreview from "@/components/works/preview";
+import WorksPreview, { useInspectedProject } from "@/components/works/preview";
 
 export default function WorksSection(props: { projects: IProject[] }) {
   const contact = useContact();
 
-  const [inspect, setInspect] = useState<IProject>();
+  const { inspect, open, close } = useInspectedProject(props.projects);
 
   const sectionRef1 = useRef(null);
   const sectionInView1 = useInView(sectionRef1, { once: true });
   return (
     <div className="p-4 sm:p-6 md:p-8 pt-0!">
-      {inspect && (
-        <WorksPreview onClose={() => setInspect(undefined)} project={inspect} />
-      )}
+      <AnimatePresence>
+        {inspect && (
+          <WorksPreview key={inspect.id} onClose={close} project={inspect} />
+        )}
+      </AnimatePresence>
       <section className="bg-works overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full">
         <span ref={sectionRef1}></span>
         <div className="flex flex-col sm:flex-row gap-2 sm:justify-between w-full">
@@ -173,9 +175,7 @@ export default function WorksSection(props: { projects: IProject[] }) {
                 key={idx}
               >
                 <WorkCard
-                  onInspect={() => {
-                    setInspect(project);
-                  }}
+                  onInspect={() => open(project)}
                   object={project.object}
                   id={project.id}
                   image={project.image}
