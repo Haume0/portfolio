@@ -10,7 +10,7 @@ import {
 } from "motion/react";
 import { useRef, useState } from "react";
 import ImageTrace from "@/components/imagetrace";
-import WorksPreview, { useInspectedProject } from "@/components/works/preview";
+import WorksPreview, { useInspect } from "@/components/works/preview";
 import type { IProject } from "@/lib/projects";
 import useSocials from "@/store/socials";
 
@@ -19,7 +19,7 @@ const spring = { type: "spring", damping: 25, stiffness: 100 } as const;
 export default function WorksIndex({ projects }: { projects: IProject[] }) {
   const socials = useSocials();
   const [view, setView] = useState<"grid" | "index">("grid");
-  const { inspect, open, close } = useInspectedProject(projects);
+  const [inspect, setInspect] = useInspect(projects);
 
   return (
     // overflow-x-clip: index modunda ImageTrace imleçle sağ kenara gelince yatay scroll açmasın;
@@ -27,7 +27,7 @@ export default function WorksIndex({ projects }: { projects: IProject[] }) {
     <section className="bg-works p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl overflow-x-clip">
       <AnimatePresence>
         {inspect && (
-          <WorksPreview key={inspect.id} onClose={close} project={inspect} />
+          <WorksPreview key={inspect.id} onClose={() => setInspect()} project={inspect} />
         )}
       </AnimatePresence>
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
@@ -94,7 +94,7 @@ export default function WorksIndex({ projects }: { projects: IProject[] }) {
 
       <AnimatePresence mode="wait">
         {view === "grid" ? (
-          <WorksGrid key="grid" projects={projects} onInspect={open} />
+          <WorksGrid key="grid" projects={projects} onInspect={setInspect} />
         ) : (
           <motion.ul
             key="index"
@@ -113,7 +113,7 @@ export default function WorksIndex({ projects }: { projects: IProject[] }) {
               >
                 <button
                   type="button"
-                  onClick={() => open(project)}
+                  onClick={() => setInspect(project)}
                   className="group w-full flex items-center gap-4 sm:gap-8 p-4 sm:px-6 rounded-2xl bg-body text-left cursor-pointer ease-smooth duration-500 hover:bg-milk hover:text-dark focus-visible:bg-milk focus-visible:text-dark outline-none"
                 >
                   <span className="font-mono text-sm sm:text-base opacity-50 shrink-0">

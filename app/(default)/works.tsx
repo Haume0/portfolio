@@ -7,12 +7,12 @@ import { useContact } from "@/components/contact";
 import DragWrapper from "@/components/drag-component";
 import WorkCard from "@/components/works/card";
 import type { IProject } from "@/lib/projects";
-import WorksPreview, { useInspectedProject } from "@/components/works/preview";
+import WorksPreview, { useInspect } from "@/components/works/preview";
 
 export default function WorksSection(props: { projects: IProject[] }) {
   const contact = useContact();
 
-  const { inspect, open, close } = useInspectedProject(props.projects);
+  const [inspect, setInspect] = useInspect(props.projects);
 
   const sectionRef1 = useRef(null);
   const sectionInView1 = useInView(sectionRef1, { once: true });
@@ -20,7 +20,7 @@ export default function WorksSection(props: { projects: IProject[] }) {
     <div className="p-4 sm:p-6 md:p-8 pt-0!">
       <AnimatePresence>
         {inspect && (
-          <WorksPreview key={inspect.id} onClose={close} project={inspect} />
+          <WorksPreview key={inspect.id} onClose={() => setInspect()} project={inspect} />
         )}
       </AnimatePresence>
       <section className="bg-works overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full">
@@ -175,7 +175,7 @@ export default function WorksSection(props: { projects: IProject[] }) {
                 key={idx}
               >
                 <WorkCard
-                  onInspect={() => open(project)}
+                  onInspect={() => setInspect(project)}
                   object={project.object}
                   id={project.id}
                   image={project.image}
