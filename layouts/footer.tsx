@@ -32,7 +32,10 @@ export default function Footer() {
         >
           <img src="/haume.svg" className=" h-14" alt="" />
           <p className="text-xl">Product Designer & Developer.</p>
-          <p className="font-thin text-white/40">© 2024-2025 ✦ Emin Erçoban</p>
+          {/* Statik build'deki yıl ile tarayıcıdaki yıl farklı olabilir; yıl dönümünde hydration uyarısını bastırır. */}
+          <p className="font-thin text-white/40" suppressHydrationWarning>
+            © 2024-{new Date().getFullYear()} ✦ Emin Erçoban
+          </p>
           <p className="font-thin text-white/40 mt-1">
             Co-Founder of{" "}
             <a

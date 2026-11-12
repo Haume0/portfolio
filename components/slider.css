@@ -1,3 +1,15 @@
+/* Neden: arka plan rengine bağlı overlay yerine mask kullanılıyor; fade sadece
+   slider'ın kendi kutusunda kalır ve hangi section içinde olursa olsun çalışır. */
+.scroller {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
 .scroller_inner {
   animation: scroll var(--t) linear infinite;
 }
