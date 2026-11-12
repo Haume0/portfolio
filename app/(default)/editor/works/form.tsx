@@ -1,11 +1,18 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import type { IProject } from "@/lib/projects";
 
 import { addProject, updateProject } from "./action";
+
+// BlockNote DOM'a ihtiyaç duyuyor, sunucuda render edilemez.
+const NotionEditor = dynamic(() => import("@/components/notion-editor"), {
+  ssr: false,
+  loading: () => <div className="min-h-80 rounded-xl bg-body" />,
+});
 
 export default function ProjectForm(props: { project?: IProject }) {
   const [imageName, setImageName] = useState<string | null>(null);
@@ -14,6 +21,13 @@ export default function ProjectForm(props: { project?: IProject }) {
     props.project ? updateProject : addProject,
     null,
   );
+
+  useEffect(() => {
+    // Yeni proje kaydedilince form ve editör sıfırlansın; aksi halde editör
+    // assets'e taşınmış temp görsellerin linklerini tutup sonraki kayda taşıyor.
+    if (!props.project && state) window.location.reload();
+  }, [props.project, state]);
+
   const project = props.project;
 
   return (
@@ -86,7 +100,7 @@ export default function ProjectForm(props: { project?: IProject }) {
         className="text-field"
       />
 
-      <label className="group cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300">
+      <label className="group relative cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300">
         <span className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <span>
             <h2 className="font-extrabold text-3xl sm:text-5xl">Card Image</h2>
@@ -103,9 +117,10 @@ export default function ProjectForm(props: { project?: IProject }) {
         <span className="font-light text-base md:text-lg rounded-2xl bg-dark py-2 px-4 text-white/70">
           {imageName || (project ? project.image : "Henüz görsel seçilmedi")}
         </span>
+        {/* Input kutuyu kaplar; label'a bırakılan dosya input'a ulaşmadığı için sürükle-bırak ancak böyle çalışır. */}
         <input
           type="file"
-          className="sr-only"
+          className="absolute inset-0 size-full cursor-pointer opacity-0"
           name="image"
           accept="image/*"
           required={!project}
@@ -115,7 +130,7 @@ export default function ProjectForm(props: { project?: IProject }) {
         />
       </label>
 
-      <label className="group cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300">
+      <label className="group relative cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300">
         <span className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <span>
             <h2 className="font-extrabold text-3xl sm:text-5xl">Notion Zip</h2>
@@ -134,7 +149,7 @@ export default function ProjectForm(props: { project?: IProject }) {
         </span>
         <input
           type="file"
-          className="sr-only"
+          className="absolute inset-0 size-full cursor-pointer opacity-0"
           name="notion"
           accept=".zip"
           onChange={(event) => {
@@ -143,22 +158,21 @@ export default function ProjectForm(props: { project?: IProject }) {
         />
       </label>
 
-      <label className="md:col-span-2 flex flex-col gap-3">
+      <div className="md:col-span-2 flex flex-col gap-3">
         <span>
-          <h2 className="font-extrabold text-3xl sm:text-5xl">
-            Markdown Content
-          </h2>
+          <h2 className="font-extrabold text-3xl sm:text-5xl">Content</h2>
           <p className="font-light text-lg md:text-xl text-white/60">
             Zip seçersen bu alan zip içindeki markdown ile ezilir.
           </p>
         </span>
-        <textarea
+        {/* Kayıttan sonra editör kalıcı asset linkleriyle yeniden kurulur; aksi
+            halde taşınmış temp görsellerin linkleri bir sonraki kayıtta kırılır. */}
+        <NotionEditor
+          key={project?.updated ?? "new-project"}
           name="content"
-          defaultValue={project?.content}
-          placeholder="Proje detay markdown içeriği"
-          className="text-field min-h-80 resize-y"
+          defaultValue={project?.content ?? ""}
         />
-      </label>
+      </div>
 
       <label className="font-light text-lg md:text-xl rounded-2xl bg-body py-3 px-4 flex gap-3 items-center md:col-span-2">
         <input

@@ -6,7 +6,7 @@ const editorSections = [
   {
     title: "Blog",
     description:
-      "Notion export dosyalarını içeri al, yazıları yayına al veya taslakta tut.",
+      "Yazıları editörde yaz, Notion export içeri al, yayına al veya taslakta tut.",
     href: "/editor/blog",
     status: "Aktif",
     action: "Blog Yönet",

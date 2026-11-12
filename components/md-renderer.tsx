@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import ReactMarkdown from "react-markdown";
+import { emojiOnlyPattern } from "@/lib/emoji";
 interface MarkdownRendererProps {
   content: string;
 }
@@ -439,9 +440,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               if (typeof child === "string") {
                 const trimmed = child.trim();
                 if (trimmed === "") return false;
-                const emojiRegex =
-                  /^(\p{Emoji_Presentation}|\p{Emoji_Modifier_Base}|\p{Extended_Pictographic}|\p{Emoji_Component}|\uFE0F|\u200D)+$/u;
-                return emojiRegex.test(trimmed);
+                return emojiOnlyPattern.test(trimmed);
               }
               return false;
             });

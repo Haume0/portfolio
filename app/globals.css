@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* BlockNote'un shadcn arayüzü hazır CSS değil Tailwind sınıflarıyla geliyor. */
+@source "../node_modules/@blocknote/shadcn";
 
 @custom-variant hover (&:hover);
 
@@ -19,6 +21,31 @@
   --ease-spring: cubic-bezier(0.5, 1.25, 0.75, 1.25);
   --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
   --ease-gentle: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* BlockNote shadcn arayüzünün beklediği renkler. "inline" ile sınıflar
+   doğrudan --editor-* değişkenini kullanır ve bu değişkenler yalnızca
+   .notion-editor içinde tanımlı; böylece sitedeki text-primary gibi sınıflar
+   editör dışında renk almaz, eskisi gibi miras rengini kullanır. */
+@theme inline {
+  --color-background: var(--editor-background);
+  --color-foreground: var(--editor-foreground);
+  --color-card: var(--editor-card);
+  --color-card-foreground: var(--editor-foreground);
+  --color-popover: var(--editor-card);
+  --color-popover-foreground: var(--editor-foreground);
+  --color-primary: var(--editor-primary);
+  --color-primary-foreground: var(--editor-primary-foreground);
+  --color-secondary: var(--editor-muted);
+  --color-secondary-foreground: var(--editor-foreground);
+  --color-muted: var(--editor-muted);
+  --color-muted-foreground: var(--editor-muted-foreground);
+  --color-accent: var(--editor-muted);
+  --color-accent-foreground: var(--editor-primary-foreground);
+  --color-destructive: var(--editor-destructive);
+  --color-border: var(--editor-border);
+  --color-input: var(--editor-border);
+  --color-ring: var(--editor-primary);
 }
 html {
   font-size: clamp(14px, 0.7vw + 2px, 20px);
@@ -56,4 +83,39 @@ body {
 
 img {
   -webkit-user-drag: none;
+}
+
+/* Editör yüzeyi form kutusuyla aynı görünsün. shadcn CSS'i globals'ten sonra
+   yüklendiği için seçici .notion-editor ile güçlendirildi. */
+.notion-editor {
+  --editor-background: var(--color-body);
+  --editor-foreground: var(--color-milk);
+  --editor-card: var(--color-dark);
+  --editor-primary: var(--color-works);
+  --editor-primary-foreground: #ffffff;
+  --editor-muted: var(--color-grey);
+  --editor-muted-foreground: #9a96a8;
+  --editor-destructive: #e5484d;
+  --editor-border: #33363c;
+}
+.notion-editor .bn-root[data-color-scheme="dark"] {
+  --bn-colors-editor-text: var(--color-milk);
+  --bn-colors-editor-background: transparent;
+  --bn-colors-menu-text: var(--color-milk);
+  --bn-colors-menu-background: var(--color-dark);
+  --bn-colors-hovered-background: var(--color-grey);
+  --bn-colors-selected-background: var(--color-works);
+  --bn-colors-border: var(--color-grey);
+  --bn-font-family: inherit;
+}
+/* Yazılabilir alan tüm kutuyu kaplasın; aksi halde boş editörde yalnızca ilk
+   satır tıklanabiliyor ve görsel bırakılabiliyor. */
+.notion-editor .bn-editor {
+  min-height: 20rem;
+  padding-block: 1.5rem;
+}
+/* Görsel genişliği markdown'a yazılmıyor ve site görselleri kendi kuralıyla
+   boyutlandırıyor; editördeki boyutlandırma kayıtta kaybolacağı için gizli. */
+.notion-editor .bn-resize-handle {
+  display: none;
 }

@@ -3,7 +3,7 @@ import Header from "@/layouts/header";
 import { getAllBlogs } from "@/lib/blogs";
 import Link from "next/link";
 import AddBlogForm from "./form";
-import { toggleBlogPublished } from "./action";
+import { createBlog, toggleBlogPublished } from "./action";
 import DeleteBlogButton from "./delete-button";
 
 export default function Blogs() {
@@ -33,6 +33,20 @@ export default function Blogs() {
               </p>
             </span>
           </div>
+          <form
+            action={createBlog}
+            className="bg-dark rounded-4xl p-4 sm:p-6 flex flex-col gap-4 sm:flex-row"
+          >
+            <input
+              name="title"
+              required
+              placeholder="Yeni yazının başlığı"
+              className="text-field"
+            />
+            <button type="submit" className="main-button w-full! sm:w-max! shrink-0">
+              Yeni Yazı
+            </button>
+          </form>
           <AddBlogForm />
         </section>
 
@@ -104,6 +118,13 @@ export default function Blogs() {
                   </span>
 
                   <span className="flex flex-col sm:flex-row lg:flex-col gap-2 lg:items-end">
+                    <Link
+                      href={`/editor/blog/${blog.slug}`}
+                      className="main-button w-full! sm:w-max!"
+                    >
+                      Düzenle
+                    </Link>
+
                     <form action={toggleBlogPublished}>
                       <input type="hidden" name="slug" value={blog.slug} />
                       <input

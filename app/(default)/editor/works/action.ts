@@ -7,6 +7,8 @@ import { revalidatePath } from "next/cache";
 import AdmZip from "adm-zip";
 import matter from "gray-matter";
 
+import { commitTempAssets } from "@/lib/editor-assets";
+
 const worksDirectory = path.join(process.cwd(), "public", "works");
 
 type FileData = {
@@ -132,7 +134,8 @@ function getString(formdata: FormData, key: string, fallback = "") {
 
 function getText(formdata: FormData, key: string) {
   const value = formdata.get(key);
-  return typeof value === "string" ? value : "";
+  // Tarayıcı form metnini \r\n ile gönderir; md dosyaları \n ile kalsın.
+  return typeof value === "string" ? value.replace(/\r\n?/g, "\n") : "";
 }
 
 function assertSafeId(value: FormDataEntryValue | null) {
@@ -250,6 +253,13 @@ export async function addProject(_prev: string | null, formdata: FormData) {
       content = replaceAssetReferences(content, embed.name, publicPath);
     }
 
+    content = await commitTempAssets(
+      content,
+      formdata.get("uploadSession"),
+      assetsDirectory,
+      `/works/${id}/assets`,
+    );
+
     const now = new Date().toISOString();
     const frontmatter = serializeFrontmatter({
       id,
@@ -329,12 +339,22 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
         ".webp";
       const imageName = `image${imageExtension}`;
 
-      imagePath = `/works/${id}/${imageName}`;
-
       await fs.writeFile(
         path.join(projectDirectory, imageName),
         Buffer.from(await imageFile.arrayBuffer()),
       );
+
+      // Uzantı değişince (image.webp → image.png) eski kart görseli kalıyordu.
+      if (
+        imagePath.startsWith(`/works/${id}/`) &&
+        path.basename(imagePath) !== imageName
+      ) {
+        await fs.rm(path.join(projectDirectory, path.basename(imagePath)), {
+          force: true,
+        });
+      }
+
+      imagePath = `/works/${id}/${imageName}`;
     }
 
     const projectData: ProjectImportData = {
@@ -365,6 +385,12 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
     }
 
     content = content.split(`/works/${originalId}/`).join(`/works/${id}/`);
+    content = await commitTempAssets(
+      content,
+      formdata.get("uploadSession"),
+      assetsDirectory,
+      `/works/${id}/assets`,
+    );
 
     const frontmatter = serializeFrontmatter({
       id,

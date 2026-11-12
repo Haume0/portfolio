@@ -14,7 +14,7 @@ export default function AddBlogForm() {
     >
       <label
         htmlFor="blog"
-        className="group cursor-pointer rounded-2xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300"
+        className="group relative cursor-pointer rounded-2xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300"
       >
         <span className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <span>
@@ -30,9 +30,10 @@ export default function AddBlogForm() {
         <span className="font-light text-base md:text-lg rounded-2xl bg-dark py-2 px-4 text-white/70">
           {blogName || "Henüz zip seçilmedi"}
         </span>
+        {/* Input kutuyu kaplar; label'a bırakılan dosya input'a ulaşmadığı için sürükle-bırak ancak böyle çalışır. */}
         <input
           type="file"
-          className="sr-only"
+          className="absolute inset-0 size-full cursor-pointer opacity-0"
           name="blog"
           id="blog"
           accept=".zip"
@@ -45,7 +46,7 @@ export default function AddBlogForm() {
 
       <label
         htmlFor="thumb"
-        className="group cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300"
+        className="group relative cursor-pointer rounded-3xl bg-body p-4 sm:p-6 flex flex-col gap-4 ease-smooth duration-300"
       >
         <span className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <span>
@@ -65,7 +66,7 @@ export default function AddBlogForm() {
         </span>
         <input
           type="file"
-          className="sr-only"
+          className="absolute inset-0 size-full cursor-pointer opacity-0"
           name="thumb"
           id="thumb"
           accept="image/*"
