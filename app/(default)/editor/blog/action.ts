@@ -3,10 +3,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 import AdmZip from "adm-zip";
 import matter from "gray-matter";
 import type { IBlogData, IFileData } from "@/lib/blogs";
+import { removeUnreferencedAssets } from "@/lib/content-assets";
 
 const blogsDirectory = path.join(process.cwd(), "public", "blogs");
 
@@ -162,6 +164,7 @@ function createFrontmatter(data: {
   date: string;
   updated: string;
   cover: string | null;
+  published: boolean;
 }) {
   return [
     "---",
@@ -169,11 +172,23 @@ function createFrontmatter(data: {
     `slug: ${JSON.stringify(data.slug)}`,
     `date: ${JSON.stringify(data.date)}`,
     `updated: ${JSON.stringify(data.updated)}`,
-    "published: true",
+    `published: ${data.published}`,
     data.cover ? `cover: ${JSON.stringify(data.cover)}` : "cover: null",
     "---",
     "",
   ].join("\n");
+}
+
+// Kapak assets/ dışında, yazının kendi klasöründe cover.<uzantı> olarak durur.
+async function writeCover(blogDirectory: string, slug: string, file: File) {
+  const extension = path.extname(file.name).toLowerCase() || ".webp";
+  const coverName = `cover${extension}`;
+
+  await fs.writeFile(
+    path.join(blogDirectory, coverName),
+    Buffer.from(await file.arrayBuffer()),
+  );
+  return `/blogs/${slug}/${coverName}`;
 }
 
 function assertSafeSlug(value: FormDataEntryValue | null) {
@@ -261,12 +276,7 @@ export async function addBlog(_prev: unknown, formdata: FormData) {
     let cover: string | null = null;
 
     if (thumbFile && thumbFile.size > 0) {
-      const extension = path.extname(thumbFile.name).toLowerCase() || ".webp";
-      const coverName = `cover${extension}`;
-      const coverBuffer = Buffer.from(await thumbFile.arrayBuffer());
-
-      await fs.writeFile(path.join(blogDirectory, coverName), coverBuffer);
-      cover = `/blogs/${slug}/${coverName}`;
+      cover = await writeCover(blogDirectory, slug, thumbFile);
     }
 
     const now = new Date();
@@ -276,6 +286,7 @@ export async function addBlog(_prev: unknown, formdata: FormData) {
       date: now.toISOString().slice(0, 10),
       updated: now.toISOString(),
       cover,
+      published: true,
     });
 
     await fs.writeFile(
@@ -313,6 +324,98 @@ export async function toggleBlogPublished(formdata: FormData) {
   );
 
   revalidateBlogPaths(slug);
+}
+
+// Notion'suz yeni yazı: zip import'uyla aynı slug ve frontmatter, ama taslak olarak; boş yazı sitede görünmesin.
+export async function createBlog(formdata: FormData) {
+  const title = formdata.get("title");
+  if (typeof title !== "string" || !title.trim()) {
+    throw new Error("Başlık zorunlu.");
+  }
+
+  const slug = await getAvailableSlug(title.trim());
+  await fs.mkdir(path.join(blogsDirectory, slug), { recursive: true });
+
+  const now = new Date();
+  const frontmatter = createFrontmatter({
+    title: title.trim(),
+    slug,
+    date: now.toISOString().slice(0, 10),
+    updated: now.toISOString(),
+    cover: null,
+    published: false,
+  });
+  await fs.writeFile(
+    path.join(blogsDirectory, slug, "index.md"),
+    frontmatter,
+    "utf8",
+  );
+
+  revalidateBlogPaths(slug);
+  redirect(`/editor/blog/${slug}`);
+}
+
+export async function updateBlog(_prev: string | null, formdata: FormData) {
+  const slug = assertSafeSlug(formdata.get("slug"));
+  const title = formdata.get("title");
+  const content = formdata.get("content");
+
+  if (
+    typeof title !== "string" ||
+    !title.trim() ||
+    typeof content !== "string"
+  ) {
+    throw new Error("Başlık ve içerik zorunlu.");
+  }
+
+  const blogDirectory = getBlogDirectory(slug);
+  const markdownPath = path.join(blogDirectory, "index.md");
+  const { data } = matter(await fs.readFile(markdownPath, "utf8"));
+  const coverFile = formdata.get("cover");
+  let cover: string | null = typeof data.cover === "string" ? data.cover : null;
+
+  // Yeni kapak seçilmediyse mevcut kapak korunur.
+  if (coverFile instanceof File && coverFile.size > 0) {
+    if (!coverFile.type.startsWith("image/")) {
+      throw new Error("Kapak bir görsel olmalı.");
+    }
+    const nextCover = await writeCover(blogDirectory, slug, coverFile);
+    // Neden: Uzantı değişince (cover.png → cover.webp) eski kapak dosyası geride kalmasın; yalnızca bu yazının
+    // klasöründeki cover.* dosyası silinir.
+    if (
+      cover &&
+      cover !== nextCover &&
+      cover.startsWith(`/blogs/${slug}/cover.`)
+    ) {
+      await fs.rm(path.join(blogDirectory, path.basename(cover)), {
+        force: true,
+      });
+    }
+    cover = nextCover;
+  }
+
+  const nextData = {
+    ...data,
+    title: title.trim(),
+    cover,
+    updated: new Date().toISOString(),
+  };
+
+  // Neden: Tarayıcı form metnini CRLF ile gönderiyor; dosyalar LF kalmalı. Gövde olduğu gibi yazılır ki
+  // dokunulmamış içerik dosyada değişmesin.
+  const markdown = `${serializeFrontmatter(nextData)}${content.replace(/\r\n?/g, "\n")}`;
+  await fs.writeFile(markdownPath, markdown, "utf8");
+
+  // Neden: Editörde yüklenip vazgeçilen veya değiştirilen görseller artık metinde geçmiyor.
+  await removeUnreferencedAssets(
+    blogDirectory,
+    `/blogs/${slug}/assets/`,
+    markdown,
+  );
+
+  revalidateBlogPaths(slug);
+  revalidatePath(`/editor/blog/${slug}`);
+  return "Blog kaydedildi";
 }
 
 export async function deleteBlog(formdata: FormData) {

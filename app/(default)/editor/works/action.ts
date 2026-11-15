@@ -3,9 +3,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 import AdmZip from "adm-zip";
 import matter from "gray-matter";
+
+import { removeUnreferencedAssets } from "@/lib/content-assets";
 
 const worksDirectory = path.join(process.cwd(), "public", "works");
 
@@ -97,10 +100,6 @@ function getSafeAssetName(file: FileData, usedNames: Set<string>) {
   return fileName;
 }
 
-function replaceAll(content: string, from: string, to: string) {
-  return from ? content.split(from).join(to) : content;
-}
-
 function replaceAssetReferences(
   content: string,
   originalPath: string,
@@ -117,12 +116,14 @@ function replaceAssetReferences(
     baseName.replace(/ /g, "%20"),
   ]);
 
-  let nextContent = content;
-  for (const candidate of candidates) {
-    nextContent = replaceAll(nextContent, candidate, publicPath);
-  }
-
-  return nextContent;
+  // Neden: Adaylar tek geçişte, uzundan kısaya değiştirilir. Sırayla değiştirmek, dosya adı zaten güvenli
+  // olduğunda (anasayfa.webp) kısa adı az önce yazılan yolun içinde tekrar bulup yolu ikiliyordu.
+  const pattern = [...candidates]
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length)
+    .map((candidate) => candidate.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|");
+  return content.replace(new RegExp(pattern, "g"), publicPath);
 }
 
 function getString(formdata: FormData, key: string, fallback = "") {
@@ -132,7 +133,8 @@ function getString(formdata: FormData, key: string, fallback = "") {
 
 function getText(formdata: FormData, key: string) {
   const value = formdata.get(key);
-  return typeof value === "string" ? value : "";
+  // Neden: Tarayıcı form metnini CRLF ile gönderiyor; dosyalar LF kalmalı.
+  return typeof value === "string" ? value.replace(/\r\n?/g, "\n") : "";
 }
 
 function assertSafeId(value: FormDataEntryValue | null) {
@@ -185,97 +187,60 @@ async function projectExists(id: string) {
   }
 }
 
-export async function addProject(_prev: string | null, formdata: FormData) {
-  const rawId = getString(formdata, "id");
-  const id = slugify(rawId);
-  const title = getString(formdata, "title");
-  const description = getString(formdata, "description");
-  const object = getString(formdata, "object");
-  const linkName = getString(formdata, "linkName", "Visit");
-  const linkUrl = getString(formdata, "linkUrl", "#");
-  const manualContent = getText(formdata, "content");
-  const published = formdata.get("published") === "true";
-  const imageFile = formdata.get("image") as File | null;
-  const notionFile = formdata.get("notion") as File | null;
+// Neden: Yeni proje tek bir taslak klasörüyle başlar ki görseller ilk andan itibaren gerçek yerine yüklenebilsin;
+// gerçek id kaydedilince updateProject klasörü yeniden adlandırır.
+const draftId = "untitled-project";
 
-  if (!id || !title || !description || !linkName || !linkUrl) {
-    throw new Error("Zorunlu proje bilgileri eksik.");
+// Taslak eksik kaydedilebilir; yayına alınacak proje kartın tüm alanlarını ve gerçek bir id'yi taşımalı.
+function publishProblem(project: {
+  id: string;
+  title: unknown;
+  description: unknown;
+  linkName: unknown;
+  linkUrl: unknown;
+  image: unknown;
+}) {
+  if (project.id === draftId) {
+    return `Yayına almak için önce proje id'sini değiştir; "${draftId}" yayına alınamaz.`;
   }
+  const missing = [
+    [project.title, "başlık"],
+    [project.description, "açıklama"],
+    [project.linkName, "link adı"],
+    [project.linkUrl, "link adresi"],
+    [project.image, "kart görseli"],
+  ]
+    .filter(([value]) => !value)
+    .map(([, label]) => label);
+  return missing.length
+    ? `Yayına almak için eksik: ${missing.join(", ")}.`
+    : null;
+}
 
-  if (!imageFile || imageFile.size === 0) {
-    throw new Error("Proje kart görseli yüklenmelidir.");
-  }
-
-  const projectDirectory = getProjectDirectory(id);
-  const assetsDirectory = path.join(projectDirectory, "assets");
+// Taslak yoksa oluşturur, varsa yarım kaldığı haliyle açar.
+export async function openDraftProject() {
+  const directory = getProjectDirectory(draftId);
+  const markdownPath = path.join(directory, "index.md");
 
   try {
-    if (await projectExists(id)) {
-      throw new Error("Bu proje id değeri zaten kullanılıyor.");
-    }
-
-    await fs.mkdir(assetsDirectory, { recursive: true });
-
-    const imageExtension =
-      path.extname(imageFile.name).toLowerCase() || ".webp";
-    const imageName = `image${imageExtension}`;
-    const imagePath = `/works/${id}/${imageName}`;
-
-    await fs.writeFile(
-      path.join(projectDirectory, imageName),
-      Buffer.from(await imageFile.arrayBuffer()),
-    );
-
-    const projectData: ProjectImportData = {
-      content: "",
-      embeds: [],
-      mdFileFound: false,
-    };
-
-    if (notionFile && notionFile.size > 0) {
-      collectZipEntries(
-        new AdmZip(Buffer.from(await notionFile.arrayBuffer())),
-        projectData,
-      );
-    }
-
-    let content = projectData.mdFileFound ? projectData.content : manualContent;
-    const usedAssetNames = new Set<string>();
-
-    for (const embed of projectData.embeds) {
-      const assetName = getSafeAssetName(embed, usedAssetNames);
-      const publicPath = `/works/${id}/assets/${encodeURIComponent(assetName)}`;
-
-      await fs.writeFile(path.join(assetsDirectory, assetName), embed.buffer);
-      content = replaceAssetReferences(content, embed.name, publicPath);
-    }
-
+    await fs.access(markdownPath);
+  } catch {
     const now = new Date().toISOString();
-    const frontmatter = serializeFrontmatter({
-      id,
-      image: imagePath,
-      title,
-      description,
-      object,
-      linkName,
-      linkUrl,
-      published,
-      createdAt: now,
-      updated: now,
-    });
-
+    await fs.mkdir(directory, { recursive: true });
     await fs.writeFile(
-      path.join(projectDirectory, "index.md"),
-      `${frontmatter}${content.trimStart()}\n`,
+      markdownPath,
+      serializeFrontmatter({
+        id: draftId,
+        published: false,
+        createdAt: now,
+        updated: now,
+      }),
       "utf8",
     );
-  } catch (error) {
-    console.error("Proje eklenirken bir hata oluştu:", error);
-    throw new Error("Proje oluşturulamadı.");
   }
 
   revalidateWorksPaths();
-  return "Proje kaydedildi";
+  redirect(`/editor/works?edit=${draftId}`);
 }
 
 export async function updateProject(_prev: string | null, formdata: FormData) {
@@ -292,10 +257,6 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
   const imageFile = formdata.get("image") as File | null;
   const notionFile = formdata.get("notion") as File | null;
 
-  if (!id || !title || !description || !linkName || !linkUrl) {
-    throw new Error("Zorunlu proje bilgileri eksik.");
-  }
-
   const originalDirectory = getProjectDirectory(originalId);
   const projectDirectory = getProjectDirectory(id);
 
@@ -303,6 +264,19 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
     const originalMarkdownPath = path.join(originalDirectory, "index.md");
     const markdown = await fs.readFile(originalMarkdownPath, "utf8");
     const { data } = matter(markdown);
+
+    // Doğrulama dosyalara dokunmadan önce yapılır; reddedilen kayıt hiçbir şeyi değiştirmez.
+    const problem = published
+      ? publishProblem({
+          id,
+          title,
+          description,
+          linkName,
+          linkUrl,
+          image: (imageFile && imageFile.size > 0) || data.image,
+        })
+      : null;
+    if (problem) return problem;
 
     if (id !== originalId) {
       if (await projectExists(id)) {
@@ -315,10 +289,8 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
     const assetsDirectory = path.join(projectDirectory, "assets");
     const markdownPath = path.join(projectDirectory, "index.md");
     const now = new Date().toISOString();
-    let imagePath =
-      typeof data.image === "string"
-        ? data.image
-        : `/works/${originalId}/image.webp`;
+    // Neden: Taslağın kart görseli henüz olmayabilir; boş değer frontmatter'a yazılmaz.
+    let imagePath = typeof data.image === "string" ? data.image : "";
 
     imagePath = imagePath.split(`/works/${originalId}/`).join(`/works/${id}/`);
 
@@ -349,7 +321,8 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
         new AdmZip(Buffer.from(await notionFile.arrayBuffer())),
         projectData,
       );
-      content = projectData.content;
+      // Neden: Eski ekleme formundaki gibi zip'te markdown yoksa editördeki metin korunur.
+      if (projectData.mdFileFound) content = projectData.content;
 
       await fs.rm(assetsDirectory, { recursive: true, force: true });
       await fs.mkdir(assetsDirectory, { recursive: true });
@@ -379,17 +352,27 @@ export async function updateProject(_prev: string | null, formdata: FormData) {
       updated: now,
     });
 
-    await fs.writeFile(
-      markdownPath,
-      `${frontmatter}${content.trimStart()}\n`,
-      "utf8",
-    );
+    const nextMarkdown = `${frontmatter}${content.trimStart()}\n`;
+    await fs.writeFile(markdownPath, nextMarkdown, "utf8");
+
+    // Neden: Editörde yüklenip vazgeçilen veya değiştirilen görseller silinir. Kimlik değişikliği ve yol
+    // yeniden yazımı bittikten sonra son id ve son metinle çalışır; zip import edildiyse atlanır, çünkü
+    // zip'in az önce yazdığı ve markdown'da geçmeyen dosyalar import'un kendi kararıdır.
+    if (!(notionFile && notionFile.size > 0)) {
+      await removeUnreferencedAssets(
+        projectDirectory,
+        `/works/${id}/assets/`,
+        nextMarkdown,
+      );
+    }
   } catch (error) {
     console.error("Proje güncellenirken bir hata oluştu:", error);
     throw new Error("Proje güncellenemedi.");
   }
 
   revalidateWorksPaths();
+  // Neden: Id değişince klasör de değişti; eski ?edit= adresi artık bulunamaz, yeni id'nin formuna gidilir.
+  if (id !== originalId) redirect(`/editor/works?edit=${id}`);
   return "Proje güncellendi";
 }
 
@@ -399,6 +382,20 @@ export async function toggleProjectPublished(formdata: FormData) {
   const markdownPath = path.join(getProjectDirectory(id), "index.md");
   const markdown = await fs.readFile(markdownPath, "utf8");
   const { data, content } = matter(markdown);
+  const problem = published
+    ? publishProblem({
+        id,
+        title: data.title,
+        description: data.description,
+        linkName: data.linkName,
+        linkUrl: data.linkUrl,
+        image: data.image,
+      })
+    : null;
+
+  if (problem) {
+    throw new Error(problem);
+  }
 
   await fs.writeFile(
     markdownPath,

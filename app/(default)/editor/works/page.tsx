@@ -3,7 +3,7 @@ import Header from "@/layouts/header";
 import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";
 
-import { toggleProjectPublished } from "./action";
+import { openDraftProject, toggleProjectPublished } from "./action";
 import ProjectForm from "./form";
 import DeleteProjectButton from "./delete-button";
 
@@ -29,28 +29,36 @@ export default async function WorksEditor(props: {
           <div className="flex flex-col sm:flex-row gap-4 sm:justify-between w-full">
             <span>
               <h1 className="font-extrabold text-5xl sm:text-7xl lg:text-8xl">
-                {selectedProject ? "Project Edit" : "Project Import"}
+                {selectedProject ? "Project Edit" : "Works Editor"}
               </h1>
               <p className="font-medium text-lg sm:text-xl mt-2">
                 {selectedProject
-                  ? `${selectedProject.title} projesini düzenliyorsun. ✦`
-                  : "Project card bilgisini frontmatter olarak kaydet. ✦"}
+                  ? `${selectedProject.title || selectedProject.id} projesini düzenliyorsun. ✦`
+                  : "Yeni projeyi taslak olarak aç, hazır olunca yayına al. ✦"}
               </p>
               <p className="font-light text-lg sm:text-xl max-w-3xl mt-2">
-                Notion export opsiyonel. Markdown içerik Behance tarzı proje
-                detay sayfasında kullanılacak.
+                Yeni proje untitled-project taslağı olarak açılır; görselleri
+                hemen ekleyebilirsin. Gerçek id'yi verip kaydedince klasör o
+                adla taşınır. Notion export'u da aynı formdan içeri alınır.
               </p>
             </span>
+            <form action={openDraftProject} className="shrink-0">
+              <button
+                type="submit"
+                className="main-button bg-dark! hover:bg-white! hover:text-black! w-full! sm:w-max!"
+              >
+                Yeni Proje
+              </button>
+            </form>
           </div>
           {editId && !selectedProject && (
             <p className="font-light text-lg md:text-xl rounded-2xl bg-dark py-3 px-4">
-              Düzenlenecek proje bulunamadı. Yeni proje formu gösteriliyor.
+              Düzenlenecek proje bulunamadı.
             </p>
           )}
-          <ProjectForm
-            key={selectedProject?.id || "new-project"}
-            project={selectedProject}
-          />
+          {selectedProject && (
+            <ProjectForm key={selectedProject.id} project={selectedProject} />
+          )}
         </section>
 
         <section className="bg-grey overflow-hidden p-4 sm:p-6 md:p-8 flex flex-col rounded-3xl size-full gap-8">
@@ -82,11 +90,18 @@ export default async function WorksEditor(props: {
                       rel="noreferrer"
                       className="relative flex size-32 shrink-0 overflow-hidden rounded-3xl bg-body sm:size-40"
                     >
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="size-full object-cover object-center"
-                      />
+                      {/* Taslağın kart görseli henüz olmayabilir. */}
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="size-full object-cover object-center"
+                        />
+                      ) : (
+                        <span className="m-auto px-4 text-center font-light text-white/40">
+                          Görsel yok
+                        </span>
+                      )}
                     </a>
 
                     <span className="flex flex-col gap-2">
@@ -110,7 +125,7 @@ export default async function WorksEditor(props: {
                         rel="noreferrer"
                         className="font-extrabold text-3xl sm:text-5xl hover:text-white/60 ease-smooth duration-300"
                       >
-                        {project.title}
+                        {project.title || project.id}
                       </a>
                       <p className="font-light text-lg md:text-xl text-white/60 line-clamp-2 max-w-4xl">
                         {project.description}
@@ -143,7 +158,7 @@ export default async function WorksEditor(props: {
 
                     <DeleteProjectButton
                       id={project.id}
-                      title={project.title}
+                      title={project.title || project.id}
                     />
                   </span>
                 </li>

@@ -1,0 +1,253 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`MarkdownRenderer public/blogs/esin-kaynaklari/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><ol class="text-milk/80 leading-relaxed list-decimal pl-6 space-y-1 mb-4 marker:text-works marker:font-bold">
+<li class="text-milk/90 leading-relaxed py-1"><strong class="text-milk font-bold">Behance – Yaratıcı Portföyler ve Projeler</strong><br/>
+Dünyanın dört bir yanından seçilmiş portföyler ve proje vitrinleri.<br/>
+Bağlantı: <a href="http://behance.net" target="_blank" rel="noopener noreferrer" class="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors">behance.net</a></li>
+<li class="text-milk/90 leading-relaxed py-1"><strong class="text-milk font-bold">Awwwards – Website Awards &amp; En İyi Web Tasarım Trendleri</strong><br/>
+Ödüllü web siteleri ve son tasarım trendlerinden ilham alın.<br/>
+Bağlantı: <a href="http://awwwards.com" target="_blank" rel="noopener noreferrer" class="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors">awwwards.com</a></li>
+<li class="text-milk/90 leading-relaxed py-1"><strong class="text-milk font-bold">UI8 – UI Tasarım Kaynakları, Kitler, Wireframe&#x27;ler, İkonlar</strong><br/>
+Profesyonel tasarımcılar için geniş bir UI kaynak kütüphanesi.<br/>
+Bağlantı: <a href="http://ui8.net" target="_blank" rel="noopener noreferrer" class="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors">ui8.net</a></li>
+<li class="text-milk/90 leading-relaxed py-1"><strong class="text-milk font-bold">Fontshare – Ücretsiz ve Kaliteli Yazı Tipleri</strong><br/>
+Projelerinizde kullanabileceğiniz lisanslı ve ücretsiz fontlar.<br/>
+Bağlantı: <a href="http://fontshare.com" target="_blank" rel="noopener noreferrer" class="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors">fontshare.com</a></li>
+<li class="text-milk/90 leading-relaxed py-1"><strong class="text-milk font-bold">Uncut - Ücretsiz ve Kaliteli Yazı Tipleri</strong><br/>
+Projelerinizde kullanabileceğiniz lisanslı ve ücretsiz fontlar.<br/>
+Bağlantı: <a href="https://uncut.wtf/" target="_blank" rel="noopener noreferrer" class="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors">uncut.wtf</a></li>
+<li class="text-milk/90 leading-relaxed py-1"><strong class="text-milk font-bold">Minimal Gallery – Seçilmiş Web Sitesi İlhamları</strong><br/>
+Minimalist tasarım odaklı ilham verici web siteleri ve araçlar.<br/>
+Bağlantı: <a href="http://minimal.gallery" target="_blank" rel="noopener noreferrer" class="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors">minimal.gallery</a></li>
+</ol></div>"
+`;
+
+exports[`MarkdownRenderer public/blogs/hi/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/blogs/hi/assets/hello.gif" alt="/blogs/hi/assets/hello.gif" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center"><img src="/blogs/hi/assets/glorp-skin.jpg" alt="/blogs/hi/assets/glorp-skin.jpg" class="rounded-xl max-w-full h-auto my-4" loading="lazy" width="40px"/></div><div class="shrink-0 relative text-3xl leading-none"><img src="/blogs/hi/assets/glorp-skin.jpg" alt="/blogs/hi/assets/glorp-skin.jpg" class="rounded-xl max-w-full h-auto my-4" loading="lazy" width="40px"/></div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Hello, I&#x27;m Emin Erçoban a <strong class="text-milk font-bold">Product Designer &amp; Developer</strong> in Turkey/Antalya. My mission is to enhance projects, applications with creative design and modern technologies.</p></div></div>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="about-me"><a href="#about-me" target="_self" rel="noopener noreferrer" class="anchor-link">🪐 About Me</a></h1>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">I&#x27;m currently working as a freelancer alongside my best friend on platforms like Fiverr and Bionluk, where we deliver <strong class="text-milk font-bold">websites, web applications, desktop and mobile applications</strong>. I also experianced in <strong class="text-milk font-bold">UI/UX design, graphic design, and brand identity development.</strong></p>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="experience"><a href="#experience" target="_self" rel="noopener noreferrer" class="anchor-link">💼 Experience</a></h1>
+<h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="product-designer--developer"><a href="#product-designer--developer" target="_self" rel="noopener noreferrer" class="anchor-link">Product Designer &amp; Developer</a></h3>
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<li class="text-milk/90 leading-relaxed py-1">I’m using JavaScript/TypeScript, Go programming languages.</li>
+<li class="text-milk/90 leading-relaxed py-1">For front-end currently using Next/React but in the past i used Nuxt/Vue and Svelte.</li>
+<li class="text-milk/90 leading-relaxed py-1">For back-end i use nodejs and go, but i prefer go for poerformance/dev experiance.</li>
+</ul>
+<h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="graphic-designer"><a href="#graphic-designer" target="_self" rel="noopener noreferrer" class="anchor-link">Graphic Designer</a></h3>
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<li class="text-milk/90 leading-relaxed py-1">I’m designing Brand Identities, Logos, Banners, User Interfaces.</li>
+<li class="text-milk/90 leading-relaxed py-1">I’m using Figma for UI/UX projects and Affinity products for Graphic Design</li>
+</ul>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><em class="text-milk/90 italic">Burayı boşver ya deneme yapıyoruz ne bakıyosun.</em></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Normal</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><em class="text-milk/90 italic">Italic</em></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><strong class="text-milk font-bold">Bold</strong></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><del class="text-milk/60 line-through">Overline</del></p>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="heading-1"><a href="#heading-1" target="_self" rel="noopener noreferrer" class="anchor-link">heading 1</a></h1>
+<h2 class="text-2xl sm:text-3xl font-bold text-milk mb-4 mt-6 first:mt-0 leading-tight" id="heading-2"><a href="#heading-2" target="_self" rel="noopener noreferrer" class="anchor-link">heading 2</a></h2>
+<h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="heading-3"><a href="#heading-3" target="_self" rel="noopener noreferrer" class="anchor-link">heading 3</a></h3>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">test</p>
+<hr class="border-0 border-t-2 border-milk/10 my-8"/>
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<li class="text-milk/90 leading-relaxed py-1">list a
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<li class="text-milk/90 leading-relaxed py-1">sea</li>
+</ul>
+</li>
+<li class="text-milk/90 leading-relaxed py-1">list b
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<li class="text-milk/90 leading-relaxed py-1">aa
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<li class="text-milk/90 leading-relaxed py-1">vvv</li>
+<li class="text-milk/90 leading-relaxed py-1">v</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="text-milk/90 leading-relaxed py-1">list c</li>
+</ul>
+<hr class="border-0 border-t-2 border-milk/10 my-8"/>
+<ol class="text-milk/80 leading-relaxed list-decimal pl-6 space-y-1 mb-4 marker:text-works marker:font-bold">
+<li class="text-milk/90 leading-relaxed py-1">numlistt a
+<ol class="text-milk/80 leading-relaxed list-decimal pl-6 space-y-1 mb-4 marker:text-works marker:font-bold">
+<li class="text-milk/90 leading-relaxed py-1">2111</li>
+<li class="text-milk/90 leading-relaxed py-1">123
+<ol class="text-milk/80 leading-relaxed list-decimal pl-6 space-y-1 mb-4 marker:text-works marker:font-bold">
+<li class="text-milk/90 leading-relaxed py-1">3344</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="text-milk/90 leading-relaxed py-1">numlistt b</li>
+<li class="text-milk/90 leading-relaxed py-1">numlistt c</li>
+</ol>
+<hr class="border-0 border-t-2 border-milk/10 my-8"/>
+<ul class="contains-task-list">
+<li class="text-milk/90 leading-relaxed py-1 [&amp;&gt;ul]:pl-4 [&amp;&gt;ul]:mt-1.5"><div class="flex items-start gap-3"><div class="size-5 shrink-0 mt-0.5 inline-flex items-center justify-center rounded border-2 transition-colors bg-transparent border-milk/30"></div> todo
+</div><ul class="contains-task-list">
+<li class="text-milk/90 leading-relaxed py-1 [&amp;&gt;ul]:pl-4 [&amp;&gt;ul]:mt-1.5"><div class="flex items-start gap-3"><div class="size-5 shrink-0 mt-0.5 inline-flex items-center justify-center rounded border-2 transition-colors bg-transparent border-milk/30"></div> 2343</div></li>
+</ul>
+</li>
+<li class="text-milk/90 leading-relaxed py-1 [&amp;&gt;ul]:pl-4 [&amp;&gt;ul]:mt-1.5"><div class="flex items-start gap-3"><div class="size-5 shrink-0 mt-0.5 inline-flex items-center justify-center rounded border-2 transition-colors bg-works border-works text-white"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 4L6 11L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div> todo 2</div></li>
+</ul>
+<hr class="border-0 border-t-2 border-milk/10 my-8"/>
+<ul class="text-milk/80 leading-relaxed list-disc pl-6 space-y-1 marker:text-works marker:text-lg mb-4">
+<details class="group my-1"><summary class="flex items-start gap-2 cursor-pointer hover:bg-dark/20 -ml-2 pl-2 pr-2 py-1 rounded-lg transition-colors list-none"><span class="text-works mt-0.5 shrink-0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" style="transform:rotate(0deg);transition:transform 0.2s"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="flex-1 text-milk/90 leading-relaxed select-none">Naber?</span></summary><div class="pl-7 mt-2 space-y-2"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">İyidir senden?</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">e1edwf</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">adsadf</p></div></details>
+</ul>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><code class="bg-about/20 text-works px-2 py-0.5 rounded-md text-[0.9em] font-mono border border-about/30">setBlogs(datas as BlogPost[]);</code></p>
+<hr class="border-0 border-t-2 border-milk/10 my-8"/>
+<blockquote class="border-l-4 bg-works/10 border-works text-milk/90 pl-6 py-3 my-4 rounded-r-xl backdrop-blur-sm">
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><strong class="text-milk font-bold">&quot;Türk, Öğün, Çalış, Güven&quot; - Mustafa Kemal Atatürk</strong></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto rounded-xl border border-body/40 bg-grey/20 my-4"><table class="w-full border-collapse"><thead class="bg-dark/40"><tr class="hover:bg-dark/20 transition-colors duration-200"><th class="text-milk font-bold p-4 text-left border-r border-milk/10 last:border-r-0">a</th><th class="text-milk font-bold p-4 text-left border-r border-milk/10 last:border-r-0">1</th><th class="text-milk font-bold p-4 text-left border-r border-milk/10 last:border-r-0">q</th></tr></thead><tbody class="divide-y divide-milk/10"><tr class="hover:bg-dark/20 transition-colors duration-200"><td class="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0">b</td><td class="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0">2</td><td class="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0">w</td></tr><tr class="hover:bg-dark/20 transition-colors duration-200"><td class="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0">c</td><td class="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0">3</td><td class="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0">e</td></tr></tbody></table></div>
+<pre class="rounded-xl bg-dark p-4 overflow-x-auto text-sm font-mono leading-relaxed mb-4"><code class="hljs language-jsx"><span class="hljs-comment">// useEffect içerisinde async/await kullanmak için yaptığım taklalar :P</span>
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    (<span class="hljs-title function_">async</span> () =&gt; {
+      <span class="hljs-keyword">const</span> datas = <span class="hljs-keyword">await</span> pb.<span class="hljs-title function_">collection</span>(<span class="hljs-string">&quot;blogs&quot;</span>).<span class="hljs-title function_">getFullList</span>({
+        <span class="hljs-attr">filter</span>: <span class="hljs-string">&quot;is_published=true&quot;</span>,
+      });
+      <span class="hljs-title function_">setBlogs</span>(datas <span class="hljs-keyword">as</span> <span class="hljs-title class_">BlogPost</span>[]);
+    })();
+  }, []);
+</code></pre></div>"
+`;
+
+exports[`MarkdownRenderer public/blogs/teknoloji-agacim/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Seçtiğiniz ve kullandığınız teknolojiler sizi yansıtıyor, neyi seviyorsunuz, neyi sevmiyorsunuz, işteki öncelikleriniz, olmazsa olmazlarınız, hepsi.</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Kimileri sade ve minimalist teknoloji ağaçları tercih ediyor kimi ise çok iyi düşünülmüş özelliklerle dolu. Ben iste bu iki uç yaklaşım arasında 2025’de kendimi nasıl konumlandırıyorum, ve bu işe başladığımdan beri neleri öğrendiğim için neleri seçiyorum size anlatıyorum.</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Bu yazıda 3 katman olacak, <code class="bg-about/20 text-works px-2 py-0.5 rounded-md text-[0.9em] font-mono border border-about/30">tasarım ve düşünce aşaması</code> <code class="bg-about/20 text-works px-2 py-0.5 rounded-md text-[0.9em] font-mono border border-about/30">programlama</code> ve son olarak <code class="bg-about/20 text-works px-2 py-0.5 rounded-md text-[0.9em] font-mono border border-about/30">yayınlama</code>.</p>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="tasarlama-ve-düşünce-aşaması"><a href="#tasarlama-ve-düşünce-aşaması" target="_self" rel="noopener noreferrer" class="anchor-link">Tasarlama ve Düşünce Aşaması</a></h1>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">✒️</div><div class="shrink-0 relative text-3xl leading-none">✒️</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="notion-affine-ve-apple-notes"><a href="#notion-affine-ve-apple-notes" target="_self" rel="noopener noreferrer" class="anchor-link"><strong class="text-milk font-bold">Notion, Affine ve Apple Notes</strong></a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Öncelikle neden üç tane onu bi netleştirelim. Apple Notes hızlı anlık fikirleri depolamak için, Notion ve Affine uzun vadeli depolama, proje yönetimi ve dökümantasyon için.<br/>
+Notion şahsi projelerim ve kendim için kullandığım bir uygulama, Affine ise ekip içerisinde self-hosted ile tüm üyeler ile kullandığımız not uygulaması.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">🖌️</div><div class="shrink-0 relative text-3xl leading-none">🖌️</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="figma"><a href="#figma" target="_self" rel="noopener noreferrer" class="anchor-link">Figma</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Figma benim için programlamadan önceki en önemli aşama.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Uygulamanın yapabildiği tüm tasarım işlerini, Arayüz Tasarımı, Basit Grafik Tasarımları, Basit Logolar tarzı şeyleri yaptığım evimde hissettiğim tasarım uygulamam.</p><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="affinity-uygulamaları"><a href="#affinity-uygulamaları" target="_self" rel="noopener noreferrer" class="anchor-link">Affinity Uygulamaları</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Figmanın sağlayamadığı tam özellikli tasarım araçlarını Affinity ile karşılıyorum, Marka Kimliği, logolar, grafik tasarım, bannerlar vs.</p></div></div>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="programlama"><a href="#programlama" target="_self" rel="noopener noreferrer" class="anchor-link">Programlama</a></h1>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">📘</div><div class="shrink-0 relative text-3xl leading-none">📘</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="javascripttypescript"><a href="#javascripttypescript" target="_self" rel="noopener noreferrer" class="anchor-link">JavaScript/TypeScript</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Front-end için gereken ana programlama dili, hem front-end hem back-end için kullanıyorum ve benim için güvenli seçim diyebilirim, kolay oluşu ve konforu hoşuma gidiyor. Aynı zamanda ilk öğrendiğim programlama dili o yüzden sempatim var kusurlarına rağmen.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">📘</div><div class="shrink-0 relative text-3xl leading-none">📘</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="go-programlama-dili"><a href="#go-programlama-dili" target="_self" rel="noopener noreferrer" class="anchor-link">Go Programlama Dili</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Go benim için ilk görüşte aşktı, nereden başlasam bilmiyorum.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Fonksiyonel programlama dili, bu nedemek şimdi. Herkesin duyduğu OOP(Object Oriented Programming) nesne tabanlı programlama paterni javascript gibi birçok dilin kullandığı bir pratik fakat go burada onlardan ayrılıp fonksiyonel yani bir nesenin prototipi ile değil de bir fonksiyon ile işleri hallediyor. Yani:</p><pre class="rounded-xl bg-dark p-4 overflow-x-auto text-sm font-mono leading-relaxed mb-4"><code class="hljs language-jsx"><span class="hljs-comment">// OOP</span>
+sayi.<span class="hljs-title function_">toString</span>();
+<span class="hljs-comment">// Fonksiyonel</span>
+strconv.<span class="hljs-title class_">Itoa</span>(sayi)
+</code></pre><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Performansı, makine diline derlenmesi ile gelen büyük güç, cross-compile ile tek cihazdan tüm işletim sistemlerine embedded sistemlere bile build alabilmek.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Mükemmel çoklu çekirdek işlemleri yönetmesi, basitçe go yazarak bir fonksiyonu farklı bir thread’e aktarabilmek, channel’lar…</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Çok şey var.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">⚙</div><div class="shrink-0 relative text-3xl leading-none">⚙</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="nextjs--react--web-frameworkü"><a href="#nextjs--react--web-frameworkü" target="_self" rel="noopener noreferrer" class="anchor-link">Next.js &amp; React | Web Framework’ü</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Müşterilerime daha stabil ve standart bir hizmet verebilmek için sektör standartlarının en güncel ve uç teknolojisi olarak Next’i tercih ediyorum.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Benim hoşuma gidecek kadar modern ve yenilikçi ama yine de stabil ve standart bir tecrübeye sahip, uçsuz bucaksız eklenti desteği ile işlerim ve teslim sürelerime katkısı büyük.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Tabiki tek sebebi bu değil, full-stack bir meta framework olması ve geliştirme sürecinin sancısız ve görece kolay olması da tercih sebeplerim arasında.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">🖌️</div><div class="shrink-0 relative text-3xl leading-none">🖌️</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="tailwindcss--css-frameworkü"><a href="#tailwindcss--css-frameworkü" target="_self" rel="noopener noreferrer" class="anchor-link">TailwindCSS | CSS Framework’ü</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Tailwind benim için bir bağımlılık, tsx dosyamdan hiç çıkmadan html, js ve css işlerimi halletmek ilk başladığımdan beri aşık olduğum bir durum.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Aranızdan ama css ile hazır classlar tanımlamak tekrar eden kodu azaltır vs. diye düşünceler oluşabilir, fakat bu problemi zaten React veya herhangi bir front-end framework’ü zaten çözüyor ektra olarak neden böyle bişiye gerek duyalım.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Ayrıca tailwind ile uzun süredir <code class="bg-about/20 text-works px-2 py-0.5 rounded-md text-[0.9em] font-mono border border-about/30">@apply</code> ile class tanımlaması yapabiliyorsunuz eğer çok isterseniz, ki beni de kullanırken görmüşsünüzdür.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">🔮</div><div class="shrink-0 relative text-3xl leading-none">🔮</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="motion--framer-motion--animasyon-kütüphanesi"><a href="#motion--framer-motion--animasyon-kütüphanesi" target="_self" rel="noopener noreferrer" class="anchor-link">Motion / Framer-Motion | Animasyon Kütüphanesi</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Uzun araştırmalar sonucu keşfettiğim ve diğerlerine göre oldukça kolay olmasına rağmen daha başarılı bulduğum bir kütüphane, ekstra olarak daha yeni JS ve VUE.js desteği eklendi büyüyen ve gelişen bir kütüphane tavsiye ederim.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Özellikle layout animasyon sistemi büyü gibi resmen.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">💾</div><div class="shrink-0 relative text-3xl leading-none">💾</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="drizzle-ve-gorm"><a href="#drizzle-ve-gorm" target="_self" rel="noopener noreferrer" class="anchor-link">Drizzle ve GORM</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Bu iki kütüphane benim severek kullandığım iki dil olan GO ve JS için yazılmış orm kütüphaneleri. İkisi de harikalar anlatabileceğim çok bir şey yok kesinlikle araştırın derim.</p></div></div>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">💾</div><div class="shrink-0 relative text-3xl leading-none">💾</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="pocketbase"><a href="#pocketbase" target="_self" rel="noopener noreferrer" class="anchor-link">PocketBase</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Back-end yazmak her zaman uğraşmak istediğiniz bir şey olmuyor, özellikle çok işiniz varken ve bu yazmanız gereken şey bir hobi projesiyse.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Bu durumda Firebase veya Supabase gibi araçlar devreye giriyor fakat, bir self-host sevdalısı olarak self-host yapabildiğim bir alternatif, kendisi favorim olan GO ile yazılmış aşırı hızlı ve kurması çok basit, bir şans verin.</p></div></div>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="yayınlama"><a href="#yayınlama" target="_self" rel="noopener noreferrer" class="anchor-link">Yayınlama</a></h1>
+<div class="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"><div class="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">☁️</div><div class="shrink-0 relative text-3xl leading-none">☁️</div><div class="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&amp;&gt;p]:leading-relaxed"><h3 class="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug" id="docker--dokploy"><a href="#docker--dokploy" target="_self" rel="noopener noreferrer" class="anchor-link">Docker &amp; Dokploy</a></h3><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Projeleri konteynerler ile yayınlamak öyle herkesin anlattığı gibi, benim makinamda çalışıyor ama sunucumda çalışmıyor sorunundan öte.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Gereksinimler, otomatik build almak, birden fazla sunucuya deploy etmek, birden fazla ekip arkadaşı ile çalışmak gibi tek pratik yolunun otomasyon olduğu sorunlarla dolu.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Ben bu sorunları Dockerfile ve Docker Compose yazarak çözüyorum, her projemde Dockerfile ile en optimal önerilen dockerfile ile kurulumlarımı yapıyorum.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Dokploy burada devreye giriyor, git’e yaptığımız her commit &amp; push’dan sonra otomatik olarak projelerimizi dockerfile ve compose ile build alıp yayına veriyor. Bu sıklığı istersek her sürüm geçişi gibi ayarlamak falan mümkün.</p><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Sadece bu da değil birden fazla sunucu kontrol etme, tarayıcı üzerinden tüm sisteme erişebilme gibi yaparken ve kullanırken zevk aldığım nerdy IT özellikleri de var araştırın derim.</p></div></div>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Bu yazıyı değiştikçe ya da aklıma yeni bir şey geldikçe güncelleyip yayınlayacağım…</p></div>"
+`;
+
+exports[`MarkdownRenderer public/blogs/wi-fi-siz-windows-ve-iphone-problemi/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Benim gibi görece eski ve uygun fiyatlı bir anakartınız varsa, <strong class="text-milk font-bold">dahili wi-fi</strong> özelliğiniz yüksek ihtimalle yok. Genelde <strong class="text-milk font-bold">yokluğunu hissetmiyorsunuz</strong> ta ki <strong class="text-milk font-bold">yokluğunu hissedene</strong> kadar.</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Bu akşam projem üzerinde çalışırken <strong class="text-milk font-bold">planlı bakım çalışması</strong> yapılacağını unuttum, <strong class="text-milk font-bold">internetim kesildi</strong> ve öylece kala kaldım.</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Asıl sorun internetin kesilmesi değil, <strong class="text-milk font-bold">database bağlantısı</strong> ve <strong class="text-milk font-bold">yapay zeka ajanlarının</strong> internete ihtiyaç duymasıydı :d</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Projeyi <strong class="text-milk font-bold">Github’a</strong> henüz commitlememiştim ve laptop ile devam edemezdim, o commit atılmalıydı. Ben de <strong class="text-milk font-bold">kablo ile IPhone’u</strong> bağlamaya çalışırken çok çabuk bir şekilde <strong class="text-milk font-bold">ekosistem farkı</strong> adındaki o duvara çarptım. Sonra araştırmaya koyuldum.</p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4">Sonucunda internetsiz şekilde yapabileceğim tek şeyin <strong class="text-milk font-bold">“Bluetooth Tethering”</strong> olduğunu fark ettim ve klavyem için kullandığım dandik Bluetooth dongle ile telefonuma bağlandım, <strong class="text-milk font-bold">300kbps</strong> civarındaki hız ile yavaşça <strong class="text-milk font-bold">commit ve push</strong> yaparak wi-fi denen güzel teknolojiye sahip laptopuma geçtim ve projeme mobil veri ile devam ettim.</p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/akaci-glutensiz/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/akaci-glutensiz/assets/aka-glutensiz-100-doal.jpg" alt="AKAÇİ _ Glutensiz, %100 Doğal.jpg" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/akaci-glutensiz/assets/tm-rnler-aka.png" alt="Tüm ürünler _ AKAÇİ.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/akaci-glutensiz/assets/cheese-burger-aka.png" alt="Cheese Burger _ AKAÇİ.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/basolauncher/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/bilentropy/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/bngtech/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/bngtech/assets/anasayfa.webp" alt="/works/bngtech/assets/anasayfa.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/bngtech/assets/haberler.webp" alt="/works/bngtech/assets/haberler.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/bngtech/assets/makineler.webp" alt="/works/bngtech/assets/makineler.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/bngtech/assets/videolar.webp" alt="/works/bngtech/assets/videolar.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/elesyalauncher/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/fedefood/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/fedefood/assets/screencapture-fedefood-2026-05-02-03-34-16.webp" alt="/works/fedefood/assets/screencapture-fedefood-2026-05-02-03-34-16.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/fedefood/assets/screencapture-fedefood-urun-ve-markalar-2026-05-02-03-34-25.webp" alt="/works/fedefood/assets/screencapture-fedefood-urun-ve-markalar-2026-05-02-03-34-25.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/fedefood/assets/screencapture-fedefood-urun-ve-markalar-urunler-2026-05-02-03-34-35.webp" alt="/works/fedefood/assets/screencapture-fedefood-urun-ve-markalar-urunler-2026-05-02-03-34-35.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/fedefood/assets/screencapture-fedefood-hakkimizda-2026-05-02-03-35-05.webp" alt="/works/fedefood/assets/screencapture-fedefood-hakkimizda-2026-05-02-03-35-05.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/haumebranding/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/hostiva-logo/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostiva-logo/assets/presentation.png" alt="/works/hostiva-logo/assets/presentation.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"`;
+
+exports[`MarkdownRenderer public/works/hostlayici/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-2026-05-02-03-31-57.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-2026-05-02-03-31-57.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-hakkimizda-2026-05-02-03-34-00.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-hakkimizda-2026-05-02-03-34-00.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-web-hosting-2026-05-02-03-33-33.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-web-hosting-2026-05-02-03-33-33.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-cloud-hosting-2026-05-02-03-32-14.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-cloud-hosting-2026-05-02-03-32-14.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-gpu-sunucu-2026-05-02-03-33-10.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-gpu-sunucu-2026-05-02-03-33-10.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-vps-2026-05-02-03-32-29.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-vps-2026-05-02-03-32-29.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/hostlayici/assets/screencapture-hostlayici-dedicated-sunucu-2026-05-02-03-33-23.webp" alt="/works/hostlayici/assets/screencapture-hostlayici-dedicated-sunucu-2026-05-02-03-33-23.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/kadimlauncher/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/limelauncher/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/lofodo/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/mackbear-banner-design/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/obglobal/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/obglobalcomtr/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/obglobalcomtr/assets/screencapture-obglobal-tr-2026-05-02-03-56-27.webp" alt="/works/obglobalcomtr/assets/screencapture-obglobal-tr-2026-05-02-03-56-27.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"`;
+
+exports[`MarkdownRenderer public/works/oyunlayici/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/oyunlayici/assets/screencapture-oyunlayici-2026-05-02-03-59-19.webp" alt="/works/oyunlayici/assets/screencapture-oyunlayici-2026-05-02-03-59-19.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/oyunlayici/assets/screencapture-oyunlayici-web-hosting-cpanel-2026-05-02-03-59-51.webp" alt="/works/oyunlayici/assets/screencapture-oyunlayici-web-hosting-cpanel-2026-05-02-03-59-51.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/oyunlayici/assets/screencapture-oyunlayici-oyun-sunucu-minecraft-2026-05-02-04-00-42.webp" alt="/works/oyunlayici/assets/screencapture-oyunlayici-oyun-sunucu-minecraft-2026-05-02-04-00-42.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/oyunlayici/assets/screencapture-oyunlayici-alan-adi-2026-05-02-03-59-35.webp" alt="/works/oyunlayici/assets/screencapture-oyunlayici-alan-adi-2026-05-02-03-59-35.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/oyunlayici/assets/screencapture-oyunlayici-sunucu-premium-sunucu-2026-05-02-04-00-16.webp" alt="/works/oyunlayici/assets/screencapture-oyunlayici-sunucu-premium-sunucu-2026-05-02-04-00-16.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/pal/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/paperlauncher/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/quellstudio/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"></div>"`;
+
+exports[`MarkdownRenderer public/works/rentacart/index.md 1`] = `"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/rentacart/assets/rentacart.webp" alt="/works/rentacart/assets/rentacart.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"`;
+
+exports[`MarkdownRenderer public/works/seaviptravel/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/seaviptravel/assets/ana.webp" alt="/works/seaviptravel/assets/ana.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/seaviptravel/assets/galeri.webp" alt="/works/seaviptravel/assets/galeri.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/seaviptravel/assets/mail.webp" alt="/works/seaviptravel/assets/mail.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/seaviptravel/assets/ticket.webp" alt="/works/seaviptravel/assets/ticket.webp" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;
+
+exports[`MarkdownRenderer public/works/ulasbasaran/index.md 1`] = `
+"<div class="space-y-5 max-w-4xl mx-auto p-6"><h1 class="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight" id="proje-tanıtım"><a href="#proje-tanıtım" target="_self" rel="noopener noreferrer" class="anchor-link">Proje Tanıtım</a></h1>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/ulasbasaran/assets/1.png" alt="/works/ulasbasaran/assets/1.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/ulasbasaran/assets/2.png" alt="/works/ulasbasaran/assets/2.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/ulasbasaran/assets/3.png" alt="/works/ulasbasaran/assets/3.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/ulasbasaran/assets/4.png" alt="/works/ulasbasaran/assets/4.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/ulasbasaran/assets/5.png" alt="/works/ulasbasaran/assets/5.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p>
+<p class="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"><img src="/works/ulasbasaran/assets/7.png" alt="/works/ulasbasaran/assets/7.png" class="rounded-xl max-w-full h-auto my-4" loading="lazy"/></p></div>"
+`;

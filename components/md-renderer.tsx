@@ -1,15 +1,17 @@
 "use client";
-import React, { type ReactNode } from "react";
-import remarkGfm from "remark-gfm";
-import remarkBreaks from "remark-breaks";
+import React from "react";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type ExtraProps } from "react-markdown";
+import { markdownClasses } from "@/components/markdown-classes";
+import { type CalloutIcon, notionRemarkPlugins } from "@/lib/notion-markdown";
 interface MarkdownRendererProps {
   content: string;
 }
+
+const InsideCodeBlock = React.createContext(false);
 
 // Icon component for checkboxes and toggles
 const CheckIcon = () => (
@@ -52,11 +54,27 @@ const ArrowIcon = ({ open }: { open?: boolean }) => (
   </svg>
 );
 
+// Neden: Callout ikonu görsel olduğunda markdown görselleriyle aynı img çıktısını kullanıyor.
+const MarkdownImage = ({
+  src,
+  alt,
+  node: _,
+  ...props
+}: React.ComponentProps<"img"> & ExtraProps) => (
+  <img
+    src={src}
+    alt={alt || ""}
+    className={markdownClasses.image}
+    loading="lazy"
+    {...props}
+  />
+);
+
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="space-y-5 max-w-4xl mx-auto p-6">
+    <div className={markdownClasses.root}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm, remarkBreaks]}
+        remarkPlugins={notionRemarkPlugins}
         rehypePlugins={[
           rehypeRaw,
           rehypeSlug,
@@ -71,59 +89,42 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ],
           rehypeHighlight,
         ]}
+        // Neden: react-markdown her override'a hast node'unu geçiriyor; DOM'a node="[object Object]" olarak sızmasın diye her override onu ayırıyor.
         components={{
           // Headings
-          h1: ({ children, ...props }) => (
-            <h1
-              className="text-3xl sm:text-4xl font-extrabold text-milk mb-6 mt-8 first:mt-0 leading-tight"
-              {...props}
-            >
+          h1: ({ children, node: _, ...props }) => (
+            <h1 className={markdownClasses.heading[1]} {...props}>
               {children}
             </h1>
           ),
-          h2: ({ children, ...props }) => (
-            <h2
-              className="text-2xl sm:text-3xl font-bold text-milk mb-4 mt-6 first:mt-0 leading-tight"
-              {...props}
-            >
+          h2: ({ children, node: _, ...props }) => (
+            <h2 className={markdownClasses.heading[2]} {...props}>
               {children}
             </h2>
           ),
-          h3: ({ children, ...props }) => (
-            <h3
-              className="text-xl sm:text-2xl font-bold text-milk mb-3 mt-5 first:mt-0 leading-snug"
-              {...props}
-            >
+          h3: ({ children, node: _, ...props }) => (
+            <h3 className={markdownClasses.heading[3]} {...props}>
               {children}
             </h3>
           ),
-          h4: ({ children, ...props }) => (
-            <h4
-              className="text-lg sm:text-xl font-semibold text-milk mb-2 mt-4 first:mt-0 leading-snug"
-              {...props}
-            >
+          h4: ({ children, node: _, ...props }) => (
+            <h4 className={markdownClasses.heading[4]} {...props}>
               {children}
             </h4>
           ),
-          h5: ({ children, ...props }) => (
-            <h5
-              className="text-base sm:text-lg font-medium text-milk mb-2 mt-3 first:mt-0 leading-normal"
-              {...props}
-            >
+          h5: ({ children, node: _, ...props }) => (
+            <h5 className={markdownClasses.heading[5]} {...props}>
               {children}
             </h5>
           ),
-          h6: ({ children, ...props }) => (
-            <h6
-              className="text-base sm:text-lg text-milk/90 mb-2 mt-3 first:mt-0 leading-normal"
-              {...props}
-            >
+          h6: ({ children, node: _, ...props }) => (
+            <h6 className={markdownClasses.heading[6]} {...props}>
               {children}
             </h6>
           ),
 
           // Text formatting
-          u: ({ children, ...props }) => (
+          u: ({ children, node: _, ...props }) => (
             <u
               className="underline decoration-works/60 underline-offset-2"
               {...props}
@@ -131,49 +132,46 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               {children}
             </u>
           ),
-          mark: ({ children, ...props }) => (
+          mark: ({ children, node: _, ...props }) => (
             <mark className="bg-works/30 text-milk px-1 rounded" {...props}>
               {children}
             </mark>
           ),
-          small: ({ children, ...props }) => (
+          small: ({ children, node: _, ...props }) => (
             <small className="text-sm text-milk/70" {...props}>
               {children}
             </small>
           ),
-          em: ({ children, ...props }) => (
-            <em className="text-milk/90 italic" {...props}>
+          em: ({ children, node: _, ...props }) => (
+            <em className={markdownClasses.italic} {...props}>
               {children}
             </em>
           ),
-          strong: ({ children, ...props }) => (
-            <strong className="text-milk font-bold" {...props}>
+          strong: ({ children, node: _, ...props }) => (
+            <strong className={markdownClasses.bold} {...props}>
               {children}
             </strong>
           ),
-          del: ({ children, ...props }) => (
-            <del className="text-milk/60 line-through" {...props}>
+          del: ({ children, node: _, ...props }) => (
+            <del className={markdownClasses.strike} {...props}>
               {children}
             </del>
           ),
 
           // Paragraphs
-          p: ({ children, ...props }) => (
-            <p
-              className="text-milk/80 text-base sm:text-lg leading-relaxed mb-4"
-              {...props}
-            >
+          p: ({ children, node: _, ...props }) => (
+            <p className={markdownClasses.paragraph} {...props}>
               {children}
             </p>
           ),
 
           // Links
-          a: ({ children, href, ...props }) => (
+          a: ({ children, href, node: _, ...props }) => (
             <a
               href={href}
               target={href?.includes("//") ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="text-works underline decoration-works/40 underline-offset-2 hover:decoration-works transition-colors"
+              className={markdownClasses.link}
               {...props}
             >
               {children}
@@ -181,14 +179,12 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
 
           // Inline code
-          code: ({ className, children, ...props }) => {
-            const isInline = !className;
+          code: ({ className, children, node: _, ...props }) => {
+            // Neden: Satır içi/blok ayrımı yapıdan gelir; dilsiz fenced kodun da sınıfı yok ama <pre> içinde.
+            const isInline = !React.use(InsideCodeBlock);
             if (isInline) {
               return (
-                <code
-                  className="bg-about/20 text-works px-2 py-0.5 rounded-md text-[0.9em] font-mono border border-about/30"
-                  {...props}
-                >
+                <code className={markdownClasses.code} {...props}>
                   {children}
                 </code>
               );
@@ -201,36 +197,30 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
 
           // Code blocks
-          pre: ({ children, ...props }) => (
-            <pre
-              className="rounded-xl bg-dark p-4 overflow-x-auto text-sm font-mono leading-relaxed mb-4"
-              {...props}
-            >
-              {children}
+          pre: ({ children, node: _, ...props }) => (
+            <pre className={markdownClasses.codeBlock} {...props}>
+              <InsideCodeBlock value={true}>{children}</InsideCodeBlock>
             </pre>
           ),
 
           // Blockquotes
-          blockquote: ({ children, ...props }) => (
-            <blockquote
-              className="border-l-4 bg-works/10 border-works text-milk/90 pl-6 py-3 my-4 rounded-r-xl backdrop-blur-sm"
-              {...props}
-            >
+          blockquote: ({ children, node: _, ...props }) => (
+            <blockquote className={markdownClasses.blockquote} {...props}>
               {children}
             </blockquote>
           ),
 
           // Unordered lists
-          ul: ({ children, ...props }) => {
+          ul: ({ children, node: _, ...props }) => {
             const isTaskList = props.className?.includes("contains-task-list");
 
             return (
               <ul
-                className={`text-milk/80 leading-relaxed ${
+                className={
                   isTaskList
-                    ? "list-none space-y-2 [&_ul.contains-task-list]:pl-8 [&_ul.contains-task-list]:mt-2"
-                    : "list-disc pl-6 space-y-1 marker:text-works marker:text-lg"
-                } mb-4`}
+                    ? "text-milk/80 leading-relaxed list-none space-y-2 [&_ul.contains-task-list]:pl-8 [&_ul.contains-task-list]:mt-2 mb-4"
+                    : markdownClasses.bulletList
+                }
                 {...props}
               >
                 {children}
@@ -239,19 +229,17 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
 
           // Ordered lists
-          ol: ({ children, ...props }) => (
-            <ol
-              className="text-milk/80 leading-relaxed list-decimal pl-6 space-y-1 mb-4 marker:text-works marker:font-bold"
-              {...props}
-            >
+          ol: ({ children, node: _, ...props }) => (
+            <ol className={markdownClasses.orderedList} {...props}>
               {children}
             </ol>
           ),
 
-          // List items with toggle functionality
-          li: ({ children, ...props }: any) => {
+          // Toggle kararını lib/notion-markdown verir; li yalnızca data-toggle bayrağını okur.
+          li: ({ children, node: _, "data-toggle": toggle, ...props }: any) => {
             const isTaskItem = props.className?.includes("task-list-item");
 
+            // Neden: Task list görünümü (dış ul'un sınıflarını kaybetmesi, iç ul'a pl-8 eklenmemesi) karar verilene kadar bilerek olduğu gibi bırakıldı.
             if (isTaskItem) {
               // Separate checkbox+text from nested ul
               const childArray = React.Children.toArray(children);
@@ -279,10 +267,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               );
 
               return (
-                <li
-                  {...props}
-                  className="text-milk/90 leading-relaxed py-1 [&>ul]:pl-4 [&>ul]:mt-1.5"
-                >
+                <li {...props} className={markdownClasses.taskItem}>
                   <div className="flex items-start gap-3">
                     {checkbox}
                     {text}
@@ -292,35 +277,16 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               );
             }
 
-            const realChildren = React.Children.toArray(children).filter(
-              (child) => !(typeof child === "string" && !child.trim()),
-            );
-
-            // Check if has nested content (toggle behavior)
-            const hasNestedContent = realChildren.some((child) => {
-              if (React.isValidElement(child)) {
-                const type = child.type as any;
-                return (
-                  type === "ul" ||
-                  type === "ol" ||
-                  type === "p" ||
-                  type === "blockquote"
-                );
-              }
-              return false;
-            });
-
-            if (hasNestedContent && realChildren.length > 1) {
-              let summaryContent = realChildren[0];
-              const detailsContent = realChildren.slice(1);
-
-              // Extract text from paragraph wrapper
-              if (
-                React.isValidElement(summaryContent) &&
-                (summaryContent.type as any) === "p"
-              ) {
-                summaryContent = (summaryContent.props as any).children;
-              }
+            if (toggle) {
+              const [summary, ...detailsContent] = React.Children.toArray(
+                children,
+              ).filter(
+                (child) => !(typeof child === "string" && !child.trim()),
+              );
+              // Neden: Plugin özet paragrafını her zaman ilk çocukta <summary> element'i olarak verir; burada yalnızca içeriği alınır.
+              const summaryContent = (
+                summary as React.ReactElement<{ children?: React.ReactNode }>
+              ).props.children;
 
               return (
                 <details className="group my-1" {...props}>
@@ -338,14 +304,14 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             }
 
             return (
-              <li className="text-milk/90 leading-relaxed py-1" {...props}>
+              <li className={markdownClasses.listItem} {...props}>
                 {children}
               </li>
             );
           },
 
           // Checkboxes
-          input: ({ type, checked, ...props }) => {
+          input: ({ type, checked, node: _, ...props }) => {
             if (type === "checkbox") {
               return (
                 <div
@@ -363,24 +329,24 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
 
           // Tables
-          table: ({ children, ...props }) => (
+          table: ({ children, node: _, ...props }) => (
             <div className="overflow-x-auto rounded-xl border border-body/40 bg-grey/20 my-4">
               <table className="w-full border-collapse" {...props}>
                 {children}
               </table>
             </div>
           ),
-          thead: ({ children, ...props }) => (
+          thead: ({ children, node: _, ...props }) => (
             <thead className="bg-dark/40" {...props}>
               {children}
             </thead>
           ),
-          tbody: ({ children, ...props }) => (
+          tbody: ({ children, node: _, ...props }) => (
             <tbody className="divide-y divide-milk/10" {...props}>
               {children}
             </tbody>
           ),
-          tr: ({ children, ...props }) => (
+          tr: ({ children, node: _, ...props }) => (
             <tr
               className="hover:bg-dark/20 transition-colors duration-200"
               {...props}
@@ -388,7 +354,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               {children}
             </tr>
           ),
-          th: ({ children, ...props }) => (
+          th: ({ children, node: _, ...props }) => (
             <th
               className="text-milk font-bold p-4 text-left border-r border-milk/10 last:border-r-0"
               {...props}
@@ -396,7 +362,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               {children}
             </th>
           ),
-          td: ({ children, ...props }) => (
+          td: ({ children, node: _, ...props }) => (
             <td
               className="text-milk/80 p-4 leading-relaxed border-r border-milk/10 last:border-r-0"
               {...props}
@@ -406,72 +372,45 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
 
           // Images
-          img: ({ src, alt, ...props }) => (
-            <img
-              src={src}
-              alt={alt || ""}
-              className="rounded-xl max-w-full h-auto my-4"
-              loading="lazy"
-              {...props}
-            />
-          ),
+          img: MarkdownImage,
 
           // Horizontal rule
-          hr: ({ ...props }) => (
-            <hr
-              className="border-0 border-t-2 border-milk/10 my-8"
-              {...props}
-            />
+          hr: ({ node: _, ...props }) => (
+            <hr className={markdownClasses.horizontalRule} {...props} />
           ),
-          aside: ({ children, ...props }: any) => {
-            const childArray = Array.isArray(children) ? children : [children];
-            let icon: ReactNode = null;
-            const content: ReactNode[] = [...childArray];
-
-            const iconIndex = content.findIndex((child) => {
-              if (
-                React.isValidElement(child) &&
-                (child.type as any).name === "img"
-              ) {
-                return true;
-              }
-
-              if (typeof child === "string") {
-                const trimmed = child.trim();
-                if (trimmed === "") return false;
-                const emojiRegex =
-                  /^(\p{Emoji_Presentation}|\p{Emoji_Modifier_Base}|\p{Extended_Pictographic}|\p{Emoji_Component}|\uFE0F|\u200D)+$/u;
-                return emojiRegex.test(trimmed);
-              }
-              return false;
-            });
-
-            if (iconIndex !== -1) {
-              icon = content[iconIndex];
-              content.splice(iconIndex, 1);
-            }
-
-            const finalContent = content.filter(
-              (c) => !(typeof c === "string" && c.trim() === ""),
-            );
+          // Callout'u lib/notion-markdown tanır; ikon buraya veri olarak gelir.
+          aside: ({
+            children,
+            node: _,
+            "data-callout-icon": iconJson,
+            ...props
+          }: any) => {
+            const calloutIcon: CalloutIcon | null = iconJson
+              ? JSON.parse(iconJson)
+              : null;
+            const icon =
+              calloutIcon?.type === "image" ? (
+                <MarkdownImage
+                  src={calloutIcon.src}
+                  alt={calloutIcon.alt}
+                  width={calloutIcon.width}
+                />
+              ) : (
+                calloutIcon?.value
+              );
 
             return (
-              <div
-                className="relative overflow-hidden bg-dark flex gap-3 rounded-2xl p-6 contain-content items-start justify-start"
-                {...props}
-              >
+              <div className={markdownClasses.callout.container} {...props}>
                 {icon && (
-                  <div className="absolute pointer-events-none inset-0 text-[20rem] *:size-full opacity-20 scale-900 blur-xl flex items-center justify-center">
+                  <div className={markdownClasses.callout.iconBackground}>
                     {icon}
                   </div>
                 )}
                 {icon && (
-                  <div className="shrink-0 relative text-3xl leading-none">
-                    {icon}
-                  </div>
+                  <div className={markdownClasses.callout.icon}>{icon}</div>
                 )}
-                <div className="relative flex-1 w-full h-max *:first:mt-0 *:last:mb-0 [&>p]:leading-relaxed">
-                  {finalContent}
+                <div className={markdownClasses.callout.content}>
+                  {children}
                 </div>
               </div>
             );

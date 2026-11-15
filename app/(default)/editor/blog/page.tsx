@@ -3,7 +3,7 @@ import Header from "@/layouts/header";
 import { getAllBlogs } from "@/lib/blogs";
 import Link from "next/link";
 import AddBlogForm from "./form";
-import { toggleBlogPublished } from "./action";
+import { createBlog, toggleBlogPublished } from "./action";
 import DeleteBlogButton from "./delete-button";
 
 export default function Blogs() {
@@ -22,7 +22,8 @@ export default function Blogs() {
                 Blog Import
               </h1>
               <p className="font-medium text-lg sm:text-xl mt-2">
-                Notion export zip dosyasını statik blog yazısına çevir. ✦
+                Yeni yazıyı başlıkla başlat ya da Notion export zip dosyasını
+                statik blog yazısına çevir. ✦
               </p>
               <p className="font-light text-lg sm:text-xl max-w-3xl mt-2">
                 Markdown ve görseller frontmatter içeren dosyalar olarak
@@ -33,6 +34,23 @@ export default function Blogs() {
               </p>
             </span>
           </div>
+          <form
+            action={createBlog}
+            className="bg-dark rounded-4xl p-4 sm:p-6 flex flex-col sm:flex-row gap-4"
+          >
+            <input
+              name="title"
+              required
+              placeholder="Yeni yazının başlığı"
+              className="text-field"
+            />
+            <button
+              type="submit"
+              className="main-button w-full! shrink-0 sm:w-max!"
+            >
+              Yeni Yazı
+            </button>
+          </form>
           <AddBlogForm />
         </section>
 
@@ -118,6 +136,13 @@ export default function Blogs() {
                         {blog.published ? "Yayından Kaldır" : "Yayına Al"}
                       </button>
                     </form>
+
+                    <Link
+                      href={`/editor/blog/${blog.slug}`}
+                      className="main-button w-full! sm:w-max!"
+                    >
+                      Düzenle
+                    </Link>
 
                     <DeleteBlogButton slug={blog.slug} title={blog.title} />
                   </span>
