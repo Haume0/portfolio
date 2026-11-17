@@ -202,14 +202,21 @@ export default function AboutSection() {
               </a>
             ))}
             {/* Mobilde 2 sütunlu gridde tek kalan 5. buton satırı tam kaplasın. */}
-            <button
-              type="button"
-              onClick={() => setResume(true)}
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener"
+              onClick={(e) => {
+                // Mobil tarayıcılar iframe içindeki PDF'i sığdıramıyor ya da hiç göstermiyor; dokunmatik cihazlarda link yeni sekmede açılır, modal yalnızca fareli cihazlarda.
+                if (!window.matchMedia("(pointer: fine)").matches) return;
+                e.preventDefault();
+                setResume(true);
+              }}
               className="main-button w-full! sm:w-max! col-span-2"
             >
               <Icon icon="ion:document-text-outline" className="text-2xl" />
               Resume
-            </button>
+            </a>
           </ul>
         </motion.div>
       </section>
@@ -226,32 +233,17 @@ export default function AboutSection() {
                 transition={{ duration: 0.3 }}
                 className="fixed inset-0 z-50 flex size-full cursor-zoom-out items-end sm:items-center justify-center bg-dark/80 backdrop-blur-sm p-4 sm:p-6 md:p-8"
               >
-                <motion.div
+                <motion.button
+                  type="button"
+                  aria-label="Close"
                   initial={{ scale: 0, rotate: -90 }}
                   animate={{ scale: 1, rotate: 0 }}
                   exit={{ scale: 0, rotate: 90, transition: { duration: 0.2 } }}
                   transition={{ ...spring, delay: 0.2 }}
-                  className="absolute right-8 top-8 flex gap-2"
+                  className="main-button absolute right-8 top-8 text-2xl p-0! size-12! items-center justify-center flex aspect-square rounded-2xl bg-dark! hover:bg-white!"
                 >
-                  {/* Mobil Safari iframe içindeki PDF'in yalnızca ilk sayfasını gösterir; tam görünüm için yeni sekme. */}
-                  <a
-                    href="/cv.pdf"
-                    target="_blank"
-                    rel="noopener"
-                    aria-label="Open in new tab"
-                    onClick={(e) => e.stopPropagation()}
-                    className="main-button text-2xl p-0! size-12! aspect-square rounded-2xl bg-dark! hover:bg-white!"
-                  >
-                    <Icon icon="ion:open-outline" />
-                  </a>
-                  <button
-                    type="button"
-                    aria-label="Close"
-                    className="main-button text-2xl p-0! size-12! aspect-square rounded-2xl bg-dark! hover:bg-white!"
-                  >
-                    <Icon icon="ion:close" />
-                  </button>
-                </motion.div>
+                  <Icon icon="ion:close" />
+                </motion.button>
                 <motion.iframe
                   // Tek sayfalık CV'de küçük resim paneli gereksiz yer kaplar; sayfa genişliğe sığdırılır.
                   src="/cv.pdf#navpanes=0&view=FitH"
