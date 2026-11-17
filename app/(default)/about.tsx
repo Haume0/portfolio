@@ -3,32 +3,14 @@ import { Icon } from "@iconify/react";
 import Askolotl from "@/components/askolotl";
 import useSocials from "@/store/socials";
 import useTechs from "@/store/techstack";
-import { AnimatePresence, useInView, motion } from "motion/react";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-
-const spring = { type: "spring", damping: 25, stiffness: 100 } as const;
+import { useInView, motion } from "motion/react";
+import { useRef } from "react";
 
 export default function AboutSection() {
   const aboutRef = useRef(null);
   const aboutInView = useInView(aboutRef, { once: true });
   const techs = useTechs();
   const socials = useSocials();
-  const [resume, setResume] = useState(false);
-
-  useEffect(() => {
-    if (!resume) return;
-    // Modal açıkken arkadaki sayfa kaymasın; works preview modalıyla aynı kilit.
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const handleKey = (e: KeyboardEvent) =>
-      e.key === "Escape" && setResume(false);
-    document.addEventListener("keydown", handleKey);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleKey);
-    };
-  }, [resume]);
   return (
     <div className="p-4 sm:p-6 md:p-8 pt-0!">
       <section
@@ -206,12 +188,6 @@ export default function AboutSection() {
               href="/cv.pdf"
               target="_blank"
               rel="noopener"
-              onClick={(e) => {
-                // Mobil tarayıcılar iframe içindeki PDF'i sığdıramıyor ya da hiç göstermiyor; dokunmatik cihazlarda link yeni sekmede açılır, modal yalnızca fareli cihazlarda.
-                if (!window.matchMedia("(pointer: fine)").matches) return;
-                e.preventDefault();
-                setResume(true);
-              }}
               className="main-button w-full! sm:w-max! col-span-2"
             >
               <Icon icon="ion:document-text-outline" className="text-2xl" />
@@ -220,51 +196,6 @@ export default function AboutSection() {
           </ul>
         </motion.div>
       </section>
-      {/* Kart transform animasyonlu olduğu için fixed modal body'ye portal edilir; AnimatePresence portal'ı geçerli çocuk saymadığından keyed Fragment ile sarılır. */}
-      <AnimatePresence>
-        {resume && (
-          <Fragment key="resume">
-            {createPortal(
-              <motion.section
-                onClick={() => setResume(false)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.1 } }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 z-50 flex size-full cursor-zoom-out items-end sm:items-center justify-center bg-dark/80 backdrop-blur-sm p-4 sm:p-6 md:p-8"
-              >
-                <motion.button
-                  type="button"
-                  aria-label="Close"
-                  initial={{ scale: 0, rotate: -90 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  exit={{ scale: 0, rotate: 90, transition: { duration: 0.2 } }}
-                  transition={{ ...spring, delay: 0.2 }}
-                  className="main-button absolute right-8 top-8 text-2xl p-0! size-12! items-center justify-center flex aspect-square rounded-2xl bg-dark! hover:bg-white!"
-                >
-                  <Icon icon="ion:close" />
-                </motion.button>
-                <motion.iframe
-                  // Tek sayfalık CV'de küçük resim paneli gereksiz yer kaplar; sayfa genişliğe sığdırılır.
-                  src="/cv.pdf#navpanes=0&view=FitH"
-                  title="Emin Erçoban Resume"
-                  onClick={(e) => e.stopPropagation()}
-                  initial={{ y: 120, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{
-                    y: 80,
-                    opacity: 0,
-                    transition: { duration: 0.3, ease: [0.22, 0.61, 0.36, 1] },
-                  }}
-                  transition={{ ...spring, delay: 0.1 }}
-                  className="w-full max-w-4xl h-[calc(100dvh-7rem)] sm:h-[calc(100dvh-4rem)] rounded-[1.25rem] bg-white shadow-2xl"
-                />
-              </motion.section>,
-              document.body,
-            )}
-          </Fragment>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
