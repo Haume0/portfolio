@@ -118,10 +118,16 @@ export default function Askolotl() {
 
   useEffect(() => {
     if (!open) return;
+    // Modal açıkken arkadaki sayfa kaymasın; works preview modalıyla aynı kilit.
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     const handleKey = (e: KeyboardEvent) =>
       e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKey);
+    };
   }, [open]);
 
   return (
