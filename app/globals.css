@@ -35,6 +35,9 @@ body {
 .text-field {
   @apply px-5 h-14 sm:h-16 gap-2 flex w-full outline-hidden items-center justify-center text-white bg-body focus:bg-white focus:text-body rounded-xl font-medium text-xl font-sora ease-in-out duration-200;
 }
+.askolotl-action {
+  @apply mt-3 flex w-max items-center rounded-xl bg-dark px-3 py-1.5 text-base font-normal hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black outline-hidden duration-200;
+}
 /* Make scrollbars more pretty */
 ::-webkit-scrollbar {
   width: 6px;

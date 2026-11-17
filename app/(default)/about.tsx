@@ -1,4 +1,6 @@
 "use client";
+import { Icon } from "@iconify/react";
+import Askolotl from "@/components/askolotl";
 import useSocials from "@/store/socials";
 import useTechs from "@/store/techstack";
 import { useInView, motion } from "motion/react";
@@ -142,12 +144,7 @@ export default function AboutSection() {
               delay: 1.2,
             }}
           >
-            <a
-              href="/cv.pdf"
-              className="font-light flex gap-2 items-center text-lg md:text-xl rounded-xl bg-dark ease-gentle duration-300 hover:bg-white hover:text-black size-max py-1.5 px-3"
-            >
-              👀 My CV
-            </a>
+            <Askolotl />
           </motion.span>
         </div>
         <motion.div
@@ -186,6 +183,14 @@ export default function AboutSection() {
                 {social.name}
               </a>
             ))}
+            {/* Mobilde 2 sütunlu gridde tek kalan 5. buton satırı tam kaplasın. */}
+            <a
+              href="/cv.pdf"
+              className="main-button w-full! sm:w-max! col-span-2"
+            >
+              <Icon icon="ion:document-text-outline" className="text-2xl" />
+              Resume
+            </a>
           </ul>
         </motion.div>
       </section>
