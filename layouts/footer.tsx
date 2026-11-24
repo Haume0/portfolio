@@ -36,17 +36,6 @@ export default function Footer() {
           <p className="font-thin text-white/40" suppressHydrationWarning>
             © 2024-{new Date().getFullYear()} ✦ Emin Erçoban
           </p>
-          <p className="font-thin text-white/40 mt-1">
-            Co-Founder of{" "}
-            <a
-              href="https://cubidron.com"
-              target="_blank"
-              className="hover:underline font-normal hover:text-main"
-              rel="noopener"
-            >
-              Cubidron
-            </a>
-          </p>
         </motion.div>
         <motion.div
           initial={{
